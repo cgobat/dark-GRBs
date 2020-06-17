@@ -31,7 +31,7 @@ written to .csv files for further analysis.
 
 #import necessary modules
 import numpy as np, pandas as pd
-from easygui import fileopenbox
+from easygui import fileopenbox, diropenbox
 
 #initialize and declare necessary global constants
 
@@ -466,14 +466,14 @@ class Trial:
         #GRB ID read from optical file
         self.optical_entries.append(new_Possibility)
 
-        total_possible_pairings = self.find_total_possible_pairings()
+        self.total_possible_pairings = self.find_total_possible_pairings()
 
         #calculate percent of loaded GRBs that are paired
-        pairing_rate = (optical_pairs /  total_possible_pairings )*100
+        pairing_rate = (optical_pairs /  self.total_possible_pairings )*100
 
         #notify user of loading statistics
         print("Number of loaded GRBs from optical data file:",int(total_loaded))
-        print("Number of possible pairs:",int(total_possible_pairings))
+        print("Number of possible pairs:",int(self.total_possible_pairings))
         print("Number of successful pairs:",int(optical_pairs))
         print("Pairing Rate:",pairing_rate,"%")
 
@@ -528,7 +528,7 @@ class Trial:
         print("Number of Wavelength Sets Loaded:",loaded)
         print("Number of Unsuccessfully Paired:",check_counter)
         print("Number of Successfully Paired:",success_counter)
-        print("Overall Success Rate:",100 * (success_counter / total_possible_pairings ),"%")
+        print("Overall Success Rate:",100 * (success_counter / self.total_possible_pairings ),"%")
 
         return loaded
 
@@ -553,7 +553,7 @@ class Trial:
 
         #display features
         print("*** Beta_OX Data ***")
-        print("GRB ID","F_x [uJy]","sigma_X [uJy]","F_o [uJy]","sigma_o [uJy]","Freq_X","Freq_O","Beta_OX","Upper sigma_OX","Lower sigma_OX")
+        print("GRB ID, F_x [uJy], sigma_X [uJy], F_o [uJy], sigma_o [uJy], Freq_X, Freq_O, Beta_OX, Upper sigma_OX, Lower sigma_OX")
 
         # run through vector of GRBs
         for a in range(len(self.GRBs_with_Opt)):
@@ -567,25 +567,29 @@ class Trial:
                 sigma_x = self.GRBs_with_Opt[a].sigma_x
                 sigma_o = self.GRBs_with_Opt[a].sigma_o
 
-                #calculate Beta_OX
-                Beta_OX = np.log(F_x / F_o) / np.log(frequency_X / frequency_O )
-
-                #check to see if calculation returns NaN
-                if np.isnan(Beta_OX):
+                try:
+                    #calculate Beta_OX
+                    Beta_OX = np.log(F_x / F_o) / np.log(frequency_X / frequency_O )
+                except ZeroDivisionError:
+                    #check to see if calculation returns NaN
+                #if np.isnan(Beta_OX):
                     Beta_OX = 0
                     nan += 1
 
-                #calculate upper bound on uncertainty for Beta_OX
-                sigma_OX_upper = np.log( (1 + (sigma_x / F_x)) / (1 - (sigma_o / F_o))) / np.log( frequency_X / frequency_O )
-                #calculate lower bound on uncertainty for Beta_OX
-                sigma_OX_lower = np.abs(np.log( (1 - (sigma_x / F_x)) / (1 + (sigma_o / F_o))) / np.log( frequency_X / frequency_O ))
-
-                #check to see if calculation returns nan
-                if np.isnan(sigma_OX_upper):
+                try:
+                    #calculate upper bound on uncertainty for Beta_OX
+                    sigma_OX_upper = np.log( (1 + (sigma_x / F_x)) / (1 - (sigma_o / F_o))) / np.log( frequency_X / frequency_O )
+                except ZeroDivisionError:
+                    #check to see if calculation returns nan
+                #if np.isnan(sigma_OX_upper):
                     sigma_OX_upper = 0
 
-                #check to see if calculation returns nan
-                if np.isnan(sigma_OX_lower):
+                try:
+                    #calculate lower bound on uncertainty for Beta_OX
+                    sigma_OX_lower = np.abs(np.log( (1 - (sigma_x / F_x)) / (1 + (sigma_o / F_o))) / np.log( frequency_X / frequency_O ))
+                except ZeroDivisionError:
+                    #check to see if calculation returns nan
+                #if np.isnan(sigma_OX_lower):
                     sigma_OX_lower = 0
 
                 #set calculated value into GRB Beta_OX attribute
@@ -601,7 +605,7 @@ class Trial:
 
         #display loaded statistics
         print("Number of Successful Beta_OX Calculations:",success_counter)
-        print("Overall Success Rate:",100 * (success_counter / total_possible_pairings ),"%")
+        print("Overall Success Rate:",100 * (success_counter / self.total_possible_pairings ),"%")
 
     # prints out the GRB vector by calling the report method
     # of each GRB. Used for debugging.
@@ -615,9 +619,12 @@ class Trial:
         #cast temporal percent difference to string
         dt = int(DT_PERCENT_DIF)
         percent_dif = str(dt)
+        print("\nChoose a location to save the paired data tables.")
+        savepath = diropenbox()
         #define variable for name of files
-        filename_comprehensive = "./Written_Files/Comprehensive_Paired_Data_Table_" + percent_dif + "%.csv"
-        filename_terse = "./Written_Files/GRB_Pairings-dt_" + percent_dif + "%.csv"
+        filename_comprehensive = savepath + "\\Comprehensive_Paired_Data_Table_" + percent_dif + "%.csv"
+        print("Saving to",filename_comprehensive)
+        filename_terse = savepath + "\\GRB_Pairings-dt_" + percent_dif + "%.csv"
 
         #open file for comprehensive data file
         myFile_comprehensive = open(filename_comprehensive,"w+")
@@ -629,12 +636,12 @@ class Trial:
         for a in range(len(self.GRBs_with_Opt)):
             #double check to see if GRB is fully populated
             if  self.GRBs_with_Opt[a].frequency_Opt != -1:
-                filecontent.append(",".join([self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].dt_XRay/3600,
-                                            self.GRBs_with_Opt[a].get_ExpT_XRay,self.GRBs_with_Opt[a].F_x,self.GRBs_with_Opt[a].sigma_x,self.GRBs_with_Opt[a].Beta_X,
+                filecontent.append(",".join(map(str, [self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].dt_XRay/3600,
+                                            self.GRBs_with_Opt[a].ExpT_XRay,self.GRBs_with_Opt[a].F_x,self.GRBs_with_Opt[a].sigma_x,self.GRBs_with_Opt[a].Beta_X,
                                             self.GRBs_with_Opt[a].Beta_X_upper_sigma,self.GRBs_with_Opt[a].Beta_X_lower_sigma,self.GRBs_with_Opt[a].dt_Opt/3600,
-                                            self.GRBs_with_Opt[a].telescope,self.GRBs_with_Opt[a].instrument,self.GRBs_with_Opt[a].filter,self.GRBs_with_Opt[a].Exp_Opt,
+                                            self.GRBs_with_Opt[a].telescope,self.GRBs_with_Opt[a].instrument,self.GRBs_with_Opt[a].filter,self.GRBs_with_Opt[a].ExpT_Opt,
                                             self.GRBs_with_Opt[a].F_o,self.GRBs_with_Opt[a].sigma_o,self.GRBs_with_Opt[a].frequency_XRay,self.GRBs_with_Opt[a].frequency_Opt,
-                                            self.GRBs_with_Opt[a].Beta_OX,self.GRBs_with_Opt[a].sigma_OX_upper,self.GRBs_with_Opt[a].sigma_OX_lower]))
+                                            self.GRBs_with_Opt[a].Beta_OX,self.GRBs_with_Opt[a].sigma_OX_upper,self.GRBs_with_Opt[a].sigma_OX_lower])))
         myFile_comprehensive.write("\n".join(filecontent))
 
         #close file
@@ -650,10 +657,10 @@ class Trial:
         for a in range(len(self.GRBs_with_Opt)):
             #double check to see if GRB is fully populated
             if  self.GRBs_with_Opt[a].frequency_Opt != -1:
-                filecontent.append(",".join([self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].dt_XRay/3600,self.GRBs_with_Opt[a].dt_Opt/3600,
+                filecontent.append(",".join(map(str, [self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].dt_XRay/3600,self.GRBs_with_Opt[a].dt_Opt/3600,
                                             np.abs(self.GRBs_with_Opt[a].dt_Opt - self.GRBs_with_Opt[a].dt_XRay)/3600,self.GRBs_with_Opt[a].Beta_X,
                                             self.GRBs_with_Opt[a].Beta_X_upper_sigma,self.GRBs_with_Opt[a].Beta_X_lower_sigma,self.GRBs_with_Opt[a].Beta_OX,
-                                            self.GRBs_with_Opt[a].sigma_OX_upper,self.GRBs_with_Opt[a].sigma_OX_lower]))
+                                            self.GRBs_with_Opt[a].sigma_OX_upper,self.GRBs_with_Opt[a].sigma_OX_lower])))
         myFile_terse.write("\n".join(filecontent))
 
         #close file

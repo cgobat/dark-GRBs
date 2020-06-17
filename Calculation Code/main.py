@@ -31,6 +31,7 @@ written to .csv files for further analysis.
 
 #import necessary modules
 import numpy as np, pandas as pd
+from easygui import fileopenbox
 
 #initialize and declare necessary global constants
 
@@ -208,8 +209,8 @@ class Trial:
         xrayData = pd.read_csv(str(filename), header=None)
 
         #display features
-        print("************************ X-Ray GRB Data ************************")
-        print(xrayData)
+        print("\n****************** X-Ray GRB Data ******************")
+        print(xrayData.rename(columns=dict(zip(range(5),["GRB ID","dt_X","Exp_X","F_x","sigma_X"]))))
 
         for line in xrayData.values:
             [ID, dtX, ExpX, Fx, sigmaX] = line
@@ -252,7 +253,7 @@ class Trial:
             self.GRBs.append(grb)
 
             #display loaded features
-            print(ID, dtX, ExpX, Fx, sigmaX)
+            #print(ID, dtX, ExpX, Fx, sigmaX)
 
         #add last pair to vector of multiplicities
         #construct Possibility object with corresponding data
@@ -281,7 +282,7 @@ class Trial:
         #<test to see if file opens successfully>
         
         BetaXData = pd.read_csv(filename, header=None)
-        print("************************Beta_X Data**************************")
+        print("*** Beta_X Data ***")
         print(BetaXData)
         
         #read in data from file and assign them to corresponding variables
@@ -340,6 +341,8 @@ class Trial:
         #initialize counter for no match found
         no_match_found_counter = 0
 
+        optical_pairs = 0
+        
         #initialize string variable for old ID used in GRB ID multiplicity determination
         old_ID = None
         #initialize counter used for determining number of data points for each unique ID
@@ -356,8 +359,8 @@ class Trial:
         opticalData = pd.read_csv(filename, header=None)
 
         #display features
-        print("********************************************** Optical GRB Data **********************************************")
-        print("GRB ID\tdt_O [s]\tTelescope\tInstrument\tFilter\tExposure Time [s]\tF_o [uJy]\tsigma_O [uJy]")
+        print("*** Optical GRB Data ***")
+        print(opticalData.rename(columns={0:"GRB ID",1:"dt_O [s]",2:"Telescope",3:"Instrument",4:"Filter",5:"Exposure Time [s]",6:"F_o [uJy]",7:"sigma_O [uJy]"}))
 
         #read in data from file and assign them to corresponding variables
         #read until file no longer has any more data
@@ -367,7 +370,7 @@ class Trial:
             dtO_seconds = 3600 * dtO_hours
 
             #display loaded features
-            print(line)
+            #print(line)
 
             #initialize variable for location in GRB vector
             location = 0
@@ -411,7 +414,7 @@ class Trial:
             total_loaded += 1
 
             while location < len(self.GRBs) and location != -1:
-                location = matchGRB(ID, dtO_seconds, location)
+                location = self.matchGRB(ID, dtO_seconds, location)
                 check += 1
 
                 #print("\nBeginning checks")
@@ -421,7 +424,7 @@ class Trial:
                 if  location != -1:
                     #construct a GRB object that will be added
                     #into vector of GRBs with optical data
-                    copy_grb = GRB(self.GRBs[location].ID, self.GRBs[location].dt_XRay, self.GRBs[location].ExpT_XRay, self.GRBs[location].F_x, self.GRBs[location].sigma_x)
+                    copy_grb = GRB(self.GRBs[location].GRB_ID, self.GRBs[location].dt_XRay, self.GRBs[location].ExpT_XRay, self.GRBs[location].F_x, self.GRBs[location].sigma_x)
 
                     #set corresponding GRB appropriate Beta_X parameters
                     copy_grb.set_Beta_X(self.GRBs[location].Beta_X)
@@ -463,7 +466,7 @@ class Trial:
         #GRB ID read from optical file
         self.optical_entries.append(new_Possibility)
 
-        total_possible_pairings = find_total_possible_pairings()
+        total_possible_pairings = self.find_total_possible_pairings()
 
         #calculate percent of loaded GRBs that are paired
         pairing_rate = (optical_pairs /  total_possible_pairings )*100
@@ -493,17 +496,17 @@ class Trial:
         observationData = pd.read_csv(filename, header=None)
 
         #display features
-        print("******************************* Wavelength Data *******************************")
-        print("Telescope","Instrument","Filter","Wavelength","Frequency")
+        print("*** Wavelength Data ***")
+        print(observationData.rename(columns=dict(zip(range(5),["Telescope","Instrument","Filter","Wavelength","Frequency"]))))
 
         #read in data from file and assign them to corresponding variables
         #read until file no longer has any more data
         for line in observationData.values:
             [telName, instrumentName, filterName, wavelength, frequency] = line
-            print(line)
+            #print(line)
 
             #call function to match GRB objects with appropriate wavelength data
-            success_counter += matchFrequency(telName, instrumentName, filterName, wavelength, frequency)
+            success_counter += self.matchFrequency(telName, instrumentName, filterName, wavelength, frequency)
 
             #increment counter for successful load
             loaded += 1
@@ -549,7 +552,7 @@ class Trial:
         sigma_OX_lower = 0
 
         #display features
-        print("****************************************************************************** Beta_OX Data *******************************************************************************")
+        print("*** Beta_OX Data ***")
         print("GRB ID","F_x [uJy]","sigma_X [uJy]","F_o [uJy]","sigma_o [uJy]","Freq_X","Freq_O","Beta_OX","Upper sigma_OX","Lower sigma_OX")
 
         # run through vector of GRBs
@@ -730,21 +733,21 @@ class Trial:
         total_possibilities = 0
 
         #traverse through vector XRay_entries
-        for q in range(len(self.XRay_entries)):
+        q = 0
+        while q < len(self.XRay_entries):
             #initialize boolean signifying that ID is in XRay_entries
             #and also in optical_entries
             keeper = False
 
             #traverse through optical_entries vector
-            for n in range(len(self.optical_entries)):
+            n = 0
+            while n < len(self.optical_entries):
                 #check if the ID in XRay_entries and optical_entries are identical
                 if  self.XRay_entries[q].ID == self.optical_entries[n].ID:
                     #assign boolean for keeper to True
                     keeper = True
-
-
-            #check if no match was made
-            if  keeper == False :
+                n += 1
+            if keeper == False:
                 #increment counter for number of IDs that exist in
                 #XRay_entries but not in optical_entries
                 in_XRay_not_Opt += 1
@@ -752,11 +755,11 @@ class Trial:
                 #initialize iterator to beginning of XRay_entries vector
                 it = 0
                 #traverse through XRay_entries with iterator
-                for entry in self.XRay_entries:
+                while it < len(self.XRay_entries):
                     # remove entity that had no pairing
-                    if entry.ID == self.XRay_entries[q].ID:
+                    if self.XRay_entries[it].ID == self.XRay_entries[q].ID:
                         # erase() invalidates the iterator, returned iterator
-                        self.XRay_entries.remove(entry)
+                        erased = self.XRay_entries.pop(it)
 
                         #check if index is at 0
                         if  q > 0 :
@@ -769,30 +772,32 @@ class Trial:
                             #index=0 and continuously delete entities
                             it += 1
 
-
                     else:
                         #increment iterator
                         it += 1
+            q += 1
 
         #appropriately change variable for size of XRay_entries
         new_XRay_entries_size = len(self.XRay_entries)
 
         #traverse through vector optical_entries
-        for l in range(len(self.optical_entries)):
+        l = 0
+        while l < len(self.optical_entries):
             #initialize boolean signifying that ID is in XRay_entries
             #and also in optical_entries
             keepme = False
 
             #traverse through optical_entries vector
-            for u in range(len(self.XRay_entries)):
+            u = 0
+            while u < len(self.XRay_entries):
                 #check if the ID in XRay_entries and optical_entries are identical
                 if  self.optical_entries[l].ID == self.XRay_entries[u].ID:
                     #assign boolean for keeper to True
                     keepme = True
-
+                u += 1
 
             #check if no match was made
-            if keepme == False :
+            if keepme == False:
                 #increment counter for number of IDs that exist in
                 #XRay_entries but not in optical_entries
                 in_Opt_not_XRay += 1
@@ -800,11 +805,11 @@ class Trial:
                 #initialize iterator to beginning of XRay_entries vector
                 it_2 = 0
                 #traverse through XRay_entries with iterator
-                for entry in self.optical_entries:
+                while it_2 < len(self.optical_entries):
                     # remove entity that had no pairing
-                    if entry.ID == self.optical_entries[l].ID:
-                        # erase() invalidates the iterator, returned iterator
-                        self.optical_entries.remove(entry)
+                    if self.optical_entries[it_2].ID == self.optical_entries[l].ID:
+                        # pop() deletes and returns the entry at index it_2
+                        erased = self.optical_entries.pop(it_2)
 
                         #check if index is at 0
                         if  l > 0 :
@@ -821,17 +826,14 @@ class Trial:
                     else:
                         #increment iterator
                         it_2 += 1
-
+            
+            l += 1
 
         #appropriately change variable for size of optical_entries
         new_optical_entries_size = len(self.optical_entries)
 
-        print("Final X-Ray Entries (left) and Optical Entries ( right): ")
-        print("GRB ID, Multiplicity, GRB ID, Multiplicity")
-
-        for y in range(len(self.optical_entries)):
-            print(self.XRay_entries[y].ID,self.XRay_entries[y].multiplicity,self.optical_entries[y].ID,self.optical_entries[y].multiplicity)
-
+        print("Final X-Ray Entries (left) and Optical Entries (right): ")
+        print(pd.DataFrame([[self.XRay_entries[y].ID,self.XRay_entries[y].multiplicity,self.optical_entries[y].ID,self.optical_entries[y].multiplicity] for y in range(len(self.XRay_entries))]).rename(columns={0:"GRB ID",1:"Multiplicity (XRay)",2:"GRB ID",3:"Multiplicity (Opt)"}))
 
         print()
 
@@ -863,33 +865,32 @@ class Trial:
         print("Original Number of Unique X-Ray GRBs:",len(self.XRay_entries))
 
         #traverse through vector XRay_entries
-        for q in range(len(self.XRay_entries)):
-            #initialize boolean signifying that XRay_entries[q] should be
-            #kept to False
+        q = 0
+        while q < len(self.XRay_entries):
             keeper = False
 
             #traverse through vector GRBs that contain only some with BetaX data
-            for n in range(len(self.GRBs)):
+            n = 0
+            while n < len(self.GRBs):
                 #check if the ID in XRay_entries and GRBs are identical and that
                 #ID has been paired with BetaX data
                 if self.XRay_entries[q].ID == self.GRBs[n].GRB_ID and self.GRBs[n].Beta_X != 31415926535:
                     #assign boolean for keeper to True
                     keeper = True
-
-            print("check 1 passed.")
+                n += 1
             #check if no match was made
-            if  keeper == False :
+            if keeper == False:
                 #increment counter for number we should not keep
                 should_not_keep += 1
 
                 #initialize iterator to beginning of XRay_entries vector
                 it = 0
                 #traverse through XRay_entries with iterator
-                for entry in self.XRay_entries:
+                while it < len(self.XRay_entries):
                     # remove entity that had no pairing
-                    if entry.ID == self.XRay_entries[q].ID:
-                        # erase() invalidates the iterator, returned iterator
-                        self.XRay_entries.remove(entry)
+                    if self.XRay_entries[it].ID == self.XRay_entries[q].ID:
+                        # pop() deletes and returns the entry at index it
+                        erased = self.XRay_entries.pop(it)
 
                         #check if index is at 0
                         if  q > 0 :
@@ -902,10 +903,12 @@ class Trial:
                             #index=0 and continuously delete entities
                             it += 1
 
-
                     else:
                         #increment iterator
                         it += 1
+            
+            q += 1
+
 
         print("Final Number of Unique X-Ray GRBs:",len(self.XRay_entries))
         print("Number Removed for Lack of Beta_X Pairing:",should_not_keep)
@@ -918,13 +921,13 @@ class Trial:
         paired = False
 
         #run through vector of GRB
-        for a in range(location,len(GRBs)):
+        for a in range(location,len(self.GRBs)):
             #test to see if GRB ID matches passed ID
             #test to see if GRB has been populated with Beta_X data
-            if  GRBs[a].GRB_ID == ID and GRBs[a].Beta_X != 31415926535:
+            if  self.GRBs[a].GRB_ID == ID and self.GRBs[a].Beta_X != 31415926535:
                 #test to see if temporal separation is small enough and GRB hasn't already
                 #been populated with optical data
-                if  (100 * np.abs(GRBs[a].dt_XRay - dtO_s) / dtO_s ) < DT_PERCENT_DIF :
+                if  (100 * np.abs(self.GRBs[a].dt_XRay - dtO_s) / dtO_s ) < DT_PERCENT_DIF :
                     #assign match to True to signify successful match
                     paired = True
                     #return location of self GRB
@@ -961,14 +964,17 @@ class Trial:
 
 '''*********************************************************************
                       BEGIN MAIN FUNC CALLS
-**********************************************************************'''
+*********************************************************************'''
 
 if __name__ == '__main__':
     #create a trial object
     t1 = Trial()
 
     #ask user for name of file they wish to load for X-Ray data
-    XRayDataFile_name = input("Please enter the name of the X-Ray data file: ")
+    print("\nPlease select the X-Ray data file.")
+    XRayDataFile_name = fileopenbox()
+    print("Selected",XRayDataFile_name)
+    
     
     #call function for loading X-Ray data
     #pass name of file for X-Ray data
@@ -978,7 +984,9 @@ if __name__ == '__main__':
     print("\n")
 
     #ask user for name of file they wish to load for Beta_X data
-    Beta_X_File_name = input("Please enter the name of the Beta_X data file: ")
+    print("Please select the Beta_X data file.")
+    Beta_X_File_name = fileopenbox()
+    print("Selected",Beta_X_File_name)
 
     #call function for loading X-Ray data
     #pass name of file for X-Ray data
@@ -988,10 +996,12 @@ if __name__ == '__main__':
     print("\n")
 
     #ask user for desired temporal percent difference
-    DT_PERCENT_DIF = input("Please enter the desired temporal percent difference (%): ")
+    DT_PERCENT_DIF = float(5) #float(input("Please enter the desired temporal percent difference (%): "))
 
     #ask user for name of file they wish to load for side effects
-    OpticalData_name = input("Please enter the name of the optical data file: ")
+    print("Please select the optical data file.")
+    OpticalData_name = fileopenbox()
+    print("Selected",OpticalData_name)
     
     #call function for loading optical data
     #pass name of file for optical data
@@ -1001,12 +1011,13 @@ if __name__ == '__main__':
     print("\n")
 
     #ask user for name of file they wish to load for side effects
-    WavelengthData_name = input("Please enter the name of the wavelength data file: ")
+    print("Please select the wavelength data file.")
+    WavelengthData_name = fileopenbox()
+    print("Selected",WavelengthData_name)
 
     #call function for loading wavelength data
     #pass name of file for wavelength data
     t1.loadWavelengthData(WavelengthData_name)
-
 
     print() #for formatting purposes
     

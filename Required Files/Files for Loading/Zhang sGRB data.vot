@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
+ <DESCRIPTION>
+   VizieR Astronomical Server vizier.u-strasbg.fr
+    Date: 2020-06-24T03:48:17 [V1.99+ (14-Oct-2013)]
+   Explanations and Statistics of UCDs:			See LINK below
+   In case of problem, please report to:	cds-question@unistra.fr
+   In this version, NULL integer columns are written as an empty string
+   &lt;TD&gt;&lt;/TD&gt;, explicitely possible from VOTable-1.3
+ </DESCRIPTION>
+<!-- VOTable description at http://www.ivoa.net/Documents/latest/VOT.html -->
+<INFO ID="VERSION" name="votable-version" value="1.99+ (14-Oct-2013)"/>
+<INFO ID="Ref" name="-ref" value="VIZ5ef2a307b6f8"/>
+<INFO ID="MaxTuples" name="-out.max" value="unlimited"/>
+<INFO name="queryParameters" value="37">
+-oc.form=dec
+-out.max=unlimited
+-out.all=2
+-out.add=_r
+-out.add=_RAJ,_DEJ
+-sort=_r
+-order=I
+-out.src=J/ApJ/852/1/table1,J/ApJ/852/1/table2
+-nav=cat:J/ApJ/852/1&amp;tab:{J/ApJ/852/1/table1}&amp;tab:{J/ApJ/852/1/table2}&amp;key:source=J/ApJ/852/1/table1&amp;key:source=J/ApJ/852/1/table2&amp;HTTPPRM:&amp;&amp;-ref=VIZ5ef2a307b6f8&amp;-out.max=50&amp;-out.form=HTML Table&amp;-out.add=_r&amp;-out.add=_RAJ,_DEJ&amp;-sort=_r&amp;-oc.form=sexa&amp;-c.eq=J2000&amp;-c.r=  2&amp;-c.u=arcmin&amp;-c.geom=r&amp;-x.rs=10&amp;-order=I&amp;-out=GRB&amp;-out=T90r&amp;-out=z&amp;-out=Ep&amp;-out=e_Ep&amp;-out=E_Ep&amp;-out=Lp&amp;-out=e_Lp&amp;-out=E_Lp&amp;-out=Ref&amp;-out=Simbad&amp;-ignore=Simbad=*&amp;Simbad=Simbad&amp;-out=_RA&amp;-out=_DE&amp;-out=Fermi&amp;-out=T90&amp;-out=Flux&amp;-out=e_Flux&amp;-out=alpha&amp;-out=beta&amp;-out=Lp&amp;-out=e_Lp&amp;-out=B16&amp;-file=.&amp;-meta.ucd=2&amp;-meta=1&amp;-meta.foot=1&amp;-usenav=1&amp;-bmark=POST&amp;-out.src=J/ApJ/852/1/table1,J/ApJ/852/1/table2
+-c.eq=J2000
+-c.r=  2
+-c.u=arcmin
+-c.geom=r
+-x.rs=10
+-source=J/ApJ/852/1/table1 J/ApJ/852/1/table2
+-out=GRB
+-out=T90r
+-out=z
+-out=Ep
+-out=e_Ep
+-out=E_Ep
+-out=Lp
+-out=e_Lp
+-out=E_Lp
+-out=Ref
+-out=Simbad
+-out=_RA
+-out=_DE
+-out=Fermi
+-out=T90
+-out=Flux
+-out=e_Flux
+-out=alpha
+-out=beta
+-out=Lp
+-out=e_Lp
+-out=B16
+</INFO>
+<INFO name="CatalogsExamined" value="2">
+  2 catalogues with potential matches were examined.
+</INFO>
+
+<!--
+Execution Reports
+ -->
+
+<RESOURCE ID="yCat_18520001" name="J/ApJ/852/1">
+  <DESCRIPTION>Short gamma-ray bursts (sGRBs) data (Zhang+, 2018)</DESCRIPTION>
+  <COOSYS ID="J2000_2000.000" system="eq_FK5" equinox="J2000" epoch="2000.000"/>
+  <COOSYS ID="J2000" system="eq_FK5" equinox="J2000"/>
+  <TABLE ID="J_ApJ_852_1_table1" name="J/ApJ/852/1/table1">
+    <DESCRIPTION>Short gamma-ray burst (sGRB) sample</DESCRIPTION>
+    <!-- Definitions of GROUPs and FIELDs -->
+
+<!-- +++No column could be found to attach a LINK in table: J/ApJ/852/1/table1 -->
+    <FIELD name="_RAJ2000" ucd="pos.eq.ra" ref="J2000" datatype="double" width="11" precision="7" unit="deg"><!-- ucd="POS_EQ_RA" -->
+      <DESCRIPTION>Right ascension (FK5, Equinox=J2000.0) at Epoch=J2000. (computed by VizieR, not part of the original data. The format may include more digits than the original data because of internal accuracy requirements in VizieR and across other CDS services)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="_DEJ2000" ucd="pos.eq.dec" ref="J2000" datatype="double" width="11" precision="7" unit="deg"><!-- ucd="POS_EQ_DEC" -->
+      <DESCRIPTION>Declination (FK5, Equinox=J2000.0) at Epoch=J2000. (computed by VizieR, not part of the original data. The format may include more digits than the original data because of internal accuracy requirements in VizieR and across other CDS services)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="GRB" ucd="meta.id;meta.main" datatype="char" arraysize="7"><!-- ucd="ID_MAIN" -->
+      <DESCRIPTION>GRB identifier (YYMMDDA)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="T90r" ucd="time.interval" datatype="float" width="5" precision="2" unit="s"><!-- ucd="TIME_INTERVAL" -->
+      <DESCRIPTION>[0.06/1.3] Rest-frame duration T_90_^rest^=T_90_/(1+z)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="z" ucd="src.redshift" datatype="float" width="5" precision="2"><!-- ucd="REDSHIFT_HC" -->
+      <DESCRIPTION>[0.1/1] Redshift from literature</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Ep" ucd="em.energy" datatype="float" width="7" precision="2" unit="keV"><!-- ucd="PHYS_ENERGY_X" -->
+      <DESCRIPTION>[56.4/8679.6] Peak energy</DESCRIPTION>
+    </FIELD>
+    <FIELD name="e_Ep" ucd="stat.error" datatype="float" width="6" precision="2" unit="keV"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[0.5/948] Negative uncertainty on Ep</DESCRIPTION>
+    </FIELD>
+    <FIELD name="E_Ep" ucd="stat.error;stat.max" datatype="float" width="6" precision="2" unit="keV"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[7/948] Positive uncertainty on Ep</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Lp" ucd="phys.luminosity;em.gamma" datatype="double" width="9" precision="E2" unit="10-7W"><!-- ucd="PHYS_LUMINOSITY_GAMMA" -->
+      <DESCRIPTION>[1e+50/1.1e+54] Peak luminosity (1-10^5^keV range) in 64ms of the observer-frame time bin in erg/s</DESCRIPTION>
+    </FIELD>
+    <FIELD name="e_Lp" ucd="stat.error" datatype="double" width="9" precision="E2" unit="10-7W"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[1.8e+49/1.4e+53] Lp negative uncertainty</DESCRIPTION>
+    </FIELD>
+    <FIELD name="E_Lp" ucd="stat.error;stat.max" datatype="double" width="9" precision="E2" unit="10-7W"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[1.8e+49/2.4e+53] Lp positive uncertainty</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Ref" ucd="meta.ref;pos.frame" datatype="short" width="2"><!-- ucd="REFER_CODE" -->
+      <DESCRIPTION>[1/14] Reference (1)</DESCRIPTION>
+      <LINK href="http://vizier.u-strasbg.fr/viz-bin/nph-htx/A?%5cifnum%7b${Ref}%7d=0%7b${Ref}%7d%5celse%5cvNote%7b%26lt%3b%26quot%3bNote%26quot%3b%5c%26catid=18520001%5c%26notid=2%5c%26-out.emph=${Ref}%7d%7b${Ref}%7d%5cfi"/>
+    </FIELD>
+    <FIELD name="Simbad" ucd="meta.ref.url" datatype="char" arraysize="6*"><!-- ucd="DATA_LINK" -->
+      <DESCRIPTION>Simbad column added by the CDS</DESCRIPTION>
+<!-- ask the {\bf\fg{FireBrick}Simbad} data-base about this object -->
+
+
+<!-- No link in: \ifregexp{[^ ]}{${GRB}}{\wSimbad{GRB ${GRB} }{${}}}\else{${}}\fi -->
+    </FIELD>
+    <FIELD name="_RA" ucd="pos.eq.ra;meta.main" ref="J2000_2000.000" datatype="double" width="9" precision="5" unit="deg"><!-- ucd="POS_EQ_RA_MAIN" -->
+      <DESCRIPTION>Right Ascension (J2000) from SIMBAD (not part of the original data)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="_DE" ucd="pos.eq.dec;meta.main" ref="J2000_2000.000" datatype="double" width="9" precision="5" unit="deg"><!-- ucd="POS_EQ_DEC_MAIN" -->
+      <DESCRIPTION>Declination (J2000) from SIMBAD (not part of the original data)</DESCRIPTION>
+    </FIELD>
+<DATA><TABLEDATA>
+<TR><TD>345.3623333</TD><TD>-38.9776389</TD><TD>050709</TD><TD>0.60</TD><TD>0.16</TD><TD>97.32</TD><TD>0.58</TD><TD>7.76</TD><TD>7.51e+50</TD><TD>8.10e+49</TD><TD>7.60e+49</TD><TD>1</TD><TD>Simbad</TD><TD>345.36233</TD><TD>-38.97764</TD></TR>
+<TR><TD>328.7026083</TD><TD>+16.8908778</TD><TD>051221</TD><TD>0.91</TD><TD>0.55</TD><TD>621.69</TD><TD>67.69</TD><TD>87.42</TD><TD>2.77e+52</TD><TD>2.90e+51</TD><TD>2.90e+51</TD><TD>2</TD><TD>Simbad</TD><TD>328.70261</TD><TD>+16.89088</TD></TR>
+<TR><TD>111.0319167</TD><TD>-79.1986389</TD><TD>061006</TD><TD>0.35</TD><TD>0.44</TD><TD>954.63</TD><TD>125.86</TD><TD>198.39</TD><TD>2.06e+52</TD><TD>3.10e+51</TD><TD>1.50e+51</TD><TD>3</TD><TD>Simbad</TD><TD>111.03192</TD><TD>-79.19864</TD></TR>
+<TR><TD>057.8429167</TD><TD>+28.2975833</TD><TD>070714B</TD><TD>1.04</TD><TD>0.92</TD><TD>2150.40</TD><TD>443.52</TD><TD>910.39</TD><TD>6.56e+52</TD><TD>1.36e+52</TD><TD>7.90e+51</TD><TD>4</TD><TD>Simbad</TD><TD>057.84292</TD><TD>+28.29758</TD></TR>
+<TR><TD>333.5525000</TD><TD>-26.5975278</TD><TD>090510</TD><TD>0.16</TD><TD>0.90</TD><TD>8679.58</TD><TD>947.69</TD><TD>947.69</TD><TD>1.04e+54</TD><TD>1.40e+53</TD><TD>2.40e+53</TD><TD>5</TD><TD>Simbad</TD><TD>333.55250</TD><TD>-26.59753</TD></TR>
+<TR><TD>011.2690000</TD><TD>-01.5949167</TD><TD>100117</TD><TD>0.16</TD><TD>0.92</TD><TD>936.96</TD><TD>297.00</TD><TD>297.00</TD><TD>1.89e+52</TD><TD>3.50e+51</TD><TD>2.10e+51</TD><TD>5</TD><TD>Simbad</TD><TD>011.26900</TD><TD>-01.59492</TD></TR>
+<TR><TD>047.1622500</TD><TD>+13.1570833</TD><TD>100206</TD><TD>0.09</TD><TD>0.41</TD><TD>638.98</TD><TD>131.21</TD><TD>131.21</TD><TD>1.00e+52</TD><TD>3.00e+50</TD><TD>1.15e+52</TD><TD>5</TD><TD>Simbad</TD><TD>047.16225</TD><TD>+13.15708</TD></TR>
+<TR><TD>074.5851250</TD><TD>-02.5397222</TD><TD>101219A</TD><TD>0.35</TD><TD>0.72</TD><TD>841.82</TD><TD>82.50</TD><TD>107.56</TD><TD>1.56e+52</TD><TD>2.30e+51</TD><TD>2.40e+51</TD><TD>6</TD><TD>Simbad</TD><TD>074.58512</TD><TD>-02.53972</TD></TR>
+<TR><TD>279.9762083</TD><TD>+62.3914444</TD><TD>160821B</TD><TD>0.41</TD><TD>0.16</TD><TD>97.44</TD><TD>22.04</TD><TD>22.04</TD><TD>1.38e+50</TD><TD>1.80e+49</TD><TD>1.80e+49</TD><TD>7</TD><TD>Simbad</TD><TD>279.97621</TD><TD>+62.39144</TD></TR>
+<TR><TD>330.1925833</TD><TD>+29.6437778</TD><TD>160624A</TD><TD>0.13</TD><TD>0.48</TD><TD>1247.20</TD><TD>530.90</TD><TD>530.90</TD><TD>1.85e+52</TD><TD>3.80e+51</TD><TD>3.80e+51</TD><TD>8</TD><TD>Simbad</TD><TD>330.19258</TD><TD>+29.64378</TD></TR>
+<TR><TD>172.2006667</TD><TD>+17.0717222</TD><TD>130603B</TD><TD>0.13</TD><TD>0.36</TD><TD>891.66</TD><TD>135.10</TD><TD>135.10</TD><TD>3.04e+52</TD><TD>4.40e+51</TD><TD>4.40e+51</TD><TD>9</TD><TD>Simbad</TD><TD>172.20067</TD><TD>+17.07172</TD></TR>
+<TR><TD>285.9246250</TD><TD>+45.7134722</TD><TD>101224A</TD><TD>0.12</TD><TD>0.72</TD><TD>566.94</TD><TD>257.70</TD><TD>690.63</TD><TD>8.24e+51</TD><TD>1.25e+51</TD><TD>1.25e+51</TD><TD>10</TD><TD>Simbad</TD><TD>285.92462</TD><TD>+45.71347</TD></TR>
+<TR><TD>015.7957500</TD><TD>-39.0884167</TD><TD>100625A</TD><TD>0.23</TD><TD>0.45</TD><TD>739.36</TD><TD>89.30</TD><TD>112.53</TD><TD>1.40e+52</TD><TD>6.00e+50</TD><TD>6.00e+50</TD><TD>11</TD><TD>Simbad</TD><TD>015.79575</TD><TD>-39.08842</TD></TR>
+<TR><TD>058.1295417</TD><TD>-55.9842500</TD><TD>071227</TD><TD>1.30</TD><TD>0.38</TD><TD>1000.00</TD><TD>32.62</TD><TD>31.62</TD><TD>4.43e+51</TD><TD>1.29e+51</TD><TD>1.39e+51</TD><TD>12</TD><TD>Simbad</TD><TD>058.12954</TD><TD>-55.98425</TD></TR>
+<TR><TD>027.8086667</TD><TD>-18.5941111</TD><TD>070724A</TD><TD>0.27</TD><TD>0.46</TD><TD>56.49</TD><TD>13.16</TD><TD>23.52</TD><TD>8.70e+50</TD><TD>5.00e+50</TD><TD>5.00e+50</TD><TD>13</TD><TD>Simbad</TD><TD>027.80867</TD><TD>-18.59411</TD></TR>
+<TR><TD>189.0750000</TD><TD>+29.0233333</TD><TD>050509B</TD><TD>0.06</TD><TD>0.23</TD><TD>74.15</TD><TD>50.31</TD><TD>13.36</TD><TD>1.00e+50</TD><TD>9.00e+49</TD><TD>9.00e+49</TD><TD>14</TD><TD>Simbad</TD><TD>189.07500</TD><TD>+29.02333</TD></TR>
+</TABLEDATA></DATA>
+</TABLE>
+
+<!--
+Execution Reports
+ -->
+  <TABLE ID="J_ApJ_852_1_table2" name="J/ApJ/852/1/table2">
+    <DESCRIPTION>*Fermi/GBM sGRB sample</DESCRIPTION>
+    <!-- Definitions of GROUPs and FIELDs -->
+
+<!-- +++No column could be found to attach a LINK in table: J/ApJ/852/1/table2 -->
+    <FIELD name="_RAJ2000" ucd="pos.eq.ra" ref="J2000" datatype="double" width="11" precision="7" unit="deg"><!-- ucd="POS_EQ_RA" -->
+      <DESCRIPTION>Right ascension (FK5, Equinox=J2000.0) (computed by VizieR, not part of the original data. The format may include more digits than the original data because of internal accuracy requirements in VizieR and across other CDS services)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="_DEJ2000" ucd="pos.eq.dec" ref="J2000" datatype="double" width="11" precision="7" unit="deg"><!-- ucd="POS_EQ_DEC" -->
+      <DESCRIPTION>Declination (FK5, Equinox=J2000.0) (computed by VizieR, not part of the original data. The format may include more digits than the original data because of internal accuracy requirements in VizieR and across other CDS services)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Fermi" ucd="meta.id;meta.main" datatype="char" arraysize="9"><!-- ucd="ID_MAIN" -->
+      <DESCRIPTION>GRB identifier (YYMMDDddd; &lt;Fermi bnYYMMDDddd&gt; in Simbad)</DESCRIPTION>
+<!-- GRB identifier (YYMMDDddd; \dicS{Fermi bnYYMMDDddd} in Simbad) -->
+
+    </FIELD>
+    <FIELD name="T90" ucd="time.duration" datatype="float" width="5" precision="2" unit="s"><!-- ucd="TIME_INTERVAL" -->
+      <DESCRIPTION>[0.02/2.1] Rest frame duration</DESCRIPTION>
+    </FIELD>
+    <FIELD name="z" ucd="src.redshift" datatype="float" width="6" precision="3"><!-- ucd="REDSHIFT_HC" -->
+      <DESCRIPTION>[0.009/13.4] Pseudo redshift (1)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Flux" ucd="phot.flux;stat.max" datatype="float" width="6" precision="2" unit="ph/cm2/s"><!-- ucd="SPECT_FLUX_VALUE" -->
+      <DESCRIPTION>[1.5/146.5] Peak flux</DESCRIPTION>
+    </FIELD>
+    <FIELD name="e_Flux" ucd="stat.error;phot.flux" datatype="float" width="5" precision="2" unit="ph/cm2/s"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[0.2/4.5]? Uncertainty in Flux</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="Ep" ucd="em.energy" datatype="float" width="7" precision="2" unit="keV"><!-- ucd="PHYS_ENERGY_X" -->
+      <DESCRIPTION>[22/4101] Peak energy</DESCRIPTION>
+    </FIELD>
+    <FIELD name="e_Ep" ucd="stat.error" datatype="float" width="7" precision="2" unit="keV"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[4/4092]? Uncertainty in Ep</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="alpha" ucd="spect.index" datatype="float" width="5" precision="2"><!-- ucd="SPECT_SP-INDEX" -->
+      <DESCRIPTION>[-1.7/-0.01] The {alpha} photon index</DESCRIPTION>
+    </FIELD>
+    <FIELD name="beta" ucd="spect.index" datatype="float" width="5" precision="2"><!-- ucd="SPECT_SP-INDEX" -->
+      <DESCRIPTION>[-5/-1.3] The {beta} photon index</DESCRIPTION>
+    </FIELD>
+    <FIELD name="Lp" ucd="phys.luminosity;em.gamma" datatype="double" width="11" precision="5" unit="10+43W"><!-- ucd="PHYS_LUMINOSITY_GAMMA" -->
+      <DESCRIPTION>[0.002/64300] Peak 1-10keV luminosity in 1e+50erg/s</DESCRIPTION>
+    </FIELD>
+    <FIELD name="e_Lp" ucd="stat.error" datatype="double" width="11" precision="6" unit="10+43W"><!-- ucd="ERROR" -->
+      <DESCRIPTION>[0.0007/8510]? Uncertainty in Lp</DESCRIPTION>
+      <VALUES null="NaN" />
+    </FIELD>
+    <FIELD name="B16" ucd="meta.ref.url" datatype="short" width="3"><!-- ucd="DATA_LINK" -->
+      <DESCRIPTION>Display the 6yr Fermi/GBM catalog data (Bhat+, 2016, J/ApJS/223/28) for this GRB if any [NULL integer written as an empty string]</DESCRIPTION>
+      <VALUES null="-32768" />
+      <LINK href="http://vizier.u-strasbg.fr/viz-bin/nph-htx/A?%5cignore%7bX%7d%5cifnum%7b${B16}%7d%3e0%5cvPop%7b-source=J/ApJS/223/28/GBM%5c%26-out.max=999%5c%26Fermi=${Fermi}%7d%7b${B16}%7d%5celse%7b${B16}%7d%5cfi"/>
+    </FIELD>
+    <FIELD name="Simbad" ucd="meta.ref.url" datatype="char" arraysize="6*"><!-- ucd="DATA_LINK" -->
+      <DESCRIPTION>Simbad column added by the CDS</DESCRIPTION>
+<!-- ask the {\bf\fg{FireBrick}Simbad} data-base about this object -->
+
+
+<!-- No link in: \ifregexp{[^ ]}{${Fermi}}{\wSimbad{Fermi bn${Fermi} }{${}}}\else{${}}\fi -->
+    </FIELD>
+    <FIELD name="_RA" ucd="pos.eq.ra;meta.main" ref="J2000" datatype="double" width="9" precision="5" unit="deg"><!-- ucd="POS_EQ_RA_MAIN" -->
+      <DESCRIPTION>Positions from SIMBAD or from the Fermi GBM burst catalog (http://heasarc.gsfc.nasa.gov/W3Browse/fermi/fermigbrst.html) (right ascension part)</DESCRIPTION>
+    </FIELD>
+    <FIELD name="_DE" ucd="pos.eq.dec;meta.main" ref="J2000" datatype="double" width="9" precision="5" unit="deg"><!-- ucd="POS_EQ_DEC_MAIN" -->
+      <DESCRIPTION>Positions from SIMBAD or from the Fermi GBM burst catalog (http://heasarc.gsfc.nasa.gov/W3Browse/fermi/fermigbrst.html) (declination part)</DESCRIPTION>
+    </FIELD>
+<DATA><TABLEDATA>
+<TR><TD>113.2500000</TD><TD>-19.7000000</TD><TD>080723913</TD><TD>0.19</TD><TD>0.244</TD><TD>4.88</TD><TD>0.97</TD><TD>124.99</TD><TD>133.73</TD><TD>-1.00</TD><TD>-1.60</TD><TD>14.70000</TD><TD>2.650000</TD><TD>1</TD><TD>Simbad</TD><TD>113.25000</TD><TD>-19.70000</TD></TR>
+<TR><TD>354.7500000</TD><TD>+08.9000000</TD><TD>080725541</TD><TD>0.96</TD><TD>1.465</TD><TD>6.93</TD><TD>1.11</TD><TD>470.50</TD><TD>333.61</TD><TD>-0.89</TD><TD>-2.25</TD><TD>388.00000</TD><TD>98.600000</TD><TD>1</TD><TD>Simbad</TD><TD>354.75000</TD><TD>+08.90000</TD></TR>
+<TR><TD>154.2500000</TD><TD>+40.7000000</TD><TD>080802386</TD><TD>0.58</TD><TD>0.788</TD><TD>10.90</TD><TD>1.52</TD><TD>370.65</TD><TD>123.85</TD><TD>-0.42</TD><TD>-2.25</TD><TD>156.00000</TD><TD>31.500000</TD><TD>1</TD><TD>Simbad</TD><TD>154.25000</TD><TD>+40.70000</TD></TR>
+<TR><TD>241.0000000</TD><TD>-47.8000000</TD><TD>080815917</TD><TD>0.83</TD><TD>0.044</TD><TD>6.49</TD><TD>1.52</TD><TD>22.71</TD><TD>42.21</TD><TD>-1.00</TD><TD>-1.47</TD><TD>0.68400</TD><TD>0.153000</TD><TD>1</TD><TD>Simbad</TD><TD>241.00000</TD><TD>-47.80000</TD></TR>
+<TR><TD>211.2500000</TD><TD>-51.7000000</TD><TD>080831053</TD><TD>0.58</TD><TD>0.909</TD><TD>4.21</TD><TD>0.84</TD><TD>162.81</TD><TD>63.37</TD><TD>-1.00</TD><TD>-2.75</TD><TD>45.40000</TD><TD>15.000000</TD><TD>1</TD><TD>Simbad</TD><TD>211.25000</TD><TD>-51.70000</TD></TR>
+<TR><TD>287.6629167</TD><TD>-18.8653889</TD><TD>080905499</TD><TD>0.96</TD><TD>0.122</TD><TD>6.50</TD><TD>0.88</TD><TD>676.74</TD><TD>274.76</TD><TD>-0.17</TD><TD>-2.25</TD><TD>2.69000</TD><TD>0.431000</TD><TD>1</TD><TD>Simbad</TD><TD>287.66292</TD><TD>-18.86539</TD></TR>
+<TR><TD>219.5000000</TD><TD>+44.4000000</TD><TD>080919790</TD><TD>0.51</TD><TD>1.002</TD><TD>4.89</TD><TD>0.99</TD><TD>161.92</TD><TD>107.49</TD><TD>-0.70</TD><TD>-2.25</TD><TD>48.60000</TD><TD>33.600000</TD><TD>1</TD><TD>Simbad</TD><TD>219.50000</TD><TD>+44.40000</TD></TR>
+<TR><TD>069.7500000</TD><TD>+04.5000000</TD><TD>081012045</TD><TD>1.22</TD><TD>1.119</TD><TD>6.86</TD><TD>0.95</TD><TD>1182.13</TD><TD>1020.84</TD><TD>-0.47</TD><TD>-1.77</TD><TD>1360.00000</TD><TD>196.000000</TD><TD>1</TD><TD>Simbad</TD><TD>069.75000</TD><TD>+04.50000</TD></TR>
+<TR><TD>027.8908333</TD><TD>+61.3522778</TD><TD>081024245</TD><TD>0.83</TD><TD>1.785</TD><TD>6.39</TD><TD>1.29</TD><TD>596.11</TD><TD>312.98</TD><TD>-0.10</TD><TD>-4.98</TD><TD>697.00000</TD><TD>160.000000</TD><TD>1</TD><TD>Simbad</TD><TD>027.89083</TD><TD>+61.35228</TD></TR>
+<TR><TD>322.9000000</TD><TD>+21.2040000</TD><TD>081024891</TD><TD>0.64</TD><TD>2.419</TD><TD>5.72</TD><TD>0.88</TD><TD>1495.90</TD><TD>1432.64</TD><TD>-0.63</TD><TD>-2.11</TD><TD>4360.00000</TD><TD>670.000000</TD><TD>1</TD><TD>Simbad</TD><TD>322.90000</TD><TD>+21.20400</TD></TR>
+<TR><TD>095.8362500</TD><TD>-00.1115278</TD><TD>081101491</TD><TD>0.13</TD><TD>1.101</TD><TD>7.06</TD><TD>1.07</TD><TD>207.75</TD><TD>90.31</TD><TD>-0.46</TD><TD>-3.76</TD><TD>79.00000</TD><TD>23.200000</TD><TD>1</TD><TD>Simbad</TD><TD>095.83625</TD><TD>-00.11153</TD></TR>
+<TR><TD>225.3000000</TD><TD>+22.0000000</TD><TD>081102365</TD><TD>1.73</TD><TD>1.346</TD><TD>5.66</TD><TD>1.05</TD><TD>463.68</TD><TD>450.11</TD><TD>-0.63</TD><TD>-2.19</TD><TD>350.00000</TD><TD>92.400000</TD><TD>1</TD><TD>Simbad</TD><TD>225.30000</TD><TD>+22.00000</TD></TR>
+<TR><TD>215.7500000</TD><TD>+38.7000000</TD><TD>081105614</TD><TD>1.28</TD><TD>0.782</TD><TD>6.80</TD><TD>0.78</TD><TD>324.88</TD><TD>98.75</TD><TD>-1.00</TD><TD>-2.55</TD><TD>125.00000</TD><TD>17.800000</TD><TD>1</TD><TD>Simbad</TD><TD>215.75000</TD><TD>+38.70000</TD></TR>
+<TR><TD>051.0000000</TD><TD>+17.1000000</TD><TD>081107321</TD><TD>1.66</TD><TD>0.294</TD><TD>13.03</TD><TD>1.31</TD><TD>58.50</TD><TD>13.03</TD><TD>-1.00</TD><TD>-2.56</TD><TD>4.54000</TD><TD>0.767000</TD><TD>1</TD><TD>Simbad</TD><TD>051.00000</TD><TD>+17.10000</TD></TR>
+<TR><TD>346.5000000</TD><TD>+30.0000000</TD><TD>081119184</TD><TD>0.32</TD><TD>0.588</TD><TD>4.38</TD><TD>2.20</TD><TD>57.26</TD><TD>14.17</TD><TD>-1.00</TD><TD>-2.25</TD><TD>6.12000</TD><TD>3.340000</TD><TD>1</TD><TD>Simbad</TD><TD>346.50000</TD><TD>+30.00000</TD></TR>
+<TR><TD>151.4000000</TD><TD>-02.1000000</TD><TD>081122614</TD><TD>0.19</TD><TD>0.750</TD><TD>8.23</TD><TD>1.35</TD><TD>176.52</TD><TD>72.46</TD><TD>-0.62</TD><TD>-2.25</TD><TD>44.90000</TD><TD>12.100000</TD><TD>1</TD><TD>Simbad</TD><TD>151.40000</TD><TD>-02.10000</TD></TR>
+<TR><TD>150.7500000</TD><TD>+30.5000000</TD><TD>081204517</TD><TD>0.19</TD><TD>0.767</TD><TD>11.40</TD><TD>1.19</TD><TD>363.41</TD><TD>116.03</TD><TD>-0.44</TD><TD>-2.25</TD><TD>148.00000</TD><TD>30.000000</TD><TD>1</TD><TD>Simbad</TD><TD>150.75000</TD><TD>+30.50000</TD></TR>
+<TR><TD>045.2500000</TD><TD>+63.5000000</TD><TD>081209981</TD><TD>0.19</TD><TD>0.696</TD><TD>25.54</TD><TD>1.65</TD><TD>758.37</TD><TD>149.16</TD><TD>-0.20</TD><TD>-2.70</TD><TD>460.00000</TD><TD>32.500000</TD><TD>1</TD><TD>Simbad</TD><TD>045.25000</TD><TD>+63.50000</TD></TR>
+<TR><TD>129.2500000</TD><TD>+07.6000000</TD><TD>081216531</TD><TD>0.77</TD><TD>0.829</TD><TD>37.66</TD><TD>1.71</TD><TD>1402.42</TD><TD>198.61</TD><TD>-0.43</TD><TD>-3.71</TD><TD>1420.00000</TD><TD>69.500000</TD><TD>1</TD><TD>Simbad</TD><TD>129.25000</TD><TD>+07.60000</TD></TR>
+<TR><TD>112.5000000</TD><TD>+33.2000000</TD><TD>081223419</TD><TD>0.58</TD><TD>0.541</TD><TD>14.36</TD><TD>1.20</TD><TD>199.67</TD><TD>37.60</TD><TD>-0.36</TD><TD>-2.25</TD><TD>44.70000</TD><TD>5.810000</TD><TD>1</TD><TD>Simbad</TD><TD>112.50000</TD><TD>+33.20000</TD></TR>
+<TR><TD>025.5000000</TD><TD>-47.4000000</TD><TD>081226509</TD><TD>0.19</TD><TD>0.919</TD><TD>7.91</TD><TD>0.94</TD><TD>284.87</TD><TD>88.83</TD><TD>-1.00</TD><TD>-3.01</TD><TD>114.00000</TD><TD>19.900000</TD><TD>1</TD><TD>Simbad</TD><TD>025.50000</TD><TD>-47.40000</TD></TR>
+<TR><TD>172.6000000</TD><TD>+56.9000000</TD><TD>081229187</TD><TD>0.77</TD><TD>0.559</TD><TD>4.32</TD><TD>0.79</TD><TD>188.70</TD><TD>106.63</TD><TD>-1.00</TD><TD>-2.02</TD><TD>41.50000</TD><TD>8.510000</TD><TD>1</TD><TD>Simbad</TD><TD>172.60000</TD><TD>+56.90000</TD></TR>
+<TR><TD>207.6000000</TD><TD>-17.3000000</TD><TD>081230871</TD><TD>0.51</TD><TD>1.123</TD><TD>3.97</TD><TD></TD><TD>246.77</TD><TD></TD><TD>-1.00</TD><TD>-2.25</TD><TD>106.00000</TD><TD></TD><TD>1</TD><TD>Simbad</TD><TD>207.60000</TD><TD>-17.30000</TD></TR>
+<TR><TD>260.7500000</TD><TD>+46.0000000</TD><TD>090108020</TD><TD>0.70</TD><TD>0.353</TD><TD>25.73</TD><TD>1.47</TD><TD>145.90</TD><TD>15.63</TD><TD>-0.29</TD><TD>-2.25</TD><TD>21.70000</TD><TD>2.970000</TD><TD>1</TD><TD>Simbad</TD><TD>260.75000</TD><TD>+46.00000</TD></TR>
+<TR><TD>038.0000000</TD><TD>-72.2000000</TD><TD>090120627</TD><TD>1.86</TD><TD>6.883</TD><TD>3.74</TD><TD>0.86</TD><TD>2541.31</TD><TD>1546.25</TD><TD>-0.68</TD><TD>-2.25</TD><TD>40400.00000</TD><TD>8350.000000</TD><TD>1</TD><TD>Simbad</TD><TD>038.00000</TD><TD>-72.20000</TD></TR>
+<TR><TD>026.5000000</TD><TD>+59.2000000</TD><TD>090219074</TD><TD>0.45</TD><TD>0.098</TD><TD>10.53</TD><TD>2.39</TD><TD>70.21</TD><TD>46.76</TD><TD>-1.00</TD><TD>-1.63</TD><TD>4.68000</TD><TD>0.784000</TD><TD>1</TD><TD>Simbad</TD><TD>026.50000</TD><TD>+59.20000</TD></TR>
+<TR><TD>011.7500000</TD><TD>+32.2000000</TD><TD>090227772</TD><TD>0.30</TD><TD>0.373</TD><TD>127.36</TD><TD>2.75</TD><TD>2029.80</TD><TD>92.38</TD><TD>-0.09</TD><TD>-3.60</TD><TD>1620.00000</TD><TD>37.200000</TD><TD>1</TD><TD>Simbad</TD><TD>011.75000</TD><TD>+32.20000</TD></TR>
+<TR><TD>106.8000000</TD><TD>-24.3000000</TD><TD>090228204</TD><TD>0.45</TD><TD>0.330</TD><TD>133.92</TD><TD>2.57</TD><TD>854.36</TD><TD>49.35</TD><TD>-0.20</TD><TD>-3.39</TD><TD>376.00000</TD><TD>8.400000</TD><TD>1</TD><TD>Simbad</TD><TD>106.80000</TD><TD>-24.30000</TD></TR>
+<TR><TD>135.0000000</TD><TD>+74.3000000</TD><TD>090305052</TD><TD>1.86</TD><TD>0.680</TD><TD>8.31</TD><TD>0.98</TD><TD>443.89</TD><TD>197.59</TD><TD>-1.00</TD><TD>-1.96</TD><TD>189.00000</TD><TD>25.700000</TD><TD>1</TD><TD>Simbad</TD><TD>135.00000</TD><TD>+74.30000</TD></TR>
+<TR><TD>021.9000000</TD><TD>-54.3000000</TD><TD>090308734</TD><TD>1.66</TD><TD>1.272</TD><TD>12.44</TD><TD>1.20</TD><TD>1035.20</TD><TD>501.14</TD><TD>-0.63</TD><TD>-2.29</TD><TD>1230.00000</TD><TD>126.000000</TD><TD>1</TD><TD>Simbad</TD><TD>021.90000</TD><TD>-54.30000</TD></TR>
+<TR><TD>155.7500000</TD><TD>+33.4000000</TD><TD>090328713</TD><TD>0.19</TD><TD>1.029</TD><TD>21.42</TD><TD>1.35</TD><TD>1203.96</TD><TD>525.45</TD><TD>-0.82</TD><TD>-2.15</TD><TD>1310.00000</TD><TD>102.000000</TD><TD>1</TD><TD>Simbad</TD><TD>155.75000</TD><TD>+33.40000</TD></TR>
+<TR><TD>210.5000000</TD><TD>+03.1000000</TD><TD>090331681</TD><TD>0.83</TD><TD>1.622</TD><TD>7.82</TD><TD>1.00</TD><TD>921.33</TD><TD>554.23</TD><TD>-0.64</TD><TD>-2.25</TD><TD>1280.00000</TD><TD>186.000000</TD><TD>1</TD><TD>Simbad</TD><TD>210.50000</TD><TD>+03.10000</TD></TR>
+<TR><TD>222.0000000</TD><TD>-09.2000000</TD><TD>090405663</TD><TD>0.45</TD><TD>4.005</TD><TD>7.28</TD><TD>1.09</TD><TD>1739.32</TD><TD>1995.18</TD><TD>-0.85</TD><TD>-3.10</TD><TD>10400.00000</TD><TD>1660.000000</TD><TD>1</TD><TD>Simbad</TD><TD>222.00000</TD><TD>-09.20000</TD></TR>
+<TR><TD>001.2500000</TD><TD>-51.9000000</TD><TD>090412061</TD><TD>0.90</TD><TD>1.676</TD><TD>3.94</TD><TD>0.95</TD><TD>576.93</TD><TD>441.21</TD><TD>-0.25</TD><TD>-2.25</TD><TD>619.00000</TD><TD>195.000000</TD><TD>1</TD><TD>Simbad</TD><TD>001.25000</TD><TD>-51.90000</TD></TR>
+<TR><TD>124.4000000</TD><TD>+07.9000000</TD><TD>090429753</TD><TD>0.64</TD><TD>13.382</TD><TD>3.49</TD><TD>0.22</TD><TD>1852.24</TD><TD>689.39</TD><TD>-1.01</TD><TD>-2.25</TD><TD>64300.00000</TD><TD>4220.000000</TD><TD>1</TD><TD>Simbad</TD><TD>124.40000</TD><TD>+07.90000</TD></TR>
+<TR><TD>119.9583333</TD><TD>+00.7783333</TD><TD>090518080</TD><TD>2.05</TD><TD>1.407</TD><TD>4.03</TD><TD>0.37</TD><TD>190.00</TD><TD>78.83</TD><TD>-1.21</TD><TD>-2.25</TD><TD>85.20000</TD><TD>15.700000</TD><TD>1</TD><TD>Simbad</TD><TD>119.95833</TD><TD>+00.77833</TD></TR>
+<TR><TD>252.0625000</TD><TD>-36.0241667</TD><TD>090531775</TD><TD>0.77</TD><TD>5.818</TD><TD>5.72</TD><TD>1.00</TD><TD>2695.72</TD><TD>2093.11</TD><TD>-0.77</TD><TD>-2.76</TD><TD>35100.00000</TD><TD>5890.000000</TD><TD>1</TD><TD>Simbad</TD><TD>252.06250</TD><TD>-36.02417</TD></TR>
+<TR><TD>078.9000000</TD><TD>+15.6500000</TD><TD>090617208</TD><TD>0.19</TD><TD>0.484</TD><TD>18.97</TD><TD>1.18</TD><TD>492.64</TD><TD>104.37</TD><TD>-1.00</TD><TD>-2.18</TD><TD>183.00000</TD><TD>14.900000</TD><TD>1</TD><TD>Simbad</TD><TD>078.90000</TD><TD>+15.65000</TD></TR>
+<TR><TD>313.4554167</TD><TD>+69.0341389</TD><TD>090621922</TD><TD>0.38</TD><TD>0.315</TD><TD>9.87</TD><TD>1.39</TD><TD>188.12</TD><TD>93.99</TD><TD>-1.00</TD><TD>-1.84</TD><TD>31.30000</TD><TD>4.500000</TD><TD>1</TD><TD>Simbad</TD><TD>313.45542</TD><TD>+69.03414</TD></TR>
+<TR><TD>246.9500000</TD><TD>+22.9666667</TD><TD>090717111</TD><TD>0.38</TD><TD>1.592</TD><TD>3.30</TD><TD>0.63</TD><TD>722.28</TD><TD>280.21</TD><TD>-1.00</TD><TD>-2.25</TD><TD>848.00000</TD><TD>194.000000</TD><TD>1</TD><TD>Simbad</TD><TD>246.95000</TD><TD>+22.96667</TD></TR>
+<TR><TD>084.3291667</TD><TD>+34.0833333</TD><TD>090802235</TD><TD>0.13</TD><TD>0.400</TD><TD>34.98</TD><TD>2.29</TD><TD>301.26</TD><TD>46.59</TD><TD>-0.54</TD><TD>-2.25</TD><TD>74.70000</TD><TD>7.420000</TD><TD>1</TD><TD>Simbad</TD><TD>084.32917</TD><TD>+34.08333</TD></TR>
+<TR><TD>049.1000000</TD><TD>-67.1000000</TD><TD>090819607</TD><TD>0.19</TD><TD>0.837</TD><TD>7.04</TD><TD>1.02</TD><TD>342.27</TD><TD>159.52</TD><TD>-1.00</TD><TD>-2.24</TD><TD>143.00000</TD><TD>23.500000</TD><TD>1</TD><TD>Simbad</TD><TD>049.10000</TD><TD>-67.10000</TD></TR>
+<TR><TD>054.1750000</TD><TD>-25.0333333</TD><TD>090909854</TD><TD>1.15</TD><TD>0.205</TD><TD>6.45</TD><TD>1.26</TD><TD>117.64</TD><TD>149.19</TD><TD>-1.00</TD><TD>-1.60</TD><TD>12.60000</TD><TD>2.350000</TD><TD>1</TD><TD>Simbad</TD><TD>054.17500</TD><TD>-25.03333</TD></TR>
+<TR><TD>343.9725417</TD><TD>-70.9803611</TD><TD>090927422</TD><TD>0.51</TD><TD>0.625</TD><TD>5.05</TD><TD>1.01</TD><TD>96.28</TD><TD>15.01</TD><TD>-1.00</TD><TD>-2.25</TD><TD>14.80000</TD><TD>5.330000</TD><TD>1</TD><TD>Simbad</TD><TD>343.97254</TD><TD>-70.98036</TD></TR>
+<TR><TD>109.5000000</TD><TD>+87.3000000</TD><TD>091012783</TD><TD>0.70</TD><TD>0.708</TD><TD>21.45</TD><TD>1.80</TD><TD>1049.71</TD><TD>223.79</TD><TD>-0.25</TD><TD>-2.25</TD><TD>790.00000</TD><TD>62.100000</TD><TD>1</TD><TD>Simbad</TD><TD>109.50000</TD><TD>+87.30000</TD></TR>
+<TR><TD>321.7500000</TD><TD>-23.1000000</TD><TD>091018957</TD><TD>0.19</TD><TD>0.978</TD><TD>9.25</TD><TD>1.81</TD><TD>340.37</TD><TD>153.33</TD><TD>-0.11</TD><TD>-2.92</TD><TD>160.00000</TD><TD>30.800000</TD><TD>1</TD><TD>Simbad</TD><TD>321.75000</TD><TD>-23.10000</TD></TR>
+<TR><TD>226.0250000</TD><TD>+80.3333333</TD><TD>091019750</TD><TD>0.21</TD><TD>0.700</TD><TD>7.64</TD><TD>0.95</TD><TD>164.27</TD><TD>59.18</TD><TD>-1.00</TD><TD>-2.60</TD><TD>38.10000</TD><TD>9.750000</TD><TD>1</TD><TD>Simbad</TD><TD>226.02500</TD><TD>+80.33333</TD></TR>
+<TR><TD>083.2500000</TD><TD>-19.2666667</TD><TD>091126333</TD><TD>0.19</TD><TD>0.342</TD><TD>10.16</TD><TD>1.24</TD><TD>173.56</TD><TD>81.56</TD><TD>-1.00</TD><TD>-1.90</TD><TD>28.40000</TD><TD>3.720000</TD><TD>1</TD><TD>Simbad</TD><TD>083.25000</TD><TD>-19.26667</TD></TR>
+<TR><TD>203.2250000</TD><TD>+76.3500000</TD><TD>091223191</TD><TD>0.58</TD><TD>1.571</TD><TD>4.27</TD><TD></TD><TD>472.27</TD><TD></TD><TD>-0.36</TD><TD>-2.25</TD><TD>418.00000</TD><TD></TD><TD>1</TD><TD>Simbad</TD><TD>203.22500</TD><TD>+76.35000</TD></TR>
+<TR><TD>331.2500000</TD><TD>+18.3000000</TD><TD>091224373</TD><TD>0.77</TD><TD>0.067</TD><TD>5.08</TD><TD>1.16</TD><TD>62.31</TD><TD>72.56</TD><TD>-1.00</TD><TD>-1.34</TD><TD>3.68000</TD><TD>0.644000</TD><TD>1</TD><TD>Simbad</TD><TD>331.25000</TD><TD>+18.30000</TD></TR>
+<TR><TD>006.3000000</TD><TD>-21.2333333</TD><TD>100107074</TD><TD>0.58</TD><TD>0.161</TD><TD>5.32</TD><TD>0.86</TD><TD>127.81</TD><TD>70.96</TD><TD>-1.00</TD><TD>-1.55</TD><TD>13.60000</TD><TD>2.000000</TD><TD>1</TD><TD>Simbad</TD><TD>006.30000</TD><TD>-21.23333</TD></TR>
+<TR><TD>091.2500000</TD><TD>-20.9000000</TD><TD>100204858</TD><TD>1.92</TD><TD>1.725</TD><TD>4.20</TD><TD>1.14</TD><TD>584.36</TD><TD>947.43</TD><TD>-0.76</TD><TD>-1.99</TD><TD>651.00000</TD><TD>255.000000</TD><TD>1</TD><TD>Simbad</TD><TD>091.25000</TD><TD>-20.90000</TD></TR>
+<TR><TD>047.1622500</TD><TD>+13.1570833</TD><TD>100206563</TD><TD>0.18</TD><TD>0.407</TD><TD>24.75</TD><TD>1.35</TD><TD>566.09</TD><TD>117.28</TD><TD>-0.22</TD><TD>-2.38</TD><TD>111.00000</TD><TD>8.570000</TD><TD>1</TD><TD>Simbad</TD><TD>047.16225</TD><TD>+13.15708</TD></TR>
+<TR><TD>260.2500000</TD><TD>+27.5333333</TD><TD>100208386</TD><TD>0.19</TD><TD>1.369</TD><TD>4.47</TD><TD>0.81</TD><TD>671.40</TD><TD>449.07</TD><TD>-1.00</TD><TD>-2.14</TD><TD>650.00000</TD><TD>137.000000</TD><TD>1</TD><TD>Simbad</TD><TD>260.25000</TD><TD>+27.53333</TD></TR>
+<TR><TD>154.2625000</TD><TD>+35.5166667</TD><TD>100216422</TD><TD>0.19</TD><TD>0.668</TD><TD>5.61</TD><TD>0.91</TD><TD>509.75</TD><TD>382.39</TD><TD>-1.00</TD><TD>-1.71</TD><TD>234.00000</TD><TD>41.900000</TD><TD>1</TD><TD>Simbad</TD><TD>154.26250</TD><TD>+35.51667</TD></TR>
+<TR><TD>110.1500000</TD><TD>-15.6833333</TD><TD>100301068</TD><TD>0.96</TD><TD>0.988</TD><TD>10.29</TD><TD>1.31</TD><TD>544.47</TD><TD>209.14</TD><TD>-0.53</TD><TD>-2.25</TD><TD>347.00000</TD><TD>55.000000</TD><TD>1</TD><TD>Simbad</TD><TD>110.15000</TD><TD>-15.68333</TD></TR>
+<TR><TD>155.9375000</TD><TD>+47.0333333</TD><TD>100328141</TD><TD>0.38</TD><TD>0.692</TD><TD>12.79</TD><TD>1.15</TD><TD>491.77</TD><TD>111.09</TD><TD>-0.04</TD><TD>-2.25</TD><TD>226.00000</TD><TD>31.500000</TD><TD>1</TD><TD>Simbad</TD><TD>155.93750</TD><TD>+47.03333</TD></TR>
+<TR><TD>261.3000000</TD><TD>+50.3833333</TD><TD>100417166</TD><TD>0.19</TD><TD>1.071</TD><TD>6.82</TD><TD>1.09</TD><TD>300.45</TD><TD>142.42</TD><TD>-0.70</TD><TD>-2.25</TD><TD>141.00000</TD><TD>37.300000</TD><TD>1</TD><TD>Simbad</TD><TD>261.30000</TD><TD>+50.38333</TD></TR>
+<TR><TD>297.7500000</TD><TD>+18.7000000</TD><TD>100516396</TD><TD>0.64</TD><TD>1.061</TD><TD>2.28</TD><TD>0.50</TD><TD>168.11</TD><TD>43.81</TD><TD>-1.00</TD><TD>-3.16</TD><TD>54.20000</TD><TD>20.300000</TD><TD>1</TD><TD>Simbad</TD><TD>297.75000</TD><TD>+18.70000</TD></TR>
+<TR><TD>251.7500000</TD><TD>+41.0000000</TD><TD>100525744</TD><TD>1.47</TD><TD>0.265</TD><TD>7.44</TD><TD>1.22</TD><TD>154.89</TD><TD>106.82</TD><TD>-1.00</TD><TD>-1.71</TD><TD>21.40000</TD><TD>3.310000</TD><TD>1</TD><TD>Simbad</TD><TD>251.75000</TD><TD>+41.00000</TD></TR>
+<TR><TD>063.5000000</TD><TD>+13.7000000</TD><TD>100612545</TD><TD>0.58</TD><TD>0.612</TD><TD>11.31</TD><TD>1.20</TD><TD>505.34</TD><TD>169.78</TD><TD>-1.00</TD><TD>-2.09</TD><TD>218.00000</TD><TD>26.100000</TD><TD>1</TD><TD>Simbad</TD><TD>063.50000</TD><TD>+13.70000</TD></TR>
+<TR><TD>343.0000000</TD><TD>+03.1000000</TD><TD>100616773</TD><TD>0.19</TD><TD>0.958</TD><TD>6.96</TD><TD>1.48</TD><TD>212.63</TD><TD>65.47</TD><TD>-1.00</TD><TD>-4.53</TD><TD>73.10000</TD><TD>25.700000</TD><TD>1</TD><TD>Simbad</TD><TD>343.00000</TD><TD>+03.10000</TD></TR>
+<TR><TD>015.7957500</TD><TD>-39.0884167</TD><TD>100625773</TD><TD>0.24</TD><TD>0.452</TD><TD>15.91</TD><TD>2.03</TD><TD>328.46</TD><TD>101.62</TD><TD>-1.00</TD><TD>-2.23</TD><TD>83.40000</TD><TD>9.990000</TD><TD>1</TD><TD>Simbad</TD><TD>015.79575</TD><TD>-39.08842</TD></TR>
+<TR><TD>231.2500000</TD><TD>+27.8000000</TD><TD>100629801</TD><TD>0.83</TD><TD>0.493</TD><TD>18.77</TD><TD>2.40</TD><TD>232.00</TD><TD>49.91</TD><TD>-0.38</TD><TD>-2.25</TD><TD>54.20000</TD><TD>8.120000</TD><TD>1</TD><TD>Simbad</TD><TD>231.25000</TD><TD>+27.80000</TD></TR>
+<TR><TD>305.0000000</TD><TD>-67.1000000</TD><TD>100719311</TD><TD>1.60</TD><TD>2.675</TD><TD>4.00</TD><TD>0.99</TD><TD>563.70</TD><TD>792.82</TD><TD>-0.98</TD><TD>-2.25</TD><TD>1000.00000</TD><TD>404.000000</TD><TD>1</TD><TD>Simbad</TD><TD>305.00000</TD><TD>-67.10000</TD></TR>
+<TR><TD>022.7500000</TD><TD>+34.2000000</TD><TD>100805300</TD><TD>0.06</TD><TD>0.516</TD><TD>14.32</TD><TD>2.69</TD><TD>205.76</TD><TD>46.50</TD><TD>-1.00</TD><TD>-3.27</TD><TD>45.70000</TD><TD>7.280000</TD><TD>1</TD><TD>Simbad</TD><TD>022.75000</TD><TD>+34.20000</TD></TR>
+<TR><TD>346.0000000</TD><TD>+15.9000000</TD><TD>100811108</TD><TD>0.38</TD><TD>0.993</TD><TD>18.56</TD><TD>1.18</TD><TD>998.67</TD><TD>186.92</TD><TD>-1.00</TD><TD>-3.52</TD><TD>937.00000</TD><TD>67.500000</TD><TD>1</TD><TD>Simbad</TD><TD>346.00000</TD><TD>+15.90000</TD></TR>
+<TR><TD>351.7398333</TD><TD>+26.5785000</TD><TD>100816026</TD><TD>2.05</TD><TD>0.805</TD><TD>19.39</TD><TD>1.40</TD><TD>131.92</TD><TD>23.64</TD><TD>-0.13</TD><TD>-3.20</TD><TD>81.60000</TD><TD>12.500000</TD><TD>1</TD><TD>Simbad</TD><TD>351.73983</TD><TD>+26.57850</TD></TR>
+<TR><TD>194.0000000</TD><TD>+71.9000000</TD><TD>100827455</TD><TD>0.58</TD><TD>0.826</TD><TD>19.92</TD><TD>1.20</TD><TD>814.17</TD><TD>169.36</TD><TD>-0.21</TD><TD>-2.71</TD><TD>582.00000</TD><TD>42.500000</TD><TD>1</TD><TD>Simbad</TD><TD>194.00000</TD><TD>+71.90000</TD></TR>
+<TR><TD>000.5000000</TD><TD>+47.3000000</TD><TD>101021063</TD><TD>1.54</TD><TD>1.265</TD><TD>4.32</TD><TD>1.00</TD><TD>839.35</TD><TD>1674.48</TD><TD>-0.75</TD><TD>-1.62</TD><TD>869.00000</TD><TD>246.000000</TD><TD>1</TD><TD>Simbad</TD><TD>000.50000</TD><TD>+47.30000</TD></TR>
+<TR><TD>263.7500000</TD><TD>-00.4000000</TD><TD>101026034</TD><TD>0.26</TD><TD>0.169</TD><TD>11.28</TD><TD>1.29</TD><TD>123.33</TD><TD>60.93</TD><TD>-1.00</TD><TD>-1.66</TD><TD>13.00000</TD><TD>1.410000</TD><TD>1</TD><TD>Simbad</TD><TD>263.75000</TD><TD>-00.40000</TD></TR>
+<TR><TD>079.0000000</TD><TD>+44.0000000</TD><TD>101027230</TD><TD>1.34</TD><TD>1.064</TD><TD>5.07</TD><TD>0.96</TD><TD>257.94</TD><TD>175.12</TD><TD>-0.23</TD><TD>-2.40</TD><TD>109.00000</TD><TD>28.000000</TD><TD>1</TD><TD>Simbad</TD><TD>079.00000</TD><TD>+44.00000</TD></TR>
+<TR><TD>184.0000000</TD><TD>-07.5000000</TD><TD>101031625</TD><TD>0.38</TD><TD>0.798</TD><TD>10.97</TD><TD>1.41</TD><TD>340.03</TD><TD>126.42</TD><TD>-0.55</TD><TD>-2.25</TD><TD>137.00000</TD><TD>30.000000</TD><TD>1</TD><TD>Simbad</TD><TD>184.00000</TD><TD>-07.50000</TD></TR>
+<TR><TD>161.0000000</TD><TD>-07.1000000</TD><TD>101104810</TD><TD>1.28</TD><TD>1.383</TD><TD>7.07</TD><TD>0.99</TD><TD>648.69</TD><TD>346.77</TD><TD>-0.25</TD><TD>-2.54</TD><TD>620.00000</TD><TD>123.000000</TD><TD>1</TD><TD>Simbad</TD><TD>161.00000</TD><TD>-07.10000</TD></TR>
+<TR><TD>155.9208333</TD><TD>-17.6450000</TD><TD>101129652</TD><TD>0.38</TD><TD>1.091</TD><TD>10.38</TD><TD>0.95</TD><TD>1261.81</TD><TD>346.77</TD><TD>-0.14</TD><TD>-2.25</TD><TD>1480.00000</TD><TD>143.000000</TD><TD>1</TD><TD>Simbad</TD><TD>155.92083</TD><TD>-17.64500</TD></TR>
+<TR><TD>271.5000000</TD><TD>+01.0000000</TD><TD>101129726</TD><TD>0.58</TD><TD>1.541</TD><TD>13.73</TD><TD>1.16</TD><TD>1266.12</TD><TD>650.81</TD><TD>-0.84</TD><TD>-2.25</TD><TD>2050.00000</TD><TD>199.000000</TD><TD>1</TD><TD>Simbad</TD><TD>271.50000</TD><TD>+01.00000</TD></TR>
+<TR><TD>192.0000000</TD><TD>+55.7000000</TD><TD>101204343</TD><TD>0.13</TD><TD>0.611</TD><TD>9.07</TD><TD>1.20</TD><TD>365.32</TD><TD>204.95</TD><TD>-0.34</TD><TD>-1.95</TD><TD>128.00000</TD><TD>18.700000</TD><TD>1</TD><TD>Simbad</TD><TD>192.00000</TD><TD>+55.70000</TD></TR>
+<TR><TD>212.5000000</TD><TD>+04.0000000</TD><TD>101208203</TD><TD>0.19</TD><TD>0.199</TD><TD>4.80</TD><TD>0.83</TD><TD>67.80</TD><TD>31.13</TD><TD>-1.00</TD><TD>-1.79</TD><TD>5.10000</TD><TD>1.120000</TD><TD>1</TD><TD>Simbad</TD><TD>212.50000</TD><TD>+04.00000</TD></TR>
+<TR><TD>281.0000000</TD><TD>-59.0000000</TD><TD>101208498</TD><TD>2.05</TD><TD>0.394</TD><TD>48.33</TD><TD>2.16</TD><TD>200.96</TD><TD>28.01</TD><TD>-0.72</TD><TD>-4.36</TD><TD>38.30000</TD><TD>3.460000</TD><TD>1</TD><TD>Simbad</TD><TD>281.00000</TD><TD>-59.00000</TD></TR>
+<TR><TD>284.2500000</TD><TD>-21.0000000</TD><TD>101216721</TD><TD>1.92</TD><TD>0.582</TD><TD>18.54</TD><TD>0.39</TD><TD>169.61</TD><TD>10.38</TD><TD>-0.64</TD><TD>-3.47</TD><TD>35.70000</TD><TD>1.460000</TD><TD>1</TD><TD>Simbad</TD><TD>284.25000</TD><TD>-21.00000</TD></TR>
+<TR><TD>311.2500000</TD><TD>-74.5000000</TD><TD>110212550</TD><TD>0.06</TD><TD>0.675</TD><TD>16.70</TD><TD>1.21</TD><TD>300.55</TD><TD>72.16</TD><TD>-0.34</TD><TD>-2.76</TD><TD>99.70000</TD><TD>11.100000</TD><TD>1</TD><TD>Simbad</TD><TD>311.25000</TD><TD>-74.50000</TD></TR>
+<TR><TD>006.2500000</TD><TD>+27.5000000</TD><TD>110213876</TD><TD>0.32</TD><TD>0.557</TD><TD>3.20</TD><TD>0.85</TD><TD>261.55</TD><TD>246.91</TD><TD>-1.00</TD><TD>-1.72</TD><TD>70.60000</TD><TD>16.400000</TD><TD>1</TD><TD>Simbad</TD><TD>006.25000</TD><TD>+27.50000</TD></TR>
+<TR><TD>148.7500000</TD><TD>-54.0000000</TD><TD>110227009</TD><TD>1.73</TD><TD>0.968</TD><TD>3.39</TD><TD>0.86</TD><TD>148.32</TD><TD>44.71</TD><TD>-1.00</TD><TD>-2.25</TD><TD>41.00000</TD><TD>13.300000</TD><TD>1</TD><TD>Simbad</TD><TD>148.75000</TD><TD>-54.00000</TD></TR>
+<TR><TD>238.7500000</TD><TD>-34.3000000</TD><TD>110409179</TD><TD>0.13</TD><TD>0.559</TD><TD>10.22</TD><TD>1.10</TD><TD>265.48</TD><TD>81.76</TD><TD>-1.00</TD><TD>-2.23</TD><TD>72.40000</TD><TD>9.140000</TD><TD>1</TD><TD>Simbad</TD><TD>238.75000</TD><TD>-34.30000</TD></TR>
+<TR><TD>320.0454167</TD><TD>-41.2772222</TD><TD>110420946</TD><TD>0.13</TD><TD>0.965</TD><TD>11.76</TD><TD>1.55</TD><TD>345.19</TD><TD>104.83</TD><TD>-0.15</TD><TD>-4.33</TD><TD>162.00000</TD><TD>29.100000</TD><TD>1</TD><TD>Simbad</TD><TD>320.04542</TD><TD>-41.27722</TD></TR>
+<TR><TD>293.2500000</TD><TD>-11.1000000</TD><TD>110424758</TD><TD>0.67</TD><TD>0.232</TD><TD>4.51</TD><TD>0.95</TD><TD>166.53</TD><TD>152.92</TD><TD>-1.00</TD><TD>-1.52</TD><TD>23.10000</TD><TD>3.870000</TD><TD>1</TD><TD>Simbad</TD><TD>293.25000</TD><TD>-11.10000</TD></TR>
+<TR><TD>074.7500000</TD><TD>-27.0000000</TD><TD>110509475</TD><TD>0.64</TD><TD>0.107</TD><TD>8.12</TD><TD>0.88</TD><TD>60.74</TD><TD>20.53</TD><TD>-1.00</TD><TD>-1.65</TD><TD>3.75000</TD><TD>0.438000</TD><TD>1</TD><TD>Simbad</TD><TD>074.75000</TD><TD>-27.00000</TD></TR>
+<TR><TD>190.0000000</TD><TD>+06.3000000</TD><TD>110517453</TD><TD>0.58</TD><TD>1.232</TD><TD>5.19</TD><TD>0.96</TD><TD>389.59</TD><TD>188.33</TD><TD>-0.34</TD><TD>-2.25</TD><TD>243.00000</TD><TD>68.700000</TD><TD>1</TD><TD>Simbad</TD><TD>190.00000</TD><TD>+06.30000</TD></TR>
+<TR><TD>118.3250000</TD><TD>+67.9166667</TD><TD>110529034</TD><TD>0.51</TD><TD>1.195</TD><TD>44.23</TD><TD>1.79</TD><TD>2314.86</TD><TD>548.33</TD><TD>-0.90</TD><TD>-2.83</TD><TD>4320.00000</TD><TD>198.000000</TD><TD>1</TD><TD>Simbad</TD><TD>118.32500</TD><TD>+67.91667</TD></TR>
+<TR><TD>242.0000000</TD><TD>-03.1000000</TD><TD>110605780</TD><TD>1.54</TD><TD>0.978</TD><TD>6.81</TD><TD>1.20</TD><TD>253.04</TD><TD>133.65</TD><TD>-0.65</TD><TD>-2.25</TD><TD>98.70000</TD><TD>33.400000</TD><TD>1</TD><TD>Simbad</TD><TD>242.00000</TD><TD>-03.10000</TD></TR>
+<TR><TD>156.0000000</TD><TD>+40.1000000</TD><TD>110705151</TD><TD>0.19</TD><TD>0.640</TD><TD>41.25</TD><TD>1.60</TD><TD>1007.63</TD><TD>127.59</TD><TD>-0.13</TD><TD>-3.68</TD><TD>692.00000</TD><TD>29.900000</TD><TD>1</TD><TD>Simbad</TD><TD>156.00000</TD><TD>+40.10000</TD></TR>
+<TR><TD>308.5000000</TD><TD>-07.8000000</TD><TD>110717180</TD><TD>0.11</TD><TD>0.332</TD><TD>19.11</TD><TD>1.63</TD><TD>260.98</TD><TD>82.03</TD><TD>-1.00</TD><TD>-1.95</TD><TD>54.50000</TD><TD>4.960000</TD><TD>1</TD><TD>Simbad</TD><TD>308.50000</TD><TD>-07.80000</TD></TR>
+<TR><TD>166.5000000</TD><TD>+20.1000000</TD><TD>110728056</TD><TD>0.70</TD><TD>1.633</TD><TD>4.97</TD><TD>0.90</TD><TD>786.04</TD><TD>431.17</TD><TD>-0.27</TD><TD>-2.25</TD><TD>998.00000</TD><TD>172.000000</TD><TD>1</TD><TD>Simbad</TD><TD>166.50000</TD><TD>+20.10000</TD></TR>
+<TR><TD>248.2500000</TD><TD>-57.1000000</TD><TD>110801335</TD><TD>0.38</TD><TD>0.147</TD><TD>11.76</TD><TD>2.80</TD><TD>54.94</TD><TD>38.26</TD><TD>-1.00</TD><TD>-1.88</TD><TD>3.37000</TD><TD>0.611000</TD><TD>1</TD><TD>Simbad</TD><TD>248.25000</TD><TD>-57.10000</TD></TR>
+<TR><TD>004.0000000</TD><TD>+40.4000000</TD><TD>110916016</TD><TD>1.79</TD><TD>1.332</TD><TD>3.26</TD><TD>0.96</TD><TD>263.68</TD><TD>134.02</TD><TD>-1.00</TD><TD>-2.25</TD><TD>138.00000</TD><TD>60.800000</TD><TD>1</TD><TD>Simbad</TD><TD>004.00000</TD><TD>+40.40000</TD></TR>
+<TR><TD>340.0000000</TD><TD>-15.3000000</TD><TD>111001804</TD><TD>0.38</TD><TD>0.466</TD><TD>3.82</TD><TD>0.81</TD><TD>170.63</TD><TD>116.48</TD><TD>-1.00</TD><TD>-1.86</TD><TD>31.90000</TD><TD>6.880000</TD><TD>1</TD><TD>Simbad</TD><TD>340.00000</TD><TD>-15.30000</TD></TR>
+<TR><TD>038.0000000</TD><TD>-12.5000000</TD><TD>111011094</TD><TD>1.47</TD><TD>0.431</TD><TD>15.28</TD><TD>1.27</TD><TD>202.65</TD><TD>56.69</TD><TD>-1.00</TD><TD>-2.25</TD><TD>40.60000</TD><TD>4.810000</TD><TD>1</TD><TD>Simbad</TD><TD>038.00000</TD><TD>-12.50000</TD></TR>
+<TR><TD>104.5000000</TD><TD>-33.1000000</TD><TD>111022854</TD><TD>0.19</TD><TD>1.405</TD><TD>7.08</TD><TD>1.11</TD><TD>471.19</TD><TD>352.04</TD><TD>-0.64</TD><TD>-2.47</TD><TD>374.00000</TD><TD>91.500000</TD><TD>1</TD><TD>Simbad</TD><TD>104.50000</TD><TD>-33.10000</TD></TR>
+<TR><TD>091.2500000</TD><TD>-01.8000000</TD><TD>111024896</TD><TD>1.79</TD><TD>0.448</TD><TD>5.01</TD><TD>0.99</TD><TD>232.12</TD><TD>161.53</TD><TD>-1.00</TD><TD>-1.81</TD><TD>51.60000</TD><TD>10.100000</TD><TD>1</TD><TD>Simbad</TD><TD>091.25000</TD><TD>-01.80000</TD></TR>
+<TR><TD>201.5000000</TD><TD>-43.2000000</TD><TD>111103948</TD><TD>0.32</TD><TD>4.416</TD><TD>7.88</TD><TD>1.07</TD><TD>2335.56</TD><TD>2125.41</TD><TD>-0.91</TD><TD>-2.39</TD><TD>19100.00000</TD><TD>2580.000000</TD><TD>1</TD><TD>Simbad</TD><TD>201.50000</TD><TD>-43.20000</TD></TR>
+<TR><TD>223.7500000</TD><TD>+28.8000000</TD><TD>111112908</TD><TD>0.22</TD><TD>1.198</TD><TD>15.23</TD><TD>1.12</TD><TD>896.52</TD><TD>213.20</TD><TD>-0.28</TD><TD>-3.96</TD><TD>921.00000</TD><TD>69.400000</TD><TD>1</TD><TD>Simbad</TD><TD>223.75000</TD><TD>+28.80000</TD></TR>
+<TR><TD>012.6925833</TD><TD>+23.0108944</TD><TD>111117510</TD><TD>0.43</TD><TD>0.640</TD><TD>10.09</TD><TD>0.97</TD><TD>284.65</TD><TD>71.12</TD><TD>-1.00</TD><TD>-2.48</TD><TD>88.10000</TD><TD>10.100000</TD><TD>1</TD><TD>Simbad</TD><TD>012.69258</TD><TD>+23.01089</TD></TR>
+<TR><TD>165.0000000</TD><TD>-17.9000000</TD><TD>111207512</TD><TD>0.77</TD><TD>1.174</TD><TD>3.16</TD><TD>0.81</TD><TD>225.08</TD><TD>79.77</TD><TD>-1.00</TD><TD>-2.25</TD><TD>95.10000</TD><TD>45.400000</TD><TD>1</TD><TD>Simbad</TD><TD>165.00000</TD><TD>-17.90000</TD></TR>
+<TR><TD>179.2198750</TD><TD>+69.0703889</TD><TD>111222619</TD><TD>0.29</TD><TD>0.580</TD><TD>64.25</TD><TD>3.29</TD><TD>787.53</TD><TD>121.24</TD><TD>-0.68</TD><TD>-3.57</TD><TD>436.00000</TD><TD>20.900000</TD><TD>1</TD><TD>Simbad</TD><TD>179.21987</TD><TD>+69.07039</TD></TR>
+<TR><TD>186.0000000</TD><TD>+52.9000000</TD><TD>120101354</TD><TD>0.13</TD><TD>0.676</TD><TD>8.39</TD><TD>1.04</TD><TD>185.16</TD><TD>48.75</TD><TD>-0.11</TD><TD>-2.25</TD><TD>45.30000</TD><TD>17.200000</TD><TD>1</TD><TD>Simbad</TD><TD>186.00000</TD><TD>+52.90000</TD></TR>
+<TR><TD>026.5000000</TD><TD>-08.5000000</TD><TD>120129312</TD><TD>1.28</TD><TD>3.331</TD><TD>2.73</TD><TD>0.72</TD><TD>1127.91</TD><TD>1135.85</TD><TD>-0.33</TD><TD>-2.25</TD><TD>4050.00000</TD><TD>988.000000</TD><TD>1</TD><TD>Simbad</TD><TD>026.50000</TD><TD>-08.50000</TD></TR>
+<TR><TD>243.5000000</TD><TD>+25.9000000</TD><TD>120205285</TD><TD>0.58</TD><TD>0.200</TD><TD>2.47</TD><TD>0.70</TD><TD>153.30</TD><TD>173.14</TD><TD>-1.00</TD><TD>-1.39</TD><TD>19.30000</TD><TD>4.620000</TD><TD>1</TD><TD>Simbad</TD><TD>243.50000</TD><TD>+25.90000</TD></TR>
+<TR><TD>054.7500000</TD><TD>-58.5000000</TD><TD>120210650</TD><TD>1.34</TD><TD>3.353</TD><TD>6.95</TD><TD>0.27</TD><TD>516.20</TD><TD>532.37</TD><TD>-1.68</TD><TD>-3.15</TD><TD>1140.00000</TD><TD>101.000000</TD><TD>1</TD><TD>Simbad</TD><TD>054.75000</TD><TD>-58.50000</TD></TR>
+<TR><TD>303.5000000</TD><TD>-48.1000000</TD><TD>120212353</TD><TD>0.86</TD><TD>0.564</TD><TD>5.83</TD><TD>1.37</TD><TD>362.32</TD><TD>859.93</TD><TD>-0.77</TD><TD>-1.62</TD><TD>121.00000</TD><TD>29.000000</TD><TD>1</TD><TD>Simbad</TD><TD>303.50000</TD><TD>-48.10000</TD></TR>
+<TR><TD>299.5000000</TD><TD>+26.5000000</TD><TD>120222021</TD><TD>1.09</TD><TD>0.533</TD><TD>22.73</TD><TD>1.72</TD><TD>174.25</TD><TD>33.97</TD><TD>-0.55</TD><TD>-4.11</TD><TD>35.50000</TD><TD>6.910000</TD><TD>1</TD><TD>Simbad</TD><TD>299.50000</TD><TD>+26.50000</TD></TR>
+<TR><TD>180.2500000</TD><TD>+20.5000000</TD><TD>120519721</TD><TD>1.06</TD><TD>0.801</TD><TD>14.27</TD><TD>1.50</TD><TD>379.96</TD><TD>140.77</TD><TD>-0.32</TD><TD>-2.74</TD><TD>164.00000</TD><TD>23.200000</TD><TD>1</TD><TD>Simbad</TD><TD>180.25000</TD><TD>+20.50000</TD></TR>
+<TR><TD>358.0000000</TD><TD>-15.6000000</TD><TD>120524134</TD><TD>0.70</TD><TD>0.378</TD><TD>16.71</TD><TD>1.82</TD><TD>89.99</TD><TD>18.27</TD><TD>-0.51</TD><TD>-2.25</TD><TD>10.20000</TD><TD>6.780000</TD><TD>1</TD><TD>Simbad</TD><TD>358.00000</TD><TD>-15.60000</TD></TR>
+<TR><TD>198.7500000</TD><TD>+04.3000000</TD><TD>120603439</TD><TD>0.38</TD><TD>4.894</TD><TD>2.65</TD><TD>0.24</TD><TD>882.49</TD><TD>418.03</TD><TD>-0.81</TD><TD>-2.25</TD><TD>4480.00000</TD><TD>426.000000</TD><TD>1</TD><TD>Simbad</TD><TD>198.75000</TD><TD>+04.30000</TD></TR>
+<TR><TD>230.0000000</TD><TD>-26.1000000</TD><TD>120608489</TD><TD>0.96</TD><TD>1.840</TD><TD>7.80</TD><TD>1.15</TD><TD>570.27</TD><TD>258.12</TD><TD>-0.59</TD><TD>-4.91</TD><TD>669.00000</TD><TD>113.000000</TD><TD>1</TD><TD>Simbad</TD><TD>230.00000</TD><TD>-26.10000</TD></TR>
+<TR><TD>067.2500000</TD><TD>+13.0000000</TD><TD>120609580</TD><TD>1.79</TD><TD>6.873</TD><TD>5.32</TD><TD>1.19</TD><TD>1053.73</TD><TD>3288.56</TD><TD>-1.38</TD><TD>-2.25</TD><TD>9600.00000</TD><TD>2830.000000</TD><TD>1</TD><TD>Simbad</TD><TD>067.25000</TD><TD>+13.00000</TD></TR>
+<TR><TD>039.7500000</TD><TD>-37.9000000</TD><TD>120612687</TD><TD>0.26</TD><TD>0.445</TD><TD>11.41</TD><TD>1.43</TD><TD>367.09</TD><TD>201.62</TD><TD>-1.00</TD><TD>-1.83</TD><TD>109.00000</TD><TD>16.500000</TD><TD>1</TD><TD>Simbad</TD><TD>039.75000</TD><TD>-37.90000</TD></TR>
+<TR><TD>190.7500000</TD><TD>-25.0000000</TD><TD>120619884</TD><TD>0.96</TD><TD>5.077</TD><TD>5.15</TD><TD>0.81</TD><TD>2972.37</TD><TD>2130.58</TD><TD>-0.67</TD><TD>-2.31</TD><TD>34100.00000</TD><TD>5120.000000</TD><TD>1</TD><TD>Simbad</TD><TD>190.75000</TD><TD>-25.00000</TD></TR>
+<TR><TD>004.7500000</TD><TD>+07.2000000</TD><TD>120624309</TD><TD>0.64</TD><TD>0.883</TD><TD>77.61</TD><TD>2.45</TD><TD>4100.76</TD><TD>445.32</TD><TD>-0.71</TD><TD>-3.78</TD><TD>8530.00000</TD><TD>282.000000</TD><TD>1</TD><TD>Simbad</TD><TD>004.75000</TD><TD>+07.20000</TD></TR>
+<TR><TD>176.2500000</TD><TD>-00.6000000</TD><TD>120629565</TD><TD>0.70</TD><TD>0.639</TD><TD>2.04</TD><TD>0.51</TD><TD>141.78</TD><TD>80.20</TD><TD>-1.00</TD><TD>-2.04</TD><TD>28.30000</TD><TD>9.840000</TD><TD>1</TD><TD>Simbad</TD><TD>176.25000</TD><TD>-00.60000</TD></TR>
+<TR><TD>043.6583333</TD><TD>-31.6747222</TD><TD>120811014</TD><TD>0.45</TD><TD>0.615</TD><TD>20.66</TD><TD>1.27</TD><TD>815.29</TD><TD>105.83</TD><TD>-1.00</TD><TD>-2.25</TD><TD>478.00000</TD><TD>32.400000</TD><TD>1</TD><TD>Simbad</TD><TD>043.65833</TD><TD>-31.67472</TD></TR>
+<TR><TD>026.2000000</TD><TD>+22.5000000</TD><TD>120814201</TD><TD>0.90</TD><TD>3.644</TD><TD>10.55</TD><TD>2.01</TD><TD>2293.79</TD><TD>3401.30</TD><TD>-1.05</TD><TD>-2.06</TD><TD>14400.00000</TD><TD>2500.000000</TD><TD>1</TD><TD>Simbad</TD><TD>026.20000</TD><TD>+22.50000</TD></TR>
+<TR><TD>090.6000000</TD><TD>+33.1000000</TD><TD>120814803</TD><TD>0.19</TD><TD>1.069</TD><TD>3.10</TD><TD>0.63</TD><TD>235.86</TD><TD>57.53</TD><TD>-1.00</TD><TD>-2.25</TD><TD>94.70000</TD><TD>59.100000</TD><TD>1</TD><TD>Simbad</TD><TD>090.60000</TD><TD>+33.10000</TD></TR>
+<TR><TD>008.3208333</TD><TD>-26.5141667</TD><TD>120817168</TD><TD>0.16</TD><TD>0.580</TD><TD>46.84</TD><TD>1.75</TD><TD>1068.72</TD><TD>183.42</TD><TD>-0.66</TD><TD>-2.25</TD><TD>716.00000</TD><TD>32.700000</TD><TD>1</TD><TD>Simbad</TD><TD>008.32083</TD><TD>-26.51417</TD></TR>
+<TR><TD>088.6500000</TD><TD>-28.9844444</TD><TD>120830297</TD><TD>0.90</TD><TD>1.050</TD><TD>10.28</TD><TD>0.86</TD><TD>919.70</TD><TD>218.87</TD><TD>-1.00</TD><TD>-2.25</TD><TD>857.00000</TD><TD>80.700000</TD><TD>1</TD><TD>Simbad</TD><TD>088.65000</TD><TD>-28.98444</TD></TR>
+<TR><TD>144.0000000</TD><TD>-16.2000000</TD><TD>120831901</TD><TD>0.38</TD><TD>0.749</TD><TD>9.73</TD><TD>1.43</TD><TD>320.69</TD><TD>108.24</TD><TD>-0.19</TD><TD>-2.25</TD><TD>119.00000</TD><TD>28.500000</TD><TD>1</TD><TD>Simbad</TD><TD>144.00000</TD><TD>-16.20000</TD></TR>
+<TR><TD>209.4000000</TD><TD>+67.3000000</TD><TD>120915000</TD><TD>0.58</TD><TD>0.637</TD><TD>5.15</TD><TD>1.07</TD><TD>508.98</TD><TD>547.59</TD><TD>-0.23</TD><TD>-1.67</TD><TD>227.00000</TD><TD>50.400000</TD><TD>1</TD><TD>Simbad</TD><TD>209.40000</TD><TD>+67.30000</TD></TR>
+<TR><TD>082.0000000</TD><TD>-19.2000000</TD><TD>120916085</TD><TD>1.28</TD><TD>5.859</TD><TD>4.57</TD><TD>1.01</TD><TD>1594.82</TD><TD>2252.80</TD><TD>-0.95</TD><TD>-2.25</TD><TD>15100.00000</TD><TD>3280.000000</TD><TD>1</TD><TD>Simbad</TD><TD>082.00000</TD><TD>-19.20000</TD></TR>
+<TR><TD>137.5000000</TD><TD>-11.0000000</TD><TD>121004211</TD><TD>1.54</TD><TD>0.577</TD><TD>5.02</TD><TD>2.13</TD><TD>74.24</TD><TD>11.65</TD><TD>-1.00</TD><TD>-2.25</TD><TD>9.25000</TD><TD>11.800000</TD><TD>1</TD><TD>Simbad</TD><TD>137.50000</TD><TD>-11.00000</TD></TR>
+<TR><TD>033.4000000</TD><TD>+14.6000000</TD><TD>121012724</TD><TD>0.45</TD><TD>1.174</TD><TD>11.64</TD><TD>1.12</TD><TD>650.85</TD><TD>195.38</TD><TD>-0.26</TD><TD>-3.08</TD><TD>537.00000</TD><TD>68.200000</TD><TD>1</TD><TD>Simbad</TD><TD>033.40000</TD><TD>+14.60000</TD></TR>
+<TR><TD>313.9000000</TD><TD>-04.4000000</TD><TD>121023322</TD><TD>0.51</TD><TD>2.898</TD><TD>10.86</TD><TD>1.29</TD><TD>1740.90</TD><TD>1882.78</TD><TD>-1.02</TD><TD>-2.27</TD><TD>6910.00000</TD><TD>951.000000</TD><TD>1</TD><TD>Simbad</TD><TD>313.90000</TD><TD>-04.40000</TD></TR>
+<TR><TD>258.5000000</TD><TD>+14.1000000</TD><TD>121102064</TD><TD>2.05</TD><TD>3.097</TD><TD>6.02</TD><TD>1.41</TD><TD>781.34</TD><TD>1440.09</TD><TD>-1.18</TD><TD>-2.25</TD><TD>2030.00000</TD><TD>645.000000</TD><TD>1</TD><TD>Simbad</TD><TD>258.50000</TD><TD>+14.10000</TD></TR>
+<TR><TD>079.0000000</TD><TD>-55.4000000</TD><TD>121112806</TD><TD>1.28</TD><TD>1.440</TD><TD>4.68</TD><TD>0.66</TD><TD>783.02</TD><TD>276.04</TD><TD>-1.00</TD><TD>-2.25</TD><TD>876.00000</TD><TD>141.000000</TD><TD>1</TD><TD>Simbad</TD><TD>079.00000</TD><TD>-55.40000</TD></TR>
+<TR><TD>180.9000000</TD><TD>-74.8000000</TD><TD>121116459</TD><TD>0.83</TD><TD>1.034</TD><TD>8.05</TD><TD>1.32</TD><TD>693.84</TD><TD>243.74</TD><TD>-1.00</TD><TD>-2.25</TD><TD>535.00000</TD><TD>86.700000</TD><TD>1</TD><TD>Simbad</TD><TD>180.90000</TD><TD>-74.80000</TD></TR>
+<TR><TD>087.9000000</TD><TD>+49.5000000</TD><TD>121124606</TD><TD>0.26</TD><TD>1.512</TD><TD>5.63</TD><TD>0.96</TD><TD>559.40</TD><TD>330.59</TD><TD>-0.56</TD><TD>-2.25</TD><TD>531.00000</TD><TD>119.000000</TD><TD>1</TD><TD>Simbad</TD><TD>087.90000</TD><TD>+49.50000</TD></TR>
+<TR><TD>176.4000000</TD><TD>-52.4000000</TD><TD>121127914</TD><TD>0.64</TD><TD>0.731</TD><TD>20.05</TD><TD>1.59</TD><TD>1014.58</TD><TD>205.60</TD><TD>-0.26</TD><TD>-2.25</TD><TD>764.00000</TD><TD>56.100000</TD><TD>1</TD><TD>Simbad</TD><TD>176.40000</TD><TD>-52.40000</TD></TR>
+<TR><TD>196.3000000</TD><TD>-31.9000000</TD><TD>130112353</TD><TD>2.05</TD><TD>1.041</TD><TD>8.49</TD><TD>1.05</TD><TD>374.43</TD><TD>160.50</TD><TD>-0.72</TD><TD>-2.25</TD><TD>197.00000</TD><TD>40.100000</TD><TD>1</TD><TD>Simbad</TD><TD>196.30000</TD><TD>-31.90000</TD></TR>
+<TR><TD>251.1000000</TD><TD>-17.1000000</TD><TD>130127743</TD><TD>0.14</TD><TD>1.613</TD><TD>8.06</TD><TD>0.94</TD><TD>1447.61</TD><TD>639.93</TD><TD>-0.41</TD><TD>-2.25</TD><TD>2670.00000</TD><TD>333.000000</TD><TD>1</TD><TD>Simbad</TD><TD>251.10000</TD><TD>-17.10000</TD></TR>
+<TR><TD>105.6000000</TD><TD>+41.9000000</TD><TD>130204484</TD><TD>0.19</TD><TD>1.068</TD><TD>9.62</TD><TD>1.26</TD><TD>653.13</TD><TD>403.80</TD><TD>-0.51</TD><TD>-2.21</TD><TD>498.00000</TD><TD>83.400000</TD><TD>1</TD><TD>Simbad</TD><TD>105.60000</TD><TD>+41.90000</TD></TR>
+<TR><TD>211.6000000</TD><TD>+12.2000000</TD><TD>130219626</TD><TD>1.54</TD><TD>1.378</TD><TD>6.78</TD><TD>1.09</TD><TD>334.66</TD><TD>133.24</TD><TD>-0.24</TD><TD>-4.51</TD><TD>210.00000</TD><TD>48.500000</TD><TD>1</TD><TD>Simbad</TD><TD>211.60000</TD><TD>+12.20000</TD></TR>
+<TR><TD>156.0000000</TD><TD>+23.0000000</TD><TD>130307126</TD><TD>0.38</TD><TD>1.654</TD><TD>17.47</TD><TD>1.28</TD><TD>1629.74</TD><TD>702.33</TD><TD>-0.76</TD><TD>-2.88</TD><TD>3320.00000</TD><TD>261.000000</TD><TD>1</TD><TD>Simbad</TD><TD>156.00000</TD><TD>+23.00000</TD></TR>
+<TR><TD>030.4000000</TD><TD>+62.1000000</TD><TD>130325005</TD><TD>0.64</TD><TD>0.850</TD><TD>6.37</TD><TD>0.97</TD><TD>166.58</TD><TD>68.42</TD><TD>-0.62</TD><TD>-2.25</TD><TD>44.80000</TD><TD>18.700000</TD><TD>1</TD><TD>Simbad</TD><TD>030.40000</TD><TD>+62.10000</TD></TR>
+<TR><TD>028.3000000</TD><TD>+56.5000000</TD><TD>130404877</TD><TD>0.96</TD><TD>1.061</TD><TD>4.31</TD><TD>1.00</TD><TD>216.81</TD><TD>92.19</TD><TD>-0.11</TD><TD>-2.25</TD><TD>82.10000</TD><TD>29.000000</TD><TD>1</TD><TD>Simbad</TD><TD>028.30000</TD><TD>+56.50000</TD></TR>
+<TR><TD>051.2000000</TD><TD>-18.2000000</TD><TD>130416770</TD><TD>0.19</TD><TD>0.720</TD><TD>24.06</TD><TD>1.34</TD><TD>1137.86</TD><TD>177.23</TD><TD>-0.36</TD><TD>-2.25</TD><TD>911.00000</TD><TD>56.200000</TD><TD>1</TD><TD>Simbad</TD><TD>051.20000</TD><TD>-18.20000</TD></TR>
+<TR><TD>214.7000000</TD><TD>-11.6000000</TD><TD>130503214</TD><TD>0.88</TD><TD>0.535</TD><TD>5.92</TD><TD>1.02</TD><TD>250.40</TD><TD>228.58</TD><TD>-0.42</TD><TD>-1.80</TD><TD>64.20000</TD><TD>11.200000</TD><TD>1</TD><TD>Simbad</TD><TD>214.70000</TD><TD>-11.60000</TD></TR>
+<TR><TD>348.0000000</TD><TD>-05.7000000</TD><TD>130504314</TD><TD>0.38</TD><TD>0.809</TD><TD>42.39</TD><TD>1.93</TD><TD>1397.06</TD><TD>180.06</TD><TD>-0.47</TD><TD>-4.73</TD><TD>1380.00000</TD><TD>67.000000</TD><TD>1</TD><TD>Simbad</TD><TD>348.00000</TD><TD>-05.70000</TD></TR>
+<TR><TD>283.4402083</TD><TD>-54.2791667</TD><TD>130515056</TD><TD>0.26</TD><TD>0.539</TD><TD>21.66</TD><TD>1.81</TD><TD>516.38</TD><TD>83.94</TD><TD>-0.14</TD><TD>-2.25</TD><TD>210.00000</TD><TD>18.400000</TD><TD>1</TD><TD>Simbad</TD><TD>283.44021</TD><TD>-54.27917</TD></TR>
+<TR><TD>074.7000000</TD><TD>-60.1000000</TD><TD>130617564</TD><TD>0.77</TD><TD>1.223</TD><TD>7.65</TD><TD>2.05</TD><TD>280.85</TD><TD>152.27</TD><TD>-0.37</TD><TD>-4.92</TD><TD>141.00000</TD><TD>47.200000</TD><TD>1</TD><TD>Simbad</TD><TD>074.70000</TD><TD>-60.10000</TD></TR>
+<TR><TD>312.7000000</TD><TD>+24.5000000</TD><TD>130622615</TD><TD>0.96</TD><TD>1.272</TD><TD>6.03</TD><TD>0.99</TD><TD>302.79</TD><TD>112.22</TD><TD>-1.00</TD><TD>-4.87</TD><TD>166.00000</TD><TD>44.500000</TD><TD>1</TD><TD>Simbad</TD><TD>312.70000</TD><TD>+24.50000</TD></TR>
+<TR><TD>273.1275000</TD><TD>-09.5249722</TD><TD>130626452</TD><TD>1.73</TD><TD>0.991</TD><TD>8.41</TD><TD>1.79</TD><TD>424.20</TD><TD>226.82</TD><TD>-0.48</TD><TD>-2.25</TD><TD>232.00000</TD><TD>64.900000</TD><TD>1</TD><TD>Simbad</TD><TD>273.12750</TD><TD>-09.52497</TD></TR>
+<TR><TD>312.8000000</TD><TD>+06.1000000</TD><TD>130628860</TD><TD>0.51</TD><TD>0.656</TD><TD>22.50</TD><TD>1.25</TD><TD>944.18</TD><TD>156.89</TD><TD>-0.21</TD><TD>-2.25</TD><TD>632.00000</TD><TD>37.300000</TD><TD>1</TD><TD>Simbad</TD><TD>312.80000</TD><TD>+06.10000</TD></TR>
+<TR><TD>325.9000000</TD><TD>-30.9000000</TD><TD>130701761</TD><TD>1.60</TD><TD>0.765</TD><TD>17.17</TD><TD>1.12</TD><TD>838.27</TD><TD>178.65</TD><TD>-0.29</TD><TD>-2.25</TD><TD>578.00000</TD><TD>41.100000</TD><TD>1</TD><TD>Simbad</TD><TD>325.90000</TD><TD>-30.90000</TD></TR>
+<TR><TD>156.3000000</TD><TD>+47.4000000</TD><TD>130705398</TD><TD>0.13</TD><TD>1.077</TD><TD>6.21</TD><TD>0.90</TD><TD>507.62</TD><TD>201.01</TD><TD>-0.04</TD><TD>-2.25</TD><TD>332.00000</TD><TD>67.200000</TD><TD>1</TD><TD>Simbad</TD><TD>156.30000</TD><TD>+47.40000</TD></TR>
+<TR><TD>299.4000000</TD><TD>+56.5000000</TD><TD>130706900</TD><TD>0.13</TD><TD>1.100</TD><TD>8.23</TD><TD>1.00</TD><TD>442.73</TD><TD>190.23</TD><TD>-0.64</TD><TD>-2.25</TD><TD>271.00000</TD><TD>54.400000</TD><TD>1</TD><TD>Simbad</TD><TD>299.40000</TD><TD>+56.50000</TD></TR>
+<TR><TD>179.5735833</TD><TD>+63.0532500</TD><TD>130716442</TD><TD>0.77</TD><TD>2.213</TD><TD>6.11</TD><TD>3.17</TD><TD>636.97</TD><TD>1427.42</TD><TD>-0.54</TD><TD>-3.91</TD><TD>980.00000</TD><TD>1280.000000</TD><TD>1</TD><TD>Simbad</TD><TD>179.57358</TD><TD>+63.05325</TD></TR>
+<TR><TD>080.3000000</TD><TD>-07.6000000</TD><TD>130802730</TD><TD>0.06</TD><TD>0.689</TD><TD>8.66</TD><TD>1.13</TD><TD>302.81</TD><TD>109.11</TD><TD>-1.00</TD><TD>-2.32</TD><TD>102.00000</TD><TD>16.900000</TD><TD>1</TD><TD>Simbad</TD><TD>080.30000</TD><TD>-07.60000</TD></TR>
+<TR><TD>280.0000000</TD><TD>-76.2000000</TD><TD>130804023</TD><TD>0.96</TD><TD>0.388</TD><TD>42.44</TD><TD>1.54</TD><TD>562.37</TD><TD>49.08</TD><TD>-0.17</TD><TD>-2.25</TD><TD>204.00000</TD><TD>9.300000</TD><TD>1</TD><TD>Simbad</TD><TD>280.00000</TD><TD>-76.20000</TD></TR>
+<TR><TD>162.7000000</TD><TD>+33.4000000</TD><TD>130808253</TD><TD>0.26</TD><TD>0.350</TD><TD>19.14</TD><TD>1.99</TD><TD>93.25</TD><TD>14.92</TD><TD>-0.28</TD><TD>-2.25</TD><TD>10.40000</TD><TD>1.310000</TD><TD>1</TD><TD>Simbad</TD><TD>162.70000</TD><TD>+33.40000</TD></TR>
+<TR><TD>047.6066667</TD><TD>+13.9988056</TD><TD>130912358</TD><TD>0.51</TD><TD>1.597</TD><TD>18.69</TD><TD>1.49</TD><TD>921.17</TD><TD>399.83</TD><TD>-0.97</TD><TD>-4.86</TD><TD>1260.00000</TD><TD>115.000000</TD><TD>1</TD><TD>Simbad</TD><TD>047.60667</TD><TD>+13.99881</TD></TR>
+<TR><TD>297.4000000</TD><TD>-11.7000000</TD><TD>130919173</TD><TD>0.96</TD><TD>0.301</TD><TD>16.93</TD><TD>1.28</TD><TD>86.71</TD><TD>20.06</TD><TD>-1.00</TD><TD>-2.35</TD><TD>8.70000</TD><TD>1.090000</TD><TD>1</TD><TD>Simbad</TD><TD>297.40000</TD><TD>-11.70000</TD></TR>
+<TR><TD>296.1133333</TD><TD>-02.9586111</TD><TD>131004904</TD><TD>1.15</TD><TD>0.710</TD><TD>9.66</TD><TD>1.60</TD><TD>143.98</TD><TD>89.53</TD><TD>-1.25</TD><TD>-2.25</TD><TD>31.90000</TD><TD>9.330000</TD><TD>1</TD><TD>Simbad</TD><TD>296.11333</TD><TD>-02.95861</TD></TR>
+<TR><TD>215.4000000</TD><TD>+53.5000000</TD><TD>131126163</TD><TD>0.13</TD><TD>0.426</TD><TD>34.40</TD><TD>1.87</TD><TD>451.03</TD><TD>71.42</TD><TD>-1.00</TD><TD>-2.55</TD><TD>148.00000</TD><TD>10.000000</TD><TD>1</TD><TD>Simbad</TD><TD>215.40000</TD><TD>+53.50000</TD></TR>
+<TR><TD>355.3084167</TD><TD>+31.3057500</TD><TD>131128629</TD><TD>1.98</TD><TD>0.654</TD><TD>5.46</TD><TD>1.08</TD><TD>86.63</TD><TD>28.23</TD><TD>-0.02</TD><TD>-2.25</TD><TD>12.90000</TD><TD>32.000000</TD><TD>1</TD><TD>Simbad</TD><TD>355.30842</TD><TD>+31.30575</TD></TR>
+<TR><TD>086.6000000</TD><TD>+30.6000000</TD><TD>131217108</TD><TD>0.77</TD><TD>0.202</TD><TD>7.84</TD><TD>1.07</TD><TD>223.54</TD><TD>113.55</TD><TD>-1.00</TD><TD>-1.56</TD><TD>35.80000</TD><TD>4.300000</TD><TD>1</TD><TD>Simbad</TD><TD>086.60000</TD><TD>+30.60000</TD></TR>
+<TR><TD>208.2000000</TD><TD>+50.2000000</TD><TD>140105065</TD><TD>1.09</TD><TD>1.018</TD><TD>8.64</TD><TD>1.08</TD><TD>420.60</TD><TD>173.15</TD><TD>-0.59</TD><TD>-2.25</TD><TD>233.00000</TD><TD>46.600000</TD><TD>1</TD><TD>Simbad</TD><TD>208.20000</TD><TD>+50.20000</TD></TR>
+<TR><TD>252.9000000</TD><TD>+19.0000000</TD><TD>140105748</TD><TD>0.58</TD><TD>1.690</TD><TD>4.43</TD><TD>1.04</TD><TD>440.58</TD><TD>347.76</TD><TD>-0.67</TD><TD>-2.25</TD><TD>402.00000</TD><TD>133.000000</TD><TD>1</TD><TD>Simbad</TD><TD>252.90000</TD><TD>+19.00000</TD></TR>
+<TR><TD>102.7000000</TD><TD>+29.8000000</TD><TD>140109771</TD><TD>0.70</TD><TD>1.630</TD><TD>5.66</TD><TD>1.63</TD><TD>725.92</TD><TD>517.15</TD><TD>-0.48</TD><TD>-2.25</TD><TD>875.00000</TD><TD>243.000000</TD><TD>1</TD><TD>Simbad</TD><TD>102.70000</TD><TD>+29.80000</TD></TR>
+<TR><TD>183.4000000</TD><TD>-10.3000000</TD><TD>140129499</TD><TD>0.13</TD><TD>1.496</TD><TD>7.38</TD><TD>1.24</TD><TD>589.58</TD><TD>364.13</TD><TD>-0.80</TD><TD>-2.25</TD><TD>572.00000</TD><TD>115.000000</TD><TD>1</TD><TD>Simbad</TD><TD>183.40000</TD><TD>-10.30000</TD></TR>
+<TR><TD>081.3291667</TD><TD>+32.4989167</TD><TD>140209313</TD><TD>1.41</TD><TD>0.147</TD><TD>123.96</TD><TD>3.26</TD><TD>164.36</TD><TD>14.28</TD><TD>-0.06</TD><TD>-2.35</TD><TD>20.10000</TD><TD>0.689000</TD><TD>1</TD><TD>Simbad</TD><TD>081.32917</TD><TD>+32.49892</TD></TR>
+<TR><TD>092.3000000</TD><TD>-41.1000000</TD><TD>140329272</TD><TD>0.06</TD><TD>1.506</TD><TD>7.82</TD><TD>0.91</TD><TD>754.49</TD><TD>362.25</TD><TD>-0.68</TD><TD>-2.25</TD><TD>862.00000</TD><TD>120.000000</TD><TD>1</TD><TD>Simbad</TD><TD>092.30000</TD><TD>-41.10000</TD></TR>
+<TR><TD>207.4089583</TD><TD>+05.6876667</TD><TD>140402007</TD><TD>0.32</TD><TD>2.146</TD><TD>5.27</TD><TD>0.77</TD><TD>1392.64</TD><TD>489.58</TD><TD>-1.00</TD><TD>-2.25</TD><TD>3390.00000</TD><TD>500.000000</TD><TD>1</TD><TD>Simbad</TD><TD>207.40896</TD><TD>+05.68767</TD></TR>
+<TR><TD>002.0000000</TD><TD>+68.2000000</TD><TD>140428906</TD><TD>0.32</TD><TD>0.500</TD><TD>17.90</TD><TD>2.02</TD><TD>490.04</TD><TD>220.62</TD><TD>-0.21</TD><TD>-2.04</TD><TD>185.00000</TD><TD>24.800000</TD><TD>1</TD><TD>Simbad</TD><TD>002.00000</TD><TD>+68.20000</TD></TR>
+<TR><TD>171.9000000</TD><TD>+24.6000000</TD><TD>140501139</TD><TD>0.26</TD><TD>0.778</TD><TD>5.09</TD><TD>1.04</TD><TD>473.80</TD><TD>383.60</TD><TD>-0.04</TD><TD>-1.87</TD><TD>231.00000</TD><TD>47.200000</TD><TD>1</TD><TD>Simbad</TD><TD>171.90000</TD><TD>+24.60000</TD></TR>
+<TR><TD>329.8000000</TD><TD>-30.1000000</TD><TD>140511095</TD><TD>1.41</TD><TD>1.081</TD><TD>11.02</TD><TD>1.29</TD><TD>315.47</TD><TD>107.25</TD><TD>-0.57</TD><TD>-4.58</TD><TD>154.00000</TD><TD>29.200000</TD><TD>1</TD><TD>Simbad</TD><TD>329.80000</TD><TD>-30.10000</TD></TR>
+<TR><TD>244.0000000</TD><TD>-77.9000000</TD><TD>140518709</TD><TD>0.70</TD><TD>0.427</TD><TD>4.08</TD><TD>0.79</TD><TD>182.84</TD><TD>69.28</TD><TD>-1.00</TD><TD>-1.98</TD><TD>34.10000</TD><TD>6.400000</TD><TD>1</TD><TD>Simbad</TD><TD>244.00000</TD><TD>-77.90000</TD></TR>
+<TR><TD>143.0000000</TD><TD>-10.9000000</TD><TD>140526571</TD><TD>0.06</TD><TD>1.202</TD><TD>4.33</TD><TD>0.83</TD><TD>421.25</TD><TD>157.46</TD><TD>-1.00</TD><TD>-2.25</TD><TD>270.00000</TD><TD>74.500000</TD><TD>1</TD><TD>Simbad</TD><TD>143.00000</TD><TD>-10.90000</TD></TR>
+<TR><TD>121.8000000</TD><TD>-53.9000000</TD><TD>140605377</TD><TD>0.51</TD><TD>0.922</TD><TD>11.19</TD><TD>0.90</TD><TD>728.34</TD><TD>170.85</TD><TD>-1.00</TD><TD>-2.25</TD><TD>528.00000</TD><TD>49.900000</TD><TD>1</TD><TD>Simbad</TD><TD>121.80000</TD><TD>-53.90000</TD></TR>
+<TR><TD>199.1000000</TD><TD>+35.9000000</TD><TD>140610487</TD><TD>0.96</TD><TD>1.727</TD><TD>4.86</TD><TD>0.97</TD><TD>1016.38</TD><TD>724.57</TD><TD>-0.15</TD><TD>-2.25</TD><TD>1610.00000</TD><TD>391.000000</TD><TD>1</TD><TD>Simbad</TD><TD>199.10000</TD><TD>+35.90000</TD></TR>
+<TR><TD>305.0000000</TD><TD>-39.2000000</TD><TD>140619490</TD><TD>0.45</TD><TD>0.670</TD><TD>11.77</TD><TD>2.09</TD><TD>307.91</TD><TD>77.37</TD><TD>-0.23</TD><TD>-2.25</TD><TD>103.00000</TD><TD>17.600000</TD><TD>1</TD><TD>Simbad</TD><TD>305.00000</TD><TD>-39.20000</TD></TR>
+<TR><TD>023.2000000</TD><TD>-00.6000000</TD><TD>140624423</TD><TD>0.10</TD><TD>0.560</TD><TD>20.42</TD><TD>1.47</TD><TD>292.08</TD><TD>55.38</TD><TD>-0.71</TD><TD>-2.25</TD><TD>84.70000</TD><TD>8.930000</TD><TD>1</TD><TD>Simbad</TD><TD>023.20000</TD><TD>-00.60000</TD></TR>
+<TR><TD>120.8000000</TD><TD>+38.8000000</TD><TD>140626843</TD><TD>1.79</TD><TD>1.014</TD><TD>8.78</TD><TD>1.69</TD><TD>246.93</TD><TD>199.88</TD><TD>-0.75</TD><TD>-2.76</TD><TD>97.70000</TD><TD>30.400000</TD><TD>1</TD><TD>Simbad</TD><TD>120.80000</TD><TD>+38.80000</TD></TR>
+<TR><TD>002.8000000</TD><TD>-38.9000000</TD><TD>140710537</TD><TD>0.38</TD><TD>0.250</TD><TD>7.42</TD><TD>1.26</TD><TD>248.43</TD><TD>245.41</TD><TD>-0.03</TD><TD>-1.53</TD><TD>45.40000</TD><TD>7.980000</TD><TD>1</TD><TD>Simbad</TD><TD>002.80000</TD><TD>-38.90000</TD></TR>
+<TR><TD>175.0300000</TD><TD>-32.3100000</TD><TD>140720158</TD><TD>0.32</TD><TD>0.428</TD><TD>6.12</TD><TD>1.07</TD><TD>306.97</TD><TD>252.95</TD><TD>-1.00</TD><TD>-1.67</TD><TD>79.50000</TD><TD>13.800000</TD><TD>0</TD><TD>Simbad</TD><TD>175.03000</TD><TD>-32.31000</TD></TR>
+<TR><TD>314.7300000</TD><TD>-01.8500000</TD><TD>140724533</TD><TD>0.90</TD><TD>0.918</TD><TD>4.46</TD><TD>0.91</TD><TD>184.45</TD><TD>125.53</TD><TD>-1.00</TD><TD>-2.36</TD><TD>56.10000</TD><TD>19.900000</TD><TD>0</TD><TD>Simbad</TD><TD>314.73000</TD><TD>-01.85000</TD></TR>
+<TR><TD>200.1600000</TD><TD>+26.4900000</TD><TD>140807500</TD><TD>0.51</TD><TD>0.874</TD><TD>20.88</TD><TD>1.42</TD><TD>826.85</TD><TD>234.32</TD><TD>-0.74</TD><TD>-2.25</TD><TD>623.00000</TD><TD>48.900000</TD><TD>0</TD><TD>Simbad</TD><TD>200.16000</TD><TD>+26.49000</TD></TR>
+<TR><TD>015.8200000</TD><TD>-32.7600000</TD><TD>140901821</TD><TD>0.18</TD><TD>0.391</TD><TD>52.28</TD><TD>1.81</TD><TD>697.62</TD><TD>62.93</TD><TD>-0.31</TD><TD>-2.25</TD><TD>290.00000</TD><TD>11.500000</TD><TD>0</TD><TD>Simbad</TD><TD>015.82000</TD><TD>-32.76000</TD></TR>
+<TR><TD>257.9390000</TD><TD>-09.6810000</TD><TD>141011282</TD><TD>0.08</TD><TD>0.536</TD><TD>30.07</TD><TD>1.54</TD><TD>475.68</TD><TD>98.47</TD><TD>-0.46</TD><TD>-2.41</TD><TD>183.00000</TD><TD>13.100000</TD><TD>0</TD><TD>Simbad</TD><TD>257.93900</TD><TD>-09.68100</TD></TR>
+<TR><TD>133.0800000</TD><TD>-33.6800000</TD><TD>141031998</TD><TD>0.16</TD><TD>0.885</TD><TD>4.69</TD><TD>0.84</TD><TD>304.34</TD><TD>190.86</TD><TD>-1.00</TD><TD>-2.11</TD><TD>123.00000</TD><TD>25.800000</TD><TD>0</TD><TD>Simbad</TD><TD>133.08000</TD><TD>-33.68000</TD></TR>
+<TR><TD>223.2300000</TD><TD>-17.4200000</TD><TD>141102112</TD><TD>0.02</TD><TD>0.834</TD><TD>8.25</TD><TD>1.40</TD><TD>265.00</TD><TD>107.56</TD><TD>-0.45</TD><TD>-2.25</TD><TD>94.10000</TD><TD>26.800000</TD><TD>0</TD><TD>Simbad</TD><TD>223.23000</TD><TD>-17.42000</TD></TR>
+<TR><TD>016.9100000</TD><TD>+29.1700000</TD><TD>141105406</TD><TD>1.28</TD><TD>0.704</TD><TD>10.27</TD><TD>1.01</TD><TD>322.96</TD><TD>53.57</TD><TD>-1.00</TD><TD>-2.25</TD><TD>115.00000</TD><TD>15.200000</TD><TD>0</TD><TD>Simbad</TD><TD>016.91000</TD><TD>+29.17000</TD></TR>
+<TR><TD>051.2200000</TD><TD>+43.0200000</TD><TD>141111435</TD><TD>1.73</TD><TD>1.049</TD><TD>2.62</TD><TD>0.69</TD><TD>628.63</TD><TD>732.78</TD><TD>-1.00</TD><TD>-1.68</TD><TD>461.00000</TD><TD>121.000000</TD><TD>0</TD><TD>Simbad</TD><TD>051.22000</TD><TD>+43.02000</TD></TR>
+<TR><TD>171.0200000</TD><TD>+80.2600000</TD><TD>141113346</TD><TD>0.45</TD><TD>0.566</TD><TD>4.49</TD><TD>1.06</TD><TD>234.88</TD><TD>217.77</TD><TD>-1.00</TD><TD>-1.80</TD><TD>59.70000</TD><TD>12.100000</TD><TD>0</TD><TD>Simbad</TD><TD>171.02000</TD><TD>+80.26000</TD></TR>
+<TR><TD>009.7100000</TD><TD>-20.0200000</TD><TD>141122087</TD><TD>1.28</TD><TD>0.438</TD><TD>6.27</TD><TD>1.10</TD><TD>285.95</TD><TD>234.62</TD><TD>-1.00</TD><TD>-1.70</TD><TD>71.60000</TD><TD>12.300000</TD><TD>0</TD><TD>Simbad</TD><TD>009.71000</TD><TD>-20.02000</TD></TR>
+<TR><TD>135.0700000</TD><TD>+78.1800000</TD><TD>141124277</TD><TD>0.51</TD><TD>5.418</TD><TD>4.90</TD><TD>1.47</TD><TD>1247.03</TD><TD>2306.81</TD><TD>-1.09</TD><TD>-2.25</TD><TD>9050.00000</TD><TD>2630.000000</TD><TD>0</TD><TD>Simbad</TD><TD>135.07000</TD><TD>+78.18000</TD></TR>
+<TR><TD>321.8000000</TD><TD>-35.7600000</TD><TD>141128962</TD><TD>0.27</TD><TD>0.253</TD><TD>12.99</TD><TD>1.38</TD><TD>58.14</TD><TD>30.19</TD><TD>-0.34</TD><TD>-2.14</TD><TD>4.27000</TD><TD>0.809000</TD><TD>0</TD><TD>Simbad</TD><TD>321.80000</TD><TD>-35.76000</TD></TR>
+<TR><TD>145.0100000</TD><TD>+59.8700000</TD><TD>141202470</TD><TD>1.34</TD><TD>1.105</TD><TD>11.13</TD><TD>0.99</TD><TD>647.60</TD><TD>140.91</TD><TD>-1.00</TD><TD>-4.04</TD><TD>505.00000</TD><TD>56.800000</TD><TD>0</TD><TD>Simbad</TD><TD>145.01000</TD><TD>+59.87000</TD></TR>
+<TR><TD>092.8590000</TD><TD>+37.8760000</TD><TD>141205337</TD><TD>1.28</TD><TD>0.551</TD><TD>5.29</TD><TD>1.30</TD><TD>362.55</TD><TD>359.96</TD><TD>-1.00</TD><TD>-1.72</TD><TD>119.00000</TD><TD>25.800000</TD><TD>0</TD><TD>Simbad</TD><TD>092.85900</TD><TD>+37.87600</TD></TR>
+<TR><TD>359.2600000</TD><TD>+26.4400000</TD><TD>141208632</TD><TD>0.96</TD><TD>0.759</TD><TD>7.09</TD><TD>1.26</TD><TD>465.50</TD><TD>572.62</TD><TD>-0.76</TD><TD>-1.76</TD><TD>220.00000</TD><TD>45.000000</TD><TD>0</TD><TD>Simbad</TD><TD>359.26000</TD><TD>+26.44000</TD></TR>
+<TR><TD>248.1900000</TD><TD>+18.0600000</TD><TD>141213300</TD><TD>0.77</TD><TD>0.713</TD><TD>15.09</TD><TD>1.36</TD><TD>195.26</TD><TD>66.57</TD><TD>-0.75</TD><TD>-3.38</TD><TD>51.20000</TD><TD>10.300000</TD><TD>0</TD><TD>Simbad</TD><TD>248.19000</TD><TD>+18.06000</TD></TR>
+<TR><TD>246.9300000</TD><TD>-40.1800000</TD><TD>141230871</TD><TD>0.22</TD><TD>0.083</TD><TD>7.78</TD><TD>1.25</TD><TD>40.80</TD><TD>34.51</TD><TD>-1.00</TD><TD>-1.58</TD><TD>1.89000</TD><TD>0.278000</TD><TD>0</TD><TD>Simbad</TD><TD>246.93000</TD><TD>-40.18000</TD></TR>
+<TR><TD>312.6033750</TD><TD>+36.7331944</TD><TD>150101270</TD><TD>0.24</TD><TD>0.829</TD><TD>5.73</TD><TD>1.07</TD><TD>213.22</TD><TD>125.07</TD><TD>-0.45</TD><TD>-2.20</TD><TD>65.70000</TD><TD>16.500000</TD><TD>0</TD><TD>Simbad</TD><TD>312.60337</TD><TD>+36.73319</TD></TR>
+<TR><TD>188.0206667</TD><TD>-10.9335278</TD><TD>150101641</TD><TD>0.08</TD><TD>0.134</TD><TD>10.06</TD><TD>1.42</TD><TD>23.10</TD><TD>4.75</TD><TD>-1.00</TD><TD>-3.43</TD><TD>0.27000</TD><TD>0.054000</TD><TD>0</TD><TD>Simbad</TD><TD>188.02067</TD><TD>-10.93353</TD></TR>
+<TR><TD>160.0770000</TD><TD>-27.5550000</TD><TD>150118927</TD><TD>0.29</TD><TD>0.343</TD><TD>39.78</TD><TD>1.81</TD><TD>257.32</TD><TD>42.98</TD><TD>-0.39</TD><TD>-2.36</TD><TD>53.90000</TD><TD>3.130000</TD><TD>0</TD><TD>Simbad</TD><TD>160.07700</TD><TD>-27.55500</TD></TR>
+<TR><TD>127.6500000</TD><TD>+63.1500000</TD><TD>150128624</TD><TD>0.10</TD><TD>0.092</TD><TD>15.93</TD><TD>3.44</TD><TD>64.91</TD><TD>68.70</TD><TD>-1.00</TD><TD>-1.65</TD><TD>4.08000</TD><TD>0.612000</TD><TD>0</TD><TD>Simbad</TD><TD>127.65000</TD><TD>+63.15000</TD></TR>
+<TR><TD>350.6700000</TD><TD>+34.8900000</TD><TD>150208929</TD><TD>0.13</TD><TD>1.448</TD><TD>5.95</TD><TD>0.88</TD><TD>788.16</TD><TD>404.28</TD><TD>-0.28</TD><TD>-2.25</TD><TD>891.00000</TD><TD>145.000000</TD><TD>0</TD><TD>Simbad</TD><TD>350.67000</TD><TD>+34.89000</TD></TR>
+<TR><TD>342.5800000</TD><TD>-34.1700000</TD><TD>150214293</TD><TD>0.19</TD><TD>1.562</TD><TD>5.75</TD><TD>1.00</TD><TD>462.92</TD><TD>289.02</TD><TD>-0.44</TD><TD>-2.64</TD><TD>403.00000</TD><TD>93.700000</TD><TD>0</TD><TD>Simbad</TD><TD>342.58000</TD><TD>-34.17000</TD></TR>
+<TR><TD>244.2860000</TD><TD>-48.6970000</TD><TD>150301045</TD><TD>0.42</TD><TD>0.678</TD><TD>8.56</TD><TD>1.61</TD><TD>97.49</TD><TD>47.49</TD><TD>-0.80</TD><TD>-3.49</TD><TD>15.90000</TD><TD>6.200000</TD><TD>0</TD><TD>Simbad</TD><TD>244.28600</TD><TD>-48.69700</TD></TR>
+<TR><TD>285.4900000</TD><TD>-86.0000000</TD><TD>150312403</TD><TD>0.32</TD><TD>1.397</TD><TD>6.58</TD><TD>1.03</TD><TD>485.60</TD><TD>274.43</TD><TD>-0.73</TD><TD>-2.25</TD><TD>391.00000</TD><TD>87.200000</TD><TD>0</TD><TD>Simbad</TD><TD>285.49000</TD><TD>-86.00000</TD></TR>
+<TR><TD>015.8900000</TD><TD>+53.1400000</TD><TD>150316400</TD><TD>1.98</TD><TD>8.127</TD><TD>2.66</TD><TD>0.88</TD><TD>910.24</TD><TD>2594.85</TD><TD>-1.10</TD><TD>-2.25</TD><TD>9620.00000</TD><TD>4370.000000</TD><TD>0</TD><TD>Simbad</TD><TD>015.89000</TD><TD>+53.14000</TD></TR>
+<TR><TD>139.9800000</TD><TD>+68.9300000</TD><TD>150320462</TD><TD>0.06</TD><TD>0.838</TD><TD>15.66</TD><TD>2.27</TD><TD>910.65</TD><TD>178.05</TD><TD>-1.00</TD><TD>-2.25</TD><TD>706.00000</TD><TD>72.000000</TD><TD>0</TD><TD>Simbad</TD><TD>139.98000</TD><TD>+68.93000</TD></TR>
+<TR><TD>133.1400000</TD><TD>+37.7500000</TD><TD>150325696</TD><TD>0.08</TD><TD>0.840</TD><TD>6.83</TD><TD>0.99</TD><TD>244.26</TD><TD>70.75</TD><TD>-1.00</TD><TD>-2.25</TD><TD>82.80000</TD><TD>19.600000</TD><TD>0</TD><TD>Simbad</TD><TD>133.14000</TD><TD>+37.75000</TD></TR>
+<TR><TD>186.7900000</TD><TD>+02.9100000</TD><TD>150412507</TD><TD>0.58</TD><TD>0.901</TD><TD>5.70</TD><TD>1.10</TD><TD>132.10</TD><TD>121.59</TD><TD>-1.22</TD><TD>-2.25</TD><TD>32.10000</TD><TD>21.500000</TD><TD>0</TD><TD>Simbad</TD><TD>186.79000</TD><TD>+02.91000</TD></TR>
+<TR><TD>220.2600000</TD><TD>+20.1300000</TD><TD>150412931</TD><TD>0.64</TD><TD>2.281</TD><TD>5.38</TD><TD>0.93</TD><TD>1142.19</TD><TD>790.59</TD><TD>-0.57</TD><TD>-2.25</TD><TD>2630.00000</TD><TD>500.000000</TD><TD>0</TD><TD>Simbad</TD><TD>220.26000</TD><TD>+20.13000</TD></TR>
+<TR><TD>076.3200000</TD><TD>+67.8100000</TD><TD>150506630</TD><TD>0.51</TD><TD>1.355</TD><TD>12.86</TD><TD>1.15</TD><TD>959.08</TD><TD>326.17</TD><TD>-0.48</TD><TD>-2.91</TD><TD>1150.00000</TD><TD>104.000000</TD><TD>0</TD><TD>Simbad</TD><TD>076.32000</TD><TD>+67.81000</TD></TR>
+<TR><TD>029.2500000</TD><TD>-03.3700000</TD><TD>150506972</TD><TD>0.38</TD><TD>2.038</TD><TD>4.32</TD><TD>0.92</TD><TD>642.36</TD><TD>589.55</TD><TD>-0.61</TD><TD>-2.25</TD><TD>907.00000</TD><TD>257.000000</TD><TD>0</TD><TD>Simbad</TD><TD>029.25000</TD><TD>-03.37000</TD></TR>
+<TR><TD>130.8600000</TD><TD>+58.5800000</TD><TD>150522944</TD><TD>1.02</TD><TD>0.833</TD><TD>4.12</TD><TD>0.89</TD><TD>265.86</TD><TD>256.51</TD><TD>-0.17</TD><TD>-2.00</TD><TD>94.50000</TD><TD>22.300000</TD><TD>0</TD><TD>Simbad</TD><TD>130.86000</TD><TD>+58.58000</TD></TR>
+<TR><TD>079.6700000</TD><TD>-53.8200000</TD><TD>150601904</TD><TD>0.77</TD><TD>1.815</TD><TD>2.41</TD><TD>0.51</TD><TD>573.57</TD><TD>220.21</TD><TD>-1.00</TD><TD>-2.25</TD><TD>666.00000</TD><TD>177.000000</TD><TD>0</TD><TD>Simbad</TD><TD>079.67000</TD><TD>-53.82000</TD></TR>
+<TR><TD>072.4400000</TD><TD>-21.5900000</TD><TD>150604434</TD><TD>0.90</TD><TD>0.665</TD><TD>11.23</TD><TD>1.11</TD><TD>348.06</TD><TD>115.88</TD><TD>-0.03</TD><TD>-2.29</TD><TD>125.00000</TD><TD>14.700000</TD><TD>0</TD><TD>Simbad</TD><TD>072.44000</TD><TD>-21.59000</TD></TR>
+<TR><TD>217.8600000</TD><TD>+14.7100000</TD><TD>150605782</TD><TD>0.18</TD><TD>0.698</TD><TD>7.78</TD><TD>1.34</TD><TD>152.22</TD><TD>49.01</TD><TD>-0.39</TD><TD>-2.25</TD><TD>33.60000</TD><TD>7.660000</TD><TD>0</TD><TD>Simbad</TD><TD>217.86000</TD><TD>+14.71000</TD></TR>
+<TR><TD>052.2600000</TD><TD>+31.6300000</TD><TD>150609316</TD><TD>0.26</TD><TD>0.831</TD><TD>5.23</TD><TD>0.95</TD><TD>185.59</TD><TD>48.68</TD><TD>-1.00</TD><TD>-2.25</TD><TD>52.50000</TD><TD>22.800000</TD><TD>0</TD><TD>Simbad</TD><TD>052.26000</TD><TD>+31.63000</TD></TR>
+<TR><TD>347.0200000</TD><TD>-66.1800000</TD><TD>150628767</TD><TD>0.64</TD><TD>0.993</TD><TD>3.57</TD><TD>0.69</TD><TD>218.64</TD><TD>46.67</TD><TD>-1.00</TD><TD>-2.25</TD><TD>78.70000</TD><TD>35.400000</TD><TD>0</TD><TD>Simbad</TD><TD>347.02000</TD><TD>-66.18000</TD></TR>
+<TR><TD>307.6500000</TD><TD>-26.4500000</TD><TD>150629564</TD><TD>1.92</TD><TD>3.998</TD><TD>9.18</TD><TD>1.01</TD><TD>1908.74</TD><TD>1178.45</TD><TD>-0.92</TD><TD>-3.91</TD><TD>12000.00000</TD><TD>1390.000000</TD><TD>0</TD><TD>Simbad</TD><TD>307.65000</TD><TD>-26.45000</TD></TR>
+<TR><TD>066.5400000</TD><TD>-06.6200000</TD><TD>150705588</TD><TD>0.70</TD><TD>0.189</TD><TD>6.96</TD><TD>1.28</TD><TD>55.25</TD><TD>53.82</TD><TD>-1.00</TD><TD>-1.80</TD><TD>3.60000</TD><TD>0.808000</TD><TD>0</TD><TD>Simbad</TD><TD>066.54000</TD><TD>-06.62000</TD></TR>
+<TR><TD>157.2600000</TD><TD>+23.5700000</TD><TD>150715136</TD><TD>0.38</TD><TD>4.729</TD><TD>4.41</TD><TD>0.84</TD><TD>1226.61</TD><TD>1100.27</TD><TD>-0.71</TD><TD>-3.92</TD><TD>7320.00000</TD><TD>1370.000000</TD><TD>0</TD><TD>Simbad</TD><TD>157.26000</TD><TD>+23.57000</TD></TR>
+<TR><TD>251.6000000</TD><TD>+20.0600000</TD><TD>150721431</TD><TD>0.32</TD><TD>5.930</TD><TD>5.13</TD><TD>1.04</TD><TD>2555.60</TD><TD>2163.57</TD><TD>-0.80</TD><TD>-2.25</TD><TD>33000.00000</TD><TD>6370.000000</TD><TD>0</TD><TD>Simbad</TD><TD>251.60000</TD><TD>+20.06000</TD></TR>
+<TR><TD>100.4400000</TD><TD>+17.0600000</TD><TD>150728151</TD><TD>1.73</TD><TD>0.856</TD><TD>7.04</TD><TD>1.09</TD><TD>574.74</TD><TD>425.92</TD><TD>-0.23</TD><TD>-1.97</TD><TD>339.00000</TD><TD>70.700000</TD><TD>0</TD><TD>Simbad</TD><TD>100.44000</TD><TD>+17.06000</TD></TR>
+<TR><TD>326.0800000</TD><TD>-33.4000000</TD><TD>150805746</TD><TD>1.41</TD><TD>0.598</TD><TD>5.91</TD><TD>1.18</TD><TD>58.39</TD><TD>21.37</TD><TD>-0.01</TD><TD>-3.38</TD><TD>6.38000</TD><TD>2.220000</TD><TD>0</TD><TD>Simbad</TD><TD>326.08000</TD><TD>-33.40000</TD></TR>
+<TR><TD>283.2000000</TD><TD>+21.1800000</TD><TD>150810485</TD><TD>1.28</TD><TD>0.307</TD><TD>17.14</TD><TD>1.13</TD><TD>242.62</TD><TD>52.37</TD><TD>-1.00</TD><TD>-1.98</TD><TD>46.90000</TD><TD>3.240000</TD><TD>0</TD><TD>Simbad</TD><TD>283.20000</TD><TD>+21.18000</TD></TR>
+<TR><TD>186.3479167</TD><TD>-14.1050000</TD><TD>150811849</TD><TD>0.64</TD><TD>0.619</TD><TD>25.83</TD><TD>1.83</TD><TD>745.90</TD><TD>151.85</TD><TD>-0.43</TD><TD>-2.25</TD><TD>415.00000</TD><TD>33.100000</TD><TD>0</TD><TD>Simbad</TD><TD>186.34792</TD><TD>-14.10500</TD></TR>
+<TR><TD>059.3860000</TD><TD>+39.7010000</TD><TD>150819440</TD><TD>0.96</TD><TD>0.195</TD><TD>146.49</TD><TD>3.43</TD><TD>542.06</TD><TD>26.10</TD><TD>-0.05</TD><TD>-2.25</TD><TD>150.00000</TD><TD>4.610000</TD><TD>0</TD><TD>Simbad</TD><TD>059.38600</TD><TD>+39.70100</TD></TR>
+<TR><TD>094.2400000</TD><TD>+78.6400000</TD><TD>150828901</TD><TD>2.05</TD><TD>3.643</TD><TD>1.59</TD><TD>0.22</TD><TD>492.97</TD><TD>1229.83</TD><TD>-1.23</TD><TD>-1.70</TD><TD>1180.00000</TD><TD>245.000000</TD><TD>0</TD><TD>Simbad</TD><TD>094.24000</TD><TD>+78.64000</TD></TR>
+<TR><TD>016.3400000</TD><TD>+13.5200000</TD><TD>150901924</TD><TD>0.26</TD><TD>0.740</TD><TD>5.25</TD><TD>1.08</TD><TD>225.34</TD><TD>32.04</TD><TD>-1.00</TD><TD>-2.25</TD><TD>66.30000</TD><TD>17.600000</TD><TD>0</TD><TD>Simbad</TD><TD>016.34000</TD><TD>+13.52000</TD></TR>
+<TR><TD>212.0400000</TD><TD>+01.0900000</TD><TD>150906944</TD><TD>0.32</TD><TD>0.191</TD><TD>15.34</TD><TD>1.52</TD><TD>157.16</TD><TD>68.89</TD><TD>-1.00</TD><TD>-1.72</TD><TD>19.90000</TD><TD>1.820000</TD><TD>0</TD><TD>Simbad</TD><TD>212.04000</TD><TD>+01.09000</TD></TR>
+<TR><TD>321.3600000</TD><TD>+73.2600000</TD><TD>150912600</TD><TD>0.32</TD><TD>1.031</TD><TD>6.03</TD><TD>0.95</TD><TD>382.28</TD><TD>142.27</TD><TD>-0.12</TD><TD>-2.25</TD><TD>202.00000</TD><TD>53.500000</TD><TD>0</TD><TD>Simbad</TD><TD>321.36000</TD><TD>+73.26000</TD></TR>
+<TR><TD>292.9600000</TD><TD>-02.2500000</TD><TD>150922234</TD><TD>0.14</TD><TD>0.563</TD><TD>24.07</TD><TD>1.29</TD><TD>675.11</TD><TD>95.15</TD><TD>-0.19</TD><TD>-2.25</TD><TD>333.00000</TD><TD>19.800000</TD><TD>0</TD><TD>Simbad</TD><TD>292.96000</TD><TD>-02.25000</TD></TR>
+<TR><TD>316.8000000</TD><TD>+31.8200000</TD><TD>150923297</TD><TD>0.19</TD><TD>0.332</TD><TD>8.06</TD><TD>1.02</TD><TD>189.92</TD><TD>170.63</TD><TD>-0.47</TD><TD>-1.71</TD><TD>32.50000</TD><TD>4.420000</TD><TD>0</TD><TD>Simbad</TD><TD>316.80000</TD><TD>+31.82000</TD></TR>
+<TR><TD>267.8100000</TD><TD>-40.6600000</TD><TD>150923429</TD><TD>0.19</TD><TD>0.778</TD><TD>5.52</TD><TD>0.85</TD><TD>227.18</TD><TD>41.42</TD><TD>-1.00</TD><TD>-2.25</TD><TD>69.60000</TD><TD>14.100000</TD><TD>0</TD><TD>Simbad</TD><TD>267.81000</TD><TD>-40.66000</TD></TR>
+<TR><TD>067.2300000</TD><TD>-50.0100000</TD><TD>150923864</TD><TD>1.79</TD><TD>0.391</TD><TD>16.45</TD><TD>1.19</TD><TD>120.89</TD><TD>21.12</TD><TD>-1.00</TD><TD>-2.62</TD><TD>16.70000</TD><TD>2.200000</TD><TD>0</TD><TD>Simbad</TD><TD>067.23000</TD><TD>-50.01000</TD></TR>
+<TR><TD>110.3700000</TD><TD>+40.2300000</TD><TD>151022577</TD><TD>0.32</TD><TD>0.745</TD><TD>11.46</TD><TD>1.53</TD><TD>322.58</TD><TD>117.41</TD><TD>-0.48</TD><TD>-2.25</TD><TD>120.00000</TD><TD>28.100000</TD><TD>0</TD><TD>Simbad</TD><TD>110.37000</TD><TD>+40.23000</TD></TR>
+<TR><TD>326.4900000</TD><TD>-24.6700000</TD><TD>151202565</TD><TD>0.70</TD><TD>1.448</TD><TD>8.06</TD><TD>1.67</TD><TD>660.37</TD><TD>499.08</TD><TD>-0.75</TD><TD>-2.25</TD><TD>667.00000</TD><TD>165.000000</TD><TD>0</TD><TD>Simbad</TD><TD>326.49000</TD><TD>-24.67000</TD></TR>
+<TR><TD>355.1800000</TD><TD>+36.7000000</TD><TD>151222340</TD><TD>0.77</TD><TD>1.199</TD><TD>13.25</TD><TD>1.78</TD><TD>1161.49</TD><TD>533.64</TD><TD>-0.45</TD><TD>-2.43</TD><TD>1410.00000</TD><TD>167.000000</TD><TD>0</TD><TD>Simbad</TD><TD>355.18000</TD><TD>+36.70000</TD></TR>
+<TR><TD>214.0040000</TD><TD>-17.6890000</TD><TD>151228129</TD><TD>0.26</TD><TD>1.041</TD><TD>12.32</TD><TD>1.73</TD><TD>963.99</TD><TD>351.43</TD><TD>-0.40</TD><TD>-2.25</TD><TD>919.00000</TD><TD>128.000000</TD><TD>0</TD><TD>Simbad</TD><TD>214.00400</TD><TD>-17.68900</TD></TR>
+<TR><TD>346.4900000</TD><TD>+06.9100000</TD><TD>151229486</TD><TD>0.16</TD><TD>0.448</TD><TD>5.56</TD><TD>1.25</TD><TD>226.93</TD><TD>216.49</TD><TD>-1.00</TD><TD>-1.76</TD><TD>49.70000</TD><TD>10.800000</TD><TD>0</TD><TD>Simbad</TD><TD>346.49000</TD><TD>+06.91000</TD></TR>
+<TR><TD>150.0800000</TD><TD>+28.8100000</TD><TD>151231568</TD><TD>0.83</TD><TD>0.934</TD><TD>14.27</TD><TD>1.20</TD><TD>578.08</TD><TD>237.70</TD><TD>-0.70</TD><TD>-2.29</TD><TD>366.00000</TD><TD>43.800000</TD><TD>0</TD><TD>Simbad</TD><TD>150.08000</TD><TD>+28.81000</TD></TR>
+<TR><TD>123.2000000</TD><TD>+53.4300000</TD><TD>160211119</TD><TD>0.96</TD><TD>0.166</TD><TD>2.66</TD><TD>0.97</TD><TD>65.97</TD><TD>163.56</TD><TD>-1.00</TD><TD>-1.50</TD><TD>4.66000</TD><TD>1.400000</TD><TD>0</TD><TD>Simbad</TD><TD>123.20000</TD><TD>+53.43000</TD></TR>
+<TR><TD>319.8700000</TD><TD>+00.7500000</TD><TD>160224911</TD><TD>0.38</TD><TD>0.580</TD><TD>4.09</TD><TD>1.09</TD><TD>132.52</TD><TD>108.92</TD><TD>-1.00</TD><TD>-2.02</TD><TD>23.80000</TD><TD>7.350000</TD><TD>0</TD><TD>Simbad</TD><TD>319.87000</TD><TD>+00.75000</TD></TR>
+<TR><TD>161.9900000</TD><TD>+02.8300000</TD><TD>160314473</TD><TD>1.66</TD><TD>2.670</TD><TD>6.40</TD><TD>1.12</TD><TD>709.24</TD><TD>989.35</TD><TD>-1.18</TD><TD>-2.25</TD><TD>1450.00000</TD><TD>364.000000</TD><TD>0</TD><TD>Simbad</TD><TD>161.99000</TD><TD>+02.83000</TD></TR>
+<TR><TD>261.7970833</TD><TD>+32.2630556</TD><TD>160406503</TD><TD>0.43</TD><TD>0.260</TD><TD>15.99</TD><TD>1.26</TD><TD>248.46</TD><TD>77.39</TD><TD>-1.00</TD><TD>-1.79</TD><TD>45.90000</TD><TD>3.700000</TD><TD>0</TD><TD>Simbad</TD><TD>261.79708</TD><TD>+32.26306</TD></TR>
+<TR><TD>122.6230000</TD><TD>+71.1284000</TD><TD>160408268</TD><TD>1.06</TD><TD>0.730</TD><TD>12.40</TD><TD>1.33</TD><TD>593.96</TD><TD>298.37</TD><TD>-0.53</TD><TD>-1.99</TD><TD>319.00000</TD><TD>39.200000</TD><TD>0</TD><TD>Simbad</TD><TD>122.62300</TD><TD>+71.12840</TD></TR>
+<TR><TD>349.3570000</TD><TD>-40.2423000</TD><TD>160411062</TD><TD>0.67</TD><TD>0.659</TD><TD>4.82</TD><TD>1.33</TD><TD>102.76</TD><TD>23.65</TD><TD>-1.00</TD><TD>-2.25</TD><TD>17.10000</TD><TD>5.010000</TD><TD>0</TD><TD>Simbad</TD><TD>349.35700</TD><TD>-40.24230</TD></TR>
+<TR><TD>028.1900000</TD><TD>-26.5200000</TD><TD>160428412</TD><TD>0.58</TD><TD>7.849</TD><TD>3.96</TD><TD>0.95</TD><TD>2133.70</TD><TD>4091.45</TD><TD>-0.87</TD><TD>-2.11</TD><TD>36700.00000</TD><TD>8510.000000</TD><TD>0</TD><TD>Simbad</TD><TD>028.19000</TD><TD>-26.52000</TD></TR>
+<TR><TD>195.4100000</TD><TD>-22.9600000</TD><TD>160603719</TD><TD>0.38</TD><TD>1.218</TD><TD>4.24</TD><TD>0.94</TD><TD>223.37</TD><TD>75.55</TD><TD>-1.00</TD><TD>-4.30</TD><TD>97.10000</TD><TD>39.000000</TD><TD>0</TD><TD>Simbad</TD><TD>195.41000</TD><TD>-22.96000</TD></TR>
+<TR><TD>348.3640000</TD><TD>-25.3750000</TD><TD>160612842</TD><TD>0.38</TD><TD>0.483</TD><TD>16.87</TD><TD>1.32</TD><TD>652.91</TD><TD>233.78</TD><TD>-0.27</TD><TD>-1.86</TD><TD>289.00000</TD><TD>27.700000</TD><TD>0</TD><TD>Simbad</TD><TD>348.36400</TD><TD>-25.37500</TD></TR>
+<TR><TD>330.1910000</TD><TD>+29.6439000</TD><TD>160624477</TD><TD>0.45</TD><TD>0.483</TD><TD>6.01</TD><TD>0.83</TD><TD>677.74</TD><TD>257.92</TD><TD>-1.00</TD><TD>-2.25</TD><TD>55.50000</TD><TD>8.750000</TD><TD>0</TD><TD>Simbad</TD><TD>330.19100</TD><TD>+29.64390</TD></TR>
+<TR><TD>234.4610000</TD><TD>+63.8310000</TD><TD>160714097</TD><TD>0.32</TD><TD>0.212</TD><TD>5.51</TD><TD>1.03</TD><TD>71.49</TD><TD>123.26</TD><TD>-0.32</TD><TD>-1.70</TD><TD>5.66000</TD><TD>1.420000</TD><TD>0</TD><TD>Simbad</TD><TD>234.46100</TD><TD>+63.83100</TD></TR>
+<TR><TD>098.8210000</TD><TD>-06.6440000</TD><TD>160726065</TD><TD>0.77</TD><TD>0.998</TD><TD>21.10</TD><TD>1.64</TD><TD>865.02</TD><TD>354.08</TD><TD>-0.90</TD><TD>-2.25</TD><TD>744.00000</TD><TD>115.000000</TD><TD>0</TD><TD>Simbad</TD><TD>098.82100</TD><TD>-06.64400</TD></TR>
+<TR><TD>122.8600000</TD><TD>+50.3000000</TD><TD>160804180</TD><TD>0.64</TD><TD>0.957</TD><TD>14.43</TD><TD>1.10</TD><TD>1198.61</TD><TD>347.69</TD><TD>-0.30</TD><TD>-2.25</TD><TD>1220.00000</TD><TD>101.000000</TD><TD>0</TD><TD>Simbad</TD><TD>122.86000</TD><TD>+50.30000</TD></TR>
+<TR><TD>093.2600000</TD><TD>-07.6600000</TD><TD>160804968</TD><TD>0.32</TD><TD>1.918</TD><TD>12.54</TD><TD>1.24</TD><TD>1722.47</TD><TD>920.84</TD><TD>-0.82</TD><TD>-2.25</TD><TD>4240.00000</TD><TD>569.000000</TD><TD>0</TD><TD>Simbad</TD><TD>093.26000</TD><TD>-07.66000</TD></TR>
+<TR><TD>275.8400000</TD><TD>+06.1800000</TD><TD>160806584</TD><TD>1.73</TD><TD>0.503</TD><TD>16.87</TD><TD>1.78</TD><TD>180.59</TD><TD>32.11</TD><TD>-0.59</TD><TD>-2.25</TD><TD>36.40000</TD><TD>5.210000</TD><TD>0</TD><TD>Simbad</TD><TD>275.84000</TD><TD>+06.18000</TD></TR>
+<TR><TD>006.8200000</TD><TD>+21.8500000</TD><TD>160820496</TD><TD>0.38</TD><TD>1.358</TD><TD>11.91</TD><TD>1.13</TD><TD>530.07</TD><TD>183.83</TD><TD>-0.64</TD><TD>-4.88</TD><TD>439.00000</TD><TD>57.200000</TD><TD>0</TD><TD>Simbad</TD><TD>006.82000</TD><TD>+21.85000</TD></TR>
+<TR><TD>279.9870000</TD><TD>+62.3930000</TD><TD>160821937</TD><TD>1.09</TD><TD>0.160</TD><TD>8.56</TD><TD>1.17</TD><TD>125.19</TD><TD>75.88</TD><TD>-0.66</TD><TD>-2.41</TD><TD>0.99100</TD><TD>0.261000</TD><TD>0</TD><TD>Simbad</TD><TD>279.98700</TD><TD>+62.39300</TD></TR>
+<TR><TD>270.4800000</TD><TD>+08.0200000</TD><TD>160822672</TD><TD>0.42</TD><TD>0.626</TD><TD>22.10</TD><TD>1.64</TD><TD>640.24</TD><TD>177.85</TD><TD>-0.53</TD><TD>-2.16</TD><TD>326.00000</TD><TD>32.300000</TD><TD>0</TD><TD>Simbad</TD><TD>270.48000</TD><TD>+08.02000</TD></TR>
+<TR><TD>104.4600000</TD><TD>-01.0200000</TD><TD>160826938</TD><TD>1.79</TD><TD>0.446</TD><TD>3.06</TD><TD>0.97</TD><TD>72.94</TD><TD>30.61</TD><TD>-1.00</TD><TD>-2.00</TD><TD>7.80000</TD><TD>3.790000</TD><TD>0</TD><TD>Simbad</TD><TD>104.46000</TD><TD>-01.02000</TD></TR>
+<TR><TD>200.8910000</TD><TD>-55.8830000</TD><TD>160829334</TD><TD>0.51</TD><TD>0.546</TD><TD>4.45</TD><TD>0.81</TD><TD>242.84</TD><TD>123.82</TD><TD>-1.00</TD><TD>-1.94</TD><TD>61.80000</TD><TD>10.900000</TD><TD>0</TD><TD>Simbad</TD><TD>200.89100</TD><TD>-55.88300</TD></TR>
+<TR><TD>170.4500000</TD><TD>+58.2000000</TD><TD>161015400</TD><TD>0.19</TD><TD>0.457</TD><TD>6.45</TD><TD>1.16</TD><TD>256.75</TD><TD>119.26</TD><TD>-0.02</TD><TD>-1.80</TD><TD>61.40000</TD><TD>12.600000</TD><TD>0</TD><TD>Simbad</TD><TD>170.45000</TD><TD>+58.20000</TD></TR>
+<TR><TD>067.7000000</TD><TD>+41.8500000</TD><TD>161026373</TD><TD>0.11</TD><TD>1.150</TD><TD>5.57</TD><TD>0.92</TD><TD>207.18</TD><TD>57.73</TD><TD>-0.02</TD><TD>-3.56</TD><TD>81.60000</TD><TD>28.900000</TD><TD>0</TD><TD>Simbad</TD><TD>067.70000</TD><TD>+41.85000</TD></TR>
+<TR><TD>351.5900000</TD><TD>+58.0600000</TD><TD>161115745</TD><TD>0.03</TD><TD>1.642</TD><TD>6.81</TD><TD>1.03</TD><TD>512.85</TD><TD>240.71</TD><TD>-0.23</TD><TD>-4.11</TD><TD>501.00000</TD><TD>129.000000</TD><TD>0</TD><TD>Simbad</TD><TD>351.59000</TD><TD>+58.06000</TD></TR>
+<TR><TD>105.1600000</TD><TD>-19.6700000</TD><TD>161218222</TD><TD>0.32</TD><TD>1.152</TD><TD>15.28</TD><TD>1.20</TD><TD>2041.90</TD><TD>377.69</TD><TD>-0.40</TD><TD>-2.25</TD><TD>3410.00000</TD><TD>271.000000</TD><TD>0</TD><TD>Simbad</TD><TD>105.16000</TD><TD>-19.67000</TD></TR>
+<TR><TD>295.0400000</TD><TD>-51.1700000</TD><TD>161230298</TD><TD>0.45</TD><TD>0.949</TD><TD>8.73</TD><TD>1.20</TD><TD>430.64</TD><TD>155.96</TD><TD>-0.42</TD><TD>-2.25</TD><TD>229.00000</TD><TD>44.500000</TD><TD>0</TD><TD>Simbad</TD><TD>295.04000</TD><TD>-51.17000</TD></TR>
+<TR><TD>117.6100000</TD><TD>+61.5200000</TD><TD>170111760</TD><TD>0.83</TD><TD>1.178</TD><TD>7.21</TD><TD>0.91</TD><TD>802.14</TD><TD>320.66</TD><TD>-0.10</TD><TD>-2.25</TD><TD>758.00000</TD><TD>109.000000</TD><TD>0</TD><TD>Simbad</TD><TD>117.61000</TD><TD>+61.52000</TD></TR>
+<TR><TD>241.9900000</TD><TD>+13.8100000</TD><TD>170121133</TD><TD>1.60</TD><TD>0.556</TD><TD>5.70</TD><TD>0.95</TD><TD>240.72</TD><TD>86.73</TD><TD>-1.00</TD><TD>-2.10</TD><TD>61.60000</TD><TD>11.400000</TD><TD>0</TD><TD>Simbad</TD><TD>241.99000</TD><TD>+13.81000</TD></TR>
+<TR><TD>010.8500000</TD><TD>+11.0200000</TD><TD>170124528</TD><TD>0.45</TD><TD>0.445</TD><TD>6.77</TD><TD>1.10</TD><TD>184.11</TD><TD>77.07</TD><TD>-1.00</TD><TD>-2.08</TD><TD>35.20000</TD><TD>7.150000</TD><TD>0</TD><TD>Simbad</TD><TD>010.85000</TD><TD>+11.02000</TD></TR>
+<TR><TD>339.3300000</TD><TD>-63.9400000</TD><TD>170127067</TD><TD>0.21</TD><TD>0.373</TD><TD>95.88</TD><TD>4.41</TD><TD>930.86</TD><TD>50.93</TD><TD>-1.00</TD><TD>-4.96</TD><TD>455.00000</TD><TD>17.700000</TD><TD>0</TD><TD>Simbad</TD><TD>339.33000</TD><TD>-63.94000</TD></TR>
+<TR><TD>019.9766000</TD><TD>-30.3588000</TD><TD>170127634</TD><TD>1.73</TD><TD>0.847</TD><TD>9.82</TD><TD>1.11</TD><TD>696.92</TD><TD>275.00</TD><TD>-0.67</TD><TD>-1.85</TD><TD>460.00000</TD><TD>68.000000</TD><TD>0</TD><TD>Simbad</TD><TD>019.97660</TD><TD>-30.35880</TD></TR>
+<TR><TD>245.0900000</TD><TD>-00.5100000</TD><TD>170203486</TD><TD>0.34</TD><TD>0.184</TD><TD>7.82</TD><TD>1.60</TD><TD>107.54</TD><TD>63.20</TD><TD>-1.00</TD><TD>-1.64</TD><TD>10.60000</TD><TD>1.750000</TD><TD>0</TD><TD>Simbad</TD><TD>245.09000</TD><TD>-00.51000</TD></TR>
+<TR><TD>212.7900000</TD><TD>+14.4800000</TD><TD>170206453</TD><TD>1.17</TD><TD>0.353</TD><TD>55.84</TD><TD>1.80</TD><TD>382.82</TD><TD>34.18</TD><TD>-1.00</TD><TD>-2.77</TD><TD>104.00000</TD><TD>4.360000</TD><TD>0</TD><TD>Simbad</TD><TD>212.79000</TD><TD>+14.48000</TD></TR>
+<TR><TD>054.8430000</TD><TD>+50.0720000</TD><TD>170219002</TD><TD>0.10</TD><TD>1.038</TD><TD>30.14</TD><TD>2.84</TD><TD>1292.15</TD><TD>256.40</TD><TD>-0.62</TD><TD>-3.83</TD><TD>1480.00000</TD><TD>126.000000</TD><TD>0</TD><TD>Simbad</TD><TD>054.84300</TD><TD>+50.07200</TD></TR>
+<TR><TD>292.9560000</TD><TD>+28.2110000</TD><TD>170222209</TD><TD>1.66</TD><TD>1.330</TD><TD>19.29</TD><TD>1.82</TD><TD>1346.51</TD><TD>367.49</TD><TD>-0.89</TD><TD>-2.25</TD><TD>1970.00000</TD><TD>193.000000</TD><TD>0</TD><TD>Simbad</TD><TD>292.95600</TD><TD>+28.21100</TD></TR>
+<TR><TD>330.5000000</TD><TD>-73.7600000</TD><TD>170304003</TD><TD>0.16</TD><TD>0.342</TD><TD>22.84</TD><TD>1.54</TD><TD>100.47</TD><TD>12.85</TD><TD>-0.66</TD><TD>-2.25</TD><TD>11.60000</TD><TD>2.190000</TD><TD>0</TD><TD>Simbad</TD><TD>330.50000</TD><TD>-73.76000</TD></TR>
+<TR><TD>038.6600000</TD><TD>+12.0900000</TD><TD>170305256</TD><TD>0.45</TD><TD>0.443</TD><TD>29.63</TD><TD>1.48</TD><TD>365.23</TD><TD>56.21</TD><TD>-0.22</TD><TD>-2.38</TD><TD>107.00000</TD><TD>7.450000</TD><TD>0</TD><TD>Simbad</TD><TD>038.66000</TD><TD>+12.09000</TD></TR>
+<TR><TD>127.4830000</TD><TD>+20.5260000</TD><TD>170325331</TD><TD>0.58</TD><TD>2.278</TD><TD>9.21</TD><TD>1.11</TD><TD>1658.22</TD><TD>1020.35</TD><TD>-0.70</TD><TD>-2.48</TD><TD>4820.00000</TD><TD>649.000000</TD><TD>0</TD><TD>Simbad</TD><TD>127.48300</TD><TD>+20.52600</TD></TR>
+<TR><TD>112.2600000</TD><TD>+51.8700000</TD><TD>170506169</TD><TD>0.83</TD><TD>1.698</TD><TD>9.16</TD><TD>1.49</TD><TD>1209.01</TD><TD>869.20</TD><TD>-0.66</TD><TD>-2.25</TD><TD>2100.00000</TD><TD>446.000000</TD><TD>0</TD><TD>Simbad</TD><TD>112.26000</TD><TD>+51.87000</TD></TR>
+<TR><TD>160.0400000</TD><TD>+77.1700000</TD><TD>170511648</TD><TD>1.28</TD><TD>1.751</TD><TD>3.67</TD><TD>0.90</TD><TD>185.98</TD><TD>83.75</TD><TD>-0.93</TD><TD>-3.52</TD><TD>102.00000</TD><TD>65.700000</TD><TD>0</TD><TD>Simbad</TD><TD>160.04000</TD><TD>+77.17000</TD></TR>
+<TR><TD>340.4400000</TD><TD>+40.6700000</TD><TD>170604603</TD><TD>0.32</TD><TD>1.070</TD><TD>12.50</TD><TD>1.13</TD><TD>1285.12</TD><TD>353.72</TD><TD>-0.30</TD><TD>-2.25</TD><TD>1500.00000</TD><TD>158.000000</TD><TD>0</TD><TD>Simbad</TD><TD>340.44000</TD><TD>+40.67000</TD></TR>
+<TR><TD>197.4500000</TD><TD>-23.3815000</TD><TD>170817529</TD><TD>2.05</TD><TD>0.009</TD><TD>2.94</TD><TD>0.76</TD><TD>176.97</TD><TD>98.81</TD><TD>-1.00</TD><TD>-2.47</TD><TD>0.00206</TD><TD>0.000774</TD><TD>0</TD><TD>Simbad</TD><TD>197.45000</TD><TD>-23.38150</TD></TR>
+</TABLEDATA></DATA>
+</TABLE>
+<INFO name="matches" value="300">matching records</INFO>
+
+<INFO name="Warning" value="No center provided++++"/>
+<INFO name="Warning" value="skip recno in all column selection"/>
+<INFO name="Warning" value="increase the precision for computed column 8"/>
+<INFO name="Warning" value="increase the precision for computed column 8"/>
+<INFO name="Warning" value="+++No column for LINK to a row in table: J/ApJ/852/1/table1"/>
+<INFO name="Warning" value="No center provided++++"/>
+<INFO name="Warning" value="skip recno in all column selection"/>
+<INFO name="Warning" value="increase the precision for computed column 8"/>
+<INFO name="Warning" value="increase the precision for computed column 8"/>
+<INFO name="Warning" value="change VO format int  (%09d) to char"/>
+<INFO name="Warning" value="+++No column for LINK to a row in table: J/ApJ/852/1/table2"/>
+<INFO name="Warning" value="change VO format int  (%09d) to char"/>
+</RESOURCE>
+</VOTABLE>

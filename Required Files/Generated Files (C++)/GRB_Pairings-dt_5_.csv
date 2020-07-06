@@ -1,4 +1,4 @@
-GRB ID,X-Ray dt [hr],Optical dt [hr],|dt_x - dt_o| [hr],Beta_X,Beta_X Upper Sigma,Beta_X Lower Sigma,Beta_OX,Upper Bound of Sigma_OX,Lower Bound of Sigma_OX,
+GRB ID,X-Ray dt [hr],Optical dt [hr],|dt_x - dt_o| [hr],Beta_X,Beta_X Upper Sigma,Beta_X Lower Sigma,Beta_OX,Upper Bound of Sigma_OX,Lower Bound of Sigma_OX
 ID-050709,58.33,59.10,0.77,-1.24,0.35,0.35,-0.99,0.02,0.02
 ID-050709,61.11,59.10,2.01,-1.24,0.35,0.35,-1.04,0.02,0.02
 ID-050709,58.33,59.30,0.97,-1.24,0.35,0.35,-1.02,0.01,0.01

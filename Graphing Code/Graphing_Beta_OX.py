@@ -29,19 +29,14 @@
 
 """
 
-import numpy as np
-import os
-import math
-from matplotlib import pyplot as plt
-from matplotlib import rc
-import matplotlib
+import numpy as np, pandas as pd, os, matplotlib, csv
+from matplotlib import rc, pyplot as plt
+from easygui import fileopenbox
+from scipy import integrate
+from pylab import *
+
 # for error bar caps
 matplotlib.rcParams.update({'errorbar.capsize': 2})
-from scipy import integrate
-# for plotting commands
-from pylab import *
-# for writing to files
-import csv
 
 # create a class of GRBs
 class GRB:
@@ -92,8 +87,7 @@ def load_file(filename):
     from pathlib import Path
 
     # define variable for path of stored paired data files
-    filepath = Path("C:/Users/gored/OneDrive/Documents/Georgetown/Senior Year/"
-                    "GDub Research/GRB Research/Written_Files/")
+    filepath = Path("C:/Users/Caden Gobat/Documents/GitHub/dark-GRBs/Required Files/Generated Files (C++)")
 
     # check to see if file can be opened in reading mode successfully
     while True:
@@ -360,7 +354,7 @@ def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_o
     for y in GRB_list:
         # calculate van der Horst distance
         D_vanderHorst= ( -1*float(y.BetaX) - ( float(y.lower_sigmaX) )  + float(y.BetaOX)
-                         - ( float(y.upper_sigmaOX) + delta_beta_ox_t ) - 0.5 )/math.sqrt(2)
+                         - ( float(y.upper_sigmaOX) + delta_beta_ox_t ) - 0.5 )/np.sqrt(2)
 
         # check if van der Horst distance is positive (yielding dark)
         if ( (-1*float(y.BetaX) - 0.5 > -1*float(y.BetaOX) + ( float(y.upper_sigmaOX) +
@@ -722,9 +716,8 @@ def isolate_ID(GRB_list, parsed_filename, user_defined_ID):
     print()
     print("List of GRBs with GRB ID " + user_defined_ID + ":")
     print()
-    print(" ID Number   \u0394t\u2093 [hr] \u0394t\u2092 [hr] \u0394t [hr]    \u03B2\u2093"
-          "    \u03C3\u2093_Up   ""\u03C3\u2093_Low      \u03B2\u2092\u2093   \u03C3\u2092"
-          "\u2093_Up  \u03C3\u2092\u2093_Low ")
+    #print(pd.DataFrame(user_defined_ID_list,columns=["ID Number","\u0394t\u2093 [hr]","\u0394t\u2092 [hr]","\u0394t [hr]","\u03B2\u2093","\u03C3\u2093_Up","\u03C3\u2093_Low","\u03B2\u2092\u2093","\u03C3\u2092\u2093_Up","\u03C3\u2092\u2093_Low"]))
+    print()
     # print out optically dark bursts
     for l in user_defined_ID_list:
         # print out GRB object attributes for each GRB object in list of
@@ -804,11 +797,12 @@ def user_choice(fork_in_the_road):
     # return's user's choice
     return argument
 
-def main():
+# determine execution mode and run main function
+if __name__ == '__main__':
     # ask user for name of desired file to open
     # assign user input to variable for name of file
-    print()
-    file_name = input("Please enter the name of the Paired Data file you wish to load: ")
+    print("Please select the Paired Data file you wish to load.")
+    file_name = fileopenbox()
     print()
     # define global variable for delta beta_ox due to temporal separation
     global delta_beta_ox_t
@@ -822,8 +816,7 @@ def main():
 
     print()
     # ask user if they wish to include delta beta due to temporal separation
-    del_Beta_Y_N = input("Include \u0394\u03B2 due to temporal separation"
-                         " ('Y' or 'N')?  ").upper()
+    del_Beta_Y_N = input("Include \u0394\u03B2 due to temporal separation ('Y' or 'N')?  ").upper()
     print()
 
     # make sure user enters valid input
@@ -831,16 +824,15 @@ def main():
         if(del_Beta_Y_N == "Y" or del_Beta_Y_N == "N"):
             break
         else:
-            del_Beta_Y_N = input("Invalid input.  Please enter either 'Y' or 'N': ").upper()
+            del_Beta_Y_N = input("Invalid input. Please enter either 'Y' or 'N': ").upper()
             print()
 
     if(del_Beta_Y_N == 'Y'):
         print()
         # ask user for their desired delta beta due to temporal separation
-        delta_t_beta = float(input("Please input the loaded file's temporal separation"
-                                   " in % (i.e. '5'): "))
+        delta_t_beta = float(input("Please input the loaded file's temporal separation [%] (i.e. '5'): "))
         print()
-        delta_beta_ox_t = math.log(1 + (delta_t_beta / 100),10)
+        delta_beta_ox_t = np.log10(1 + (delta_t_beta / 100))
         print()
         print(delta_beta_ox_t)
         print()
@@ -1009,8 +1001,7 @@ def main():
                         if (check_J_dark == 0):
                             # notify user
                             print()
-                            print("There are no dark GRBs according to the Jakobbson"
-                                  " method for GRB " + user_defined_ID + ".")
+                            print("There are no dark GRBs according to the Jakobbson method for GRB " + user_defined_ID + ".")
                     # check if user wishes to graph only the data point that is the darkest
                     # for the GRB ID of interest according to the Jakobbson method
                     elif (sub_choice == 'E'):
@@ -1031,32 +1022,19 @@ def main():
                         if ( check_vdH_dark == 0):
                             # notify user
                             print()
-                            print("There are no dark GRBs according to the "
-                                  "Van der Horst method for GRB " + user_defined_ID + ".")
+                            print("There are no dark GRBs according to the Van der Horst method for GRB " + user_defined_ID + ".")
                     # check if user wishes to return to the main menu
                     elif( sub_choice == 'R'):
                         break
                     # check if user does not type one of the available options
                     else:
                         print()
-                        print("Your response did not match one of the available options."
-                              "  Please try again.")
+                        print("Your response did not match one of the available options. Please try again.")
                         print()
         elif ( argument == 'Q'):
             break
         # check if user does not type one of the available options
         else:
             print()
-            print("Your response did not match one of the available options."
-                  "  Please try again.")
+            print("Your response did not match one of the available options. Please try again.")
             print()
-
-# determine execution mode and run main function
-if __name__ == '__main__':
-    main()
-
-
-
-
-
-

@@ -1003,7 +1003,7 @@ if __name__ == '__main__':
     print("\n")
 
     #ask user for desired temporal percent difference
-    DT_PERCENT_DIF = float(5) #float(input("Please enter the desired temporal percent difference (%): "))
+    DT_PERCENT_DIF = float(input("Please enter the desired temporal percent difference (%): "))
 
     #ask user for name of file they wish to load for side effects
     print("Please select the optical data file.")

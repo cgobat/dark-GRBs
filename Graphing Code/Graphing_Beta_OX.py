@@ -245,7 +245,7 @@ def graph(GRB_list, parsed_filename, graph_title, y_or_n_delB, image_name):
         graph_filename = image_name + parsed_filename + ".png"
 
     # save figure as PNG
-    fig.savefig(graph_filename, dpi=600)
+    fig.savefig(f"./Required Files/Generated Files (Python)/{graph_filename}", dpi=600)
 
     return parsed_filename
 

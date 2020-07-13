@@ -1,4 +1,4 @@
-'''
+"""
 Title: "Automating the Calculation of Beta_OX"
  
 Copyright (C) 2020 David Fitzpatrick
@@ -27,7 +27,7 @@ Tables in Fong et al. 2015) and pairs burst measurements based on ID number and
 user-defined temporal separation between optical and X-Ray measurements.  The fully-
 populated GRBs, parameters which include a calculated value for Beta_OX, then
 written to .csv files for further analysis.
-'''
+"""
 
 #import necessary modules
 import numpy as np, pandas as pd

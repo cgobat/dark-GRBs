@@ -82,77 +82,28 @@ class GRB:
 # assigns them to corresponding attributes of a GRB object, all of which are then
 # loaded into a list from which a graphing function can pull desired data
 def load_file(filename):
-    # import library for dealing with files and file paths
-    from pathlib import Path
 
-    # define variable for path of stored paired data files
-    filepath = Path("C:/Users/Caden Gobat/Documents/GitHub/dark-GRBs/Required Files/Generated Files (C++)")
+    file_data = pd.read_csv(filename)
 
-    # check to see if file can be opened in reading mode successfully
-    while True:
-        try:
-            # pair filename with file path
-            file_to_open = filepath / filename
-            # open file
-            f = open(file_to_open)
-            break
-        # check if there is an error opening file
-        except FileNotFoundError:
-            # notify user of unsuccessful file opening and ask for re-input of desired name
-            # re-assign user input to variable for file name
-            filename = input("Unable to open desired file. Please re-enter the desired file name: ")
-
-    # initialize list to store lines from file
-    content_list = []
-
-    # isolate each line in file
-    for line in f:
-        # remove newline character from end of file line
-        stripped_line = line.rstrip('\n')
-        # append line from file to list containing lines of files
-        content_list.append(stripped_line)
-
-    # initialize counter for number of lines read from file
-    number_of_lines = 0
-    # initialize counter for number of GRBs in GRB_list
-    GRB_counter = 0
     # initialize list for GRB objects
     GRB_list = []
 
     # run through list containing lines read from file
-    for x in content_list:
+    for line in file_data.values:
         # check that we are not at the first line containing column titles
-        if number_of_lines > 0:
-            # print line from file in content_list
-            # print(x)
-            # split csv and assign to corresponding variables
-            ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, \
-            SigmaOX_l = x.split(',')
-            # create GRB object from file contents
-            grb = GRB(ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u,
-                      SigmaOX_l, "", "")
-            # append GRB object to list of GRB objects
-            GRB_list.append(grb)
-        # increment counter for total number of lines in file
-        number_of_lines += 1
+        # print line from file in content_list
+        # print(x)
+        # split csv and assign to corresponding variables
+        ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, SigmaOX_l = str(line).split()
+        # create GRB object from file contents
+        grb = GRB(ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, SigmaOX_l, "", "")
+        # append GRB object to list of GRB objects
+        GRB_list.append(grb)
 
-    # run through list containing GRB objects
-#    for l in GRB_list:
-        # print out GRB object attributes for each GRB object in list of GRB objects
-#        print(l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX)
-        # increment counter for total number of GRB objects in list of GRB objects
     GRB_counter = len(GRB_list)
-    easygui.codebox(msg="Total number of lines (or number of GRBs) read from file: "+str(number_of_lines-1)+"\nTotal number of GRBs in list: "+str(GRB_counter),
+    easygui.codebox(msg="Total number of lines (or number of GRBs) read from file: "+str(len(file_data))+"\nTotal number of GRBs in list: "+str(GRB_counter), # notify user of total number of lines read from file
                     title="File contents",
-                    text=["\t".join([l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX, "\n"]) for l in GRB_list])
-    # notify user of total number of lines read from file
-    # subtract one due to initial column heading row of .csv file
-    print("\nTotal number of lines (or number of GRBs) read from file: ", (number_of_lines-1))
-    # notify user of total number of GRBs in list of GRBs
-    print("Total number of GRBs in list: ", (GRB_counter), "\n")
-
-    # close file
-    f.close()
+                    text=file_data.to_string()) # display formatted data table
 
     # return list of GRB objects
     return GRB_list
@@ -330,12 +281,10 @@ def determine_dark_Jakobsson(GRB_list, parsed_filename, yes_or_no_graph, yes_or_
     # return list of optically dark bursts
     return dark_GRBs_list_Jakobsson
 
-
 # a function to determine if a GRB is optically dark
 # @param: list of GRB objects, filename without file extension, Y or N to graph data,
 # Y or N to del beta, image name, user defined ID
-def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_or_no_delB,
-                               image_name, user_defined_ID):
+def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
     # initialize counter for number of dark GRBs
     dark_counter = 0
     # initialize list of dark GRBs
@@ -414,12 +363,10 @@ def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_o
     # return list of optically dark bursts
     return dark_GRBs_list_vanderHorst
 
-
 # a function to determine optically-darkest GRB per unique GRB ID using the Jakobsson method
 # @param: list of dark GRB objects by Jakobsson method, filename without file extension,
 # Y or N to graph data, Y or N to del beta, image name, user defined ID
-def determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson, parsed_filename, yes_or_no_graph,
-                                yes_or_no_delB, image_name, user_defined_ID):
+def determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
     # initialize counter
     counter = 0
     # initialize dark counter
@@ -542,9 +489,7 @@ def determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson, parsed_filename, yes_o
 # using the Van der Horst method
 # @param: list of VdH dark GRB objects, filename without file extension,
 # Y or N to graph data, Y or N to del beta, image name, user defined ID
-def determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst, parsed_filename,
-                                  yes_or_no_graph, yes_or_no_delB,
-                                  image_name, user_defined_ID):
+def determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
     # initialize counter
     counter = 0
     # initialize dark counter
@@ -628,22 +573,22 @@ def determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst, parsed_filename,
 
                 if yes_or_no_delB == 'Y':
                     # write data of optically dark bursts to file
-                    with open(image_name + parsed_filename + "_w_delBeta.csv", 'w',
-                              newline='') as file:
+                    with open(image_name + parsed_filename + "_w_delBeta.csv", 'w', newline='') as file:
                         # open file object
-                        writer = csv.writer(file)
+                        writer = []
                         # write column headers to file
-                        writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                         "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                         "sigma_ox_Up", "sigma_ox_Low"])
+                        writer.append(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
+                                        "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
+                                        "sigma_ox_Up", "sigma_ox_Low"])
                         # run through list of dark GRBs
                         # according to the Van der Horst method
                         for q in darkest_GRBs_vanderHorst:
                             # write GRB object attributes for each dark GRB object to file
-                            writer.writerow(
-                                [q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
-                                 q.lower_sigmaX, q.BetaOX,
-                                 q.upper_sigmaOX, q.lower_sigmaOX])
+                            writer.append([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
+                                        q.lower_sigmaX, q.BetaOX,
+                                        q.upper_sigmaOX, q.lower_sigmaOX])
+
+                        pd.DataFrame(writer).to_csv(image_name + parsed_filename + "_w_delBeta.csv",header=False,index=False)
                 else:
                     # write data of optically dark bursts to file
                     with open(image_name + parsed_filename + ".csv", 'w',
@@ -686,14 +631,13 @@ def isolate_ID(GRB_list, parsed_filename, user_defined_ID):
             user_defined_ID_list.append(a)
 
     # notify user of printing of optically dark GRBs
-    print("\nList of GRBs with GRB ID " + user_defined_ID + ":\n")
+    #print("\nList of GRBs with GRB ID " + user_defined_ID + ":\n")
     # print out optically dark bursts
     # print out GRB object attributes for each GRB object in list of
     # GRB objects with user's ID of interest
-    easygui.msgbox(msg=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in user_defined_ID_list],
-                                    columns=["ID Number","\u0394t\u2093 [hr]","\u0394t\u2092 [hr]","\u0394t [hr]","\u03B2\u2093","\u03C3\u2093_Up","\u03C3\u2093_Low","\u03B2\u2092\u2093","\u03C3\u2092\u2093_Up","\u03C3\u2092\u2093_Low"]).to_string(),
-                    title="Selected GRB data")
-    print()
+    easygui.codebox(title="Selected GRB data",
+                    text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in user_defined_ID_list],
+                                        columns=["ID Number","\u0394t\u2093 [hr]","\u0394t\u2092 [hr]","\u0394t [hr]","\u03B2\u2093","\u03C3\u2093_Up","\u03C3\u2093_Low","\u03B2\u2092\u2093","\u03C3\u2092\u2093_Up","\u03C3\u2092\u2093_Low"]).to_string())
 
     interest_counter = len(user_defined_ID_list)
 
@@ -720,12 +664,12 @@ def user_choice(fork_in_the_road):
         argument = easygui.choicebox(msg="Please choose from one of the below options.",
                                     title="Mode selection",
                                     choices=["1: Graph all data from loaded file.",
-                                                "2: Graph those GRB pairings that are optically-dark according to the Jakobbson method.",
-                                                "3: Graph those GRB pairings that are optically-dark according to the Van der Horst method.",
-                                                "4: Graph only the GRB pairings that are the darkest for their unique GRB ID according to the Jakobbson method.",
-                                                "5: Graph only the GRB pairings that are the darkest for their unique GRB ID according to the Van der Horst method.",
-                                                "6: Graph all data points for a particular GRB ID.",
-                                                "Q: Quit."])[0]
+                                            "2: Graph those GRB pairings that are optically-dark according to the Jakobbson method.",
+                                            "3: Graph those GRB pairings that are optically-dark according to the Van der Horst method.",
+                                            "4: Graph only the GRB pairings that are the darkest for their unique GRB ID according to the Jakobbson method.",
+                                            "5: Graph only the GRB pairings that are the darkest for their unique GRB ID according to the Van der Horst method.",
+                                            "6: Graph all data points for a particular GRB ID.",
+                                            "Q: Quit."])[0]
     # check if user is choosing from submenu
     elif fork_in_the_road == "unique":
         # print out choices for user
@@ -747,10 +691,6 @@ if __name__ == '__main__':
     # assign user input to variable for name of file
     file_name = easygui.fileopenbox(msg="Select the Paired Data file you wish to load.")
 
-    # define global variable for delta beta_ox due to temporal separation
-    global delta_beta_ox_t
-    delta_beta_ox_t = 0
-
     # remove file extension from filename
     parsed_filename = os.path.splitext(file_name)[0]
 
@@ -765,12 +705,16 @@ if __name__ == '__main__':
         del_Beta_Y_N = "N"
     print()
 
+    # define global variable for delta beta_ox due to temporal separation
+    global delta_beta_ox_t
     if del_Beta_Y_N == "Y":
         # ask user for their desired delta beta due to temporal separation
         delta_t_beta = float(easygui.integerbox("Please input the loaded file's temporal separation [%] (i.e. '5')"))
         print()
         delta_beta_ox_t = np.log10(1 + (delta_t_beta / 100))
         print("\n",delta_beta_ox_t,"\n")
+    else:
+        delta_beta_ox_t = 0
 
     # loop menu until user wishes to quit
     while True:
@@ -787,8 +731,7 @@ if __name__ == '__main__':
         elif argument == '2':
             # call function to determine if burst is optically dark using Jakobsson method
             # assign Y or N to graph to Yes
-            check_J_dark = len(determine_dark_Jakobsson(GRB_list, parsed_filename, "Y",
-                                                        del_Beta_Y_N, "Jakobsson_Dark-",""))
+            check_J_dark = len(determine_dark_Jakobsson(GRB_list, parsed_filename, "Y", del_Beta_Y_N, "Jakobsson_Dark-",""))
             # check if there are no dark GRBs according to the Jakobbson method
             # for the user defined ID
             if check_J_dark == 0:
@@ -800,9 +743,7 @@ if __name__ == '__main__':
             # call function to determine if burst is optically dark
             # using Van der Horst method
             # assign Y or N to graph to Yes
-            check_vdH_dark = len(determine_dark_vanderHorst(GRB_list, parsed_filename,
-                                                            "Y", del_Beta_Y_N,
-                                                            "VanderHorst_Dark-", ""))
+            check_vdH_dark = len(determine_dark_vanderHorst(GRB_list, parsed_filename, "Y", del_Beta_Y_N, "VanderHorst_Dark-", ""))
             # check if there are no dark GRBs according to the
             # Van der Horst method for the user defined ID
             if check_vdH_dark == 0:

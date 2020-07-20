@@ -5,6 +5,9 @@
 This repository represents a continuation of research by David Fitzpatrick for his [bachelor's thesis (2020)](https://github.com/cgobat/dark-GRBs/blob/master/Fitzpatrick%20thesis%202020.pdf). The project aims to expand his work and incorporate more recently collected data.
 
 ### Dependencies
+
+Install necessary python packages using `pip install -r requirements.txt` from within this repository folder.
+
 - [`main.cpp`](https://github.com/cgobat/dark-GRBs/blob/master/Calculation%20Code/main.cpp)
   - Already compiled at [`Automating the Calculation of Beta_OX.exe`](https://github.com/cgobat/dark-GRBs/blob/master/Calculation%20Code/Automating%20the%20Calculation%20of%20Beta_OX.exe)
   - No third-party dependencies

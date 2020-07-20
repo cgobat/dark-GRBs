@@ -29,7 +29,7 @@
 
 """
 
-import numpy as np, pandas as pd, os, matplotlib, csv, easygui
+import numpy as np, pandas as pd, os, matplotlib, easygui
 from matplotlib import rc, pyplot as plt
 from scipy import integrate
 from pylab import *
@@ -42,68 +42,41 @@ class GRB:
     # define constructor for GRB objects
     def __init__(self, ID, dtX, dtO, del_t, BetaX, upper_sigmaX, lower_sigmaX, BetaOX,
                  upper_sigmaOX, lower_sigmaOX, D_Jakobsson, D_vanderHorst):
-        # define attribute for GRB ID
-        self.ID = ID
-        # define attribute for X-Ray temporal extent
-        self.dtX = dtX
-        # define attribute for optical temporal extent
-        self.dtO = dtO
-        # define attribute for X-Ray and optical temporal separation
-        self.del_t = del_t
-        # define attribute for X-Ray spectral index
-        self.BetaX = BetaX
-        # define attribute for upper bound of standard deviation of optical-to-X-Ray
-        # spectral index
-        self.upper_sigmaX = upper_sigmaX
-        # define attribute for lower bound of standard deviation of optical-to-X-Ray
-        # spectral index
-        self.lower_sigmaX = lower_sigmaX
-        # define attribute for optical-to-X-Ray spectral index
-        self.BetaOX = BetaOX
-        # define attribute for upper bound of standard deviation of optical-to-X-Ray
-        # spectral index
-        self.upper_sigmaOX = upper_sigmaOX
-        # define attribute for lower bound of standard deviation of optical-to-X-Ray
-        # spectral index
-        self.lower_sigmaOX = lower_sigmaOX
-        # define attribute for darkness distance according to Jakobsson criteria
-        self.D_Jakobsson = D_Jakobsson
-        # define attribute for darkness distance according to van der Horst criteria
-        self.D_vanderHorst = D_vanderHorst
-
-    def set_D_Jakobsson(self, D):
-        # set attribute for darkness distance according to Jakobsson criteria
-        self.D_Jakobsson = D
-    def set_D_vanderHorst(self,D):
-        # set attribute for darkness distance according to van der Horst criteria
-        self.D_vanderHorst = D
+        self.ID = ID # define attribute for GRB ID
+        self.dtX = dtX # define attribute for X-Ray temporal extent
+        self.dtO = dtO # define attribute for optical temporal extent
+        self.del_t = del_t # define attribute for X-Ray and optical temporal separation
+        self.BetaX = BetaX # define attribute for X-Ray spectral index
+        self.upper_sigmaX = upper_sigmaX # define attribute for upper bound of standard deviation of optical-to-X-Ray spectral index
+        self.lower_sigmaX = lower_sigmaX # define attribute for lower bound of standard deviation of optical-to-X-Ray spectral index
+        self.BetaOX = BetaOX # define attribute for optical-to-X-Ray spectral index
+        self.upper_sigmaOX = upper_sigmaOX # define attribute for upper bound of standard deviation of optical-to-X-Ray spectral index
+        self.lower_sigmaOX = lower_sigmaOX # define attribute for lower bound of standard deviation of optical-to-X-Ray spectral index
+        self.D_Jakobsson = D_Jakobsson # define attribute for darkness distance according to Jakobsson criteria
+        self.D_vanderHorst = D_vanderHorst # define attribute for darkness distance according to van der Horst criteria
 
 # A function which loads in a file containing Terse Beta_OX data for GRBs and
 # assigns them to corresponding attributes of a GRB object, all of which are then
 # loaded into a list from which a graphing function can pull desired data
 def load_file(filename):
 
-    file_data = pd.read_csv(filename)
+    pd_csv = pd.read_csv(filename)
 
     # initialize list for GRB objects
     GRB_list = []
 
     # run through list containing lines read from file
-    for line in file_data.values:
-        # check that we are not at the first line containing column titles
-        # print line from file in content_list
-        # print(x)
+    for line in pd_csv.values:
         # split csv and assign to corresponding variables
-        ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, SigmaOX_l = str(line).split()
-        # create GRB object from file contents
-        grb = GRB(ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, SigmaOX_l, "", "")
-        # append GRB object to list of GRB objects
-        GRB_list.append(grb)
+        ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, SigmaOX_l = line
+        # create and append GRB object from file contents
+        GRB_list.append(GRB(ID, dtX, dtO, dt, BetaX, SigmaX_u, SigmaX_l, BetaOX, SigmaOX_u, SigmaOX_l, "", ""))
 
     GRB_counter = len(GRB_list)
-    easygui.codebox(msg="Total number of lines (or number of GRBs) read from file: "+str(len(file_data))+"\nTotal number of GRBs in list: "+str(GRB_counter), # notify user of total number of lines read from file
+
+    easygui.codebox(msg="Total number of lines (or number of GRBs) read from file: "+str(len(pd_csv))+"\nTotal number of GRBs in list: "+str(GRB_counter), # notify user of total number of lines read from file
                     title="File contents",
-                    text=file_data.to_string()) # display formatted data table
+                    text=pd_csv.to_string()) # display formatted data table
 
     # return list of GRB objects
     return GRB_list
@@ -123,9 +96,6 @@ def graph(GRB_list, parsed_filename, graph_title, y_or_n_delB, image_name):
     Beta_OX_upper_list = []
     Beta_OX_lower_list = []
 
-    # initialize check counter
-    count = 0
-
     # run through list containing GRB objects
     for z in GRB_list:
         if float(z.BetaOX) != 0:
@@ -137,43 +107,36 @@ def graph(GRB_list, parsed_filename, graph_title, y_or_n_delB, image_name):
             Beta_OX_list.append(-1 * float(z.BetaOX))
             Beta_OX_upper_list.append(float(z.upper_sigmaOX) + delta_beta_ox_t)
             Beta_OX_lower_list.append(float(z.lower_sigmaOX) + delta_beta_ox_t)
-        #increment counter
-        count+=1
-    #print("Check counter: ", (count))
-
+        
     # create figure
-    fig = plt.figure()
-    fig.set_size_inches(11,18)
+    fig = plt.figure(figsize=(10,9))
     # formulate axes
-    ax1 = fig.add_axes((0.1, 0.4, 0.8, 0.5))
+    ax = fig.add_axes((0.1, 0.4, 0.8, 0.5))
 
     # set title
     if y_or_n_delB == 'Y':
-        title = ax1.set_title(graph_title + parsed_filename +
-                              " + \u0394\u03B2\u2092\u2093", fontsize=26)
+        title = ax.set_title(graph_title + parsed_filename + " + \u0394\u03B2\u2092\u2093")
     else:
-        title = ax1.set_title(graph_title + parsed_filename, fontsize=26)
+        title = ax.set_title(graph_title + parsed_filename)
 
     title.set_position([0.5, 1.05])
     # set x-axis
-    ax1.set_xlabel('\u03B2\u2093', fontsize=20)
-    ax1.set_ylabel('\u03B2\u2092\u2093', fontsize=20)
-    plt.xticks(fontsize=16)
-    plt.yticks(fontsize=16)
-
+    ax.set_xlabel('\u03B2\u2093')
+    ax.set_ylabel('\u03B2\u2092\u2093')
+    plt.xticks()
+    plt.yticks()
 
     # create scatter plot of data
-    #ax1.scatter(Beta_X_list, Beta_OX_list, c='b')
-    plt.errorbar(Beta_X_list, Beta_OX_list, xerr=np.array([Beta_X_lower_list,
-                Beta_X_upper_list]), yerr=np.array([Beta_OX_lower_list,
-                Beta_OX_upper_list]), fmt='go', ecolor='k', capthick=2)
+    plt.errorbar(Beta_X_list, Beta_OX_list,
+                xerr=np.array([Beta_X_lower_list, Beta_X_upper_list]),
+                yerr=np.array([Beta_OX_lower_list, Beta_OX_upper_list]),
+                fmt='go', ecolor='k', capthick=2)
 
     # graph Beta_OX = Beta_X
     x = np.linspace(0,10,1000)
     plt.plot(x, x, linestyle=':', color='red', label="\u03B2\u2092\u2093 = \u03B2\u2093")
     # graph Beta_OX = Beta_X - 0.5
-    plt.plot(x,x-0.5,linestyle='-.', color='brown', label="\u03B2\u2092\u2093 = "
-                                                          "\u03B2\u2093 - 0.5")
+    plt.plot(x,x-0.5,linestyle='-.', color='brown', label="\u03B2\u2092\u2093 = \u03B2\u2093 - 0.5")
     # graph Beta_OX = 0.5
     plt.axhline(y=0.5, linestyle='--', color='orange', label="\u03B2\u2092\u2093 = 0.5")
 
@@ -182,7 +145,7 @@ def graph(GRB_list, parsed_filename, graph_title, y_or_n_delB, image_name):
     # set bounds for y-axis
     plt.ylim(-0.4, 1.4)
     # make legend
-    plt.legend(fontsize=18)
+    plt.legend()
 
     # show plot
     plt.show()
@@ -201,11 +164,9 @@ def graph(GRB_list, parsed_filename, graph_title, y_or_n_delB, image_name):
     return parsed_filename
 
 # a function to determine if a GRB is optically dark
-# @param: list of GRB objects, filename without file extension, Y or N to graph data,
-# Y or N to del beta, image name, user defined ID
+# @param: list of GRB objects, filename without file extension, Y or N to graph data, Y or N to del beta, image name, user defined ID
 def determine_dark_Jakobsson(GRB_list, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
-    # initialize counter for number of dark GRBs
-    dark_counter = 0
+    
     # initialize list of dark GRBs
     dark_GRBs_list_Jakobsson = []
 
@@ -216,7 +177,7 @@ def determine_dark_Jakobsson(GRB_list, parsed_filename, yes_or_no_graph, yes_or_
         #check if Jakobsson distance is positive (yielding dark)
         if D_Jakobsson > 0 and float(y.BetaOX) != 0:
             # set D_Jakobsson for dark GRB
-            y.set_D_Jakobsson(D_Jakobsson)
+            y.D_Jakobsson = D_Jakobsson
             # append GRB object to list of Jakobsson dark GRBs
             dark_GRBs_list_Jakobsson.append(y)
 
@@ -224,69 +185,41 @@ def determine_dark_Jakobsson(GRB_list, parsed_filename, yes_or_no_graph, yes_or_
     if len(dark_GRBs_list_Jakobsson) != 0:
         if yes_or_no_graph == "Y":
             # graph dark bursts only
-            graph(dark_GRBs_list_Jakobsson, parsed_filename,
-                  "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID
-                  + "Jak Dark): ", yes_or_no_delB, image_name)
+            graph(dark_GRBs_list_Jakobsson, parsed_filename, "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID + "Jak Dark): ", yes_or_no_delB, image_name)
 
-            # notify user of printing of optically dark GRBs
-            print("\nList of Optically-Dark GRBs:\n")
-            print("ID Number   \u0394t\u2093 [hr] \u0394t\u2092 [hr] \u0394t [hr]"
-                  "    \u03B2\u2093    \u03C3\u2093_Up   "
-                  "\u03C3\u2093_Low ""    \u03B2\u2092\u2093   \u03C3\u2092\u2093_Up"
-                  "  \u03C3\u2092\u2093_Low ")
             # print out optically dark bursts
-            for l in dark_GRBs_list_Jakobsson:
-                # print out GRB object attributes for each dark GRB object in list of dark
-                # GRB objects
-                print(l.ID, "\t" + l.dtX, "\t" + l.dtO,"\t" + l.del_t,"\t" +
-                      l.BetaX,"\t" + l.upper_sigmaX,"\t" + l.lower_sigmaX,"\t" +
-                      l.BetaOX,"\t" + l.upper_sigmaOX,"\t" +l.lower_sigmaOX)
-                dark_counter += 1
+            easygui.codebox(msg="List of Optically-Dark (Jakobsson) GRBs:",
+                            title="Optically dark GRBs",
+                            text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in dark_GRBs_list_Jakobsson],
+                                columns=["ID Number", "\u0394t\u2093 [hr]", "\u0394t\u2092 [hr]", "\u0394t [hr]", "\u03B2\u2093", "\u03C3\u2093_Up", "\u03C3\u2093_Low", "\u03B2\u2092\u2093",
+                                "\u03C3\u2092\u2093_Up", "\u03C3\u2092\u2093_Low"]).to_string())
 
+            # write data of optically dark bursts to file
+            writer = []
+            # write column headers to file
+            writer.append(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
+                            "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
+                            "sigma_ox_Up", "sigma_ox_Low"])
+            # run through list of dark GRBs according to the Van der Horst method
+            for q in dark_GRBs_list_Jakobsson:
+                # write GRB object attributes for each dark GRB object to file
+                writer.append([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
+                                q.lower_sigmaX, q.BetaOX, q.upper_sigmaOX, q.lower_sigmaOX])
+                                    
             if yes_or_no_delB == 'Y':
-                # write data of optically dark bursts to file
-                with open(image_name + parsed_filename + "_w_delBeta.csv", 'w',
-                          newline='') as file:
-                    # open file object
-                    writer = csv.writer(file)
-                    # write column headers to file
-                    writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                     "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                     "sigma_ox_Up", "sigma_ox_Low"])
-                    # run through list of dark GRBs according to the van der Horst method
-                    for q in dark_GRBs_list_Jakobsson:
-                        # write GRB object attributes for each dark GRB object to file
-                        writer.writerow([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX,
-                                         q.upper_sigmaX, q.lower_sigmaX, q.BetaOX,
-                                         q.upper_sigmaOX, q.lower_sigmaOX])
+                pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + "_w_delBeta.csv",header=False,index=False)
             else:
-                # write data of optically dark bursts to file
-                with open(image_name + parsed_filename + ".csv", 'w', newline='') as file:
-                    # open file object
-                    writer = csv.writer(file)
-                    # write column headers to file
-                    writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                     "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                     "sigma_ox_Up", "sigma_ox_Low"])
-                    # run through list of dark GRBs according to the van der Horst method
-                    for q in dark_GRBs_list_Jakobsson:
-                        # write GRB object attributes for each dark GRB object to file
-                        writer.writerow([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX,
-                                         q.upper_sigmaX, q.lower_sigmaX, q.BetaOX,
-                                         q.upper_sigmaOX, q.lower_sigmaOX])
+                pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + ".csv",header=False,index=False)
 
-
-            print("\nNumber of Jakobsson Dark GRBs from " + parsed_filename + ": ", (dark_counter), "\n")
+            print("\nNumber of Jakobsson Dark GRBs from " + parsed_filename + ": ", len(dark_GRBs_list_Jakobsson), "\n")
 
     # return list of optically dark bursts
     return dark_GRBs_list_Jakobsson
 
 # a function to determine if a GRB is optically dark
-# @param: list of GRB objects, filename without file extension, Y or N to graph data,
-# Y or N to del beta, image name, user defined ID
+# @param: list of GRB objects, filename without file extension, Y or N to graph data, Y or N to del beta, image name, user defined ID
 def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
-    # initialize counter for number of dark GRBs
-    dark_counter = 0
+    
     # initialize list of dark GRBs
     dark_GRBs_list_vanderHorst = []
 
@@ -299,7 +232,7 @@ def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_o
         # check if van der Horst distance is positive (yielding dark)
         if -1*float(y.BetaX) - 0.5 > -1*float(y.BetaOX) + ( float(y.upper_sigmaOX) + delta_beta_ox_t ) and -1*float(y.BetaOX) + 0.5 < -1*float(y.BetaX) - float(y.lower_sigmaX) and float(y.BetaOX) != 0:
             # set D_vanderHorst for dark GRB
-            y.set_D_vanderHorst(D_vanderHorst)
+            y.D_vanderHorst = D_vanderHorst
             # append GRB object to list of van der Horst dark GRBs
             dark_GRBs_list_vanderHorst.append(y)
 
@@ -308,69 +241,45 @@ def determine_dark_vanderHorst(GRB_list, parsed_filename, yes_or_no_graph, yes_o
 
         if yes_or_no_graph == "Y":
             # graph dark bursts only
-            graph(dark_GRBs_list_vanderHorst, parsed_filename, "\u03B2\u2092\u2093 vs. "
-            "\u03B2\u2093 (" + user_defined_ID + "VdH Dark): ", yes_or_no_delB, image_name)
+            graph(dark_GRBs_list_vanderHorst, parsed_filename, "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID + "VdH Dark): ", yes_or_no_delB, image_name)
 
-            # notify user of printing of optically dark GRBs
-            print("\nList of Optically-Dark GRBs:\n")
-            print(" ID Number   \u0394t\u2093 [hr] \u0394t\u2092 [hr] \u0394t [hr]    "
-                  "\u03B2\u2093    \u03C3\u2093_Up   ""\u03C3\u2093_Low ""    \u03B2\u2092"
-                  "\u2093   \u03C3\u2092\u2093_Up  \u03C3\u2092\u2093_Low ")
             # print out optically dark bursts
-            for l in dark_GRBs_list_vanderHorst:
-                # print out GRB object attributes for each dark GRB object
-                # in list of dark GRB objects
-                print(l.ID, "\t" + l.dtX, "\t" + l.dtO,"\t" + l.del_t,"\t" +
-                      l.BetaX,"\t" + l.upper_sigmaX, "\t" + l.lower_sigmaX,"\t" +
-                      l.BetaOX,"\t" + l.upper_sigmaOX,"\t" +l.lower_sigmaOX)
-                dark_counter += 1
+            easygui.codebox(msg="List of Optically-Dark GRBs:",
+                            title="Optically dark GRBs",
+                            text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in dark_GRBs_list_vanderHorst],
+                                columns=["ID Number", "\u0394t\u2093 [hr]", "\u0394t\u2092 [hr]", "\u0394t [hr]", "\u03B2\u2093", "\u03C3\u2093_Up", "\u03C3\u2093_Low", "\u03B2\u2092\u2093",
+                                "\u03C3\u2092\u2093_Up", "\u03C3\u2092\u2093_Low"]).to_string())
+
+            # write data of optically dark bursts to file
+            writer = []
+            # write column headers to file
+            writer.append(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
+                            "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
+                            "sigma_ox_Up", "sigma_ox_Low"])
+            # run through list of dark GRBs according to the van der Horst method
+            for q in dark_GRBs_list_vanderHorst:
+                # write GRB object attributes for each dark GRB object to file
+                writer.append([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
+                                q.lower_sigmaX, q.BetaOX,q.upper_sigmaOX, q.lower_sigmaOX])
 
             if yes_or_no_delB == 'Y':
                 # write data of optically dark bursts to file
-                with open(image_name + parsed_filename + "_w_delBeta.csv", 'w',
-                          newline='') as file:
-                    # open file object
-                    writer = csv.writer(file)
-                    # write column headers to file
-                    writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                     "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                     "sigma_ox_Up", "sigma_ox_Low"])
-                    # run through list of dark GRBs according to the van der Horst method
-                    for q in dark_GRBs_list_vanderHorst:
-                        # write GRB object attributes for each dark GRB object to file
-                        writer.writerow([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX,
-                                         q.upper_sigmaX, q.lower_sigmaX, q.BetaOX,
-                                         q.upper_sigmaOX, q.lower_sigmaOX])
+                pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + "_w_delBeta.csv",header=False,index=False)
             else:
                 # write data of optically dark bursts to file
-                with open(image_name + parsed_filename + ".csv", 'w', newline='') as file:
-                    # open file object
-                    writer = csv.writer(file)
-                    # write column headers to file
-                    writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                     "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                     "sigma_ox_Up",
-                                     "sigma_ox_Low"])
-                    # run through list of dark GRBs according to the van der Horst method
-                    for q in dark_GRBs_list_vanderHorst:
-                        # write GRB object attributes for each dark GRB object to file
-                        writer.writerow([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX,
-                                         q.upper_sigmaX, q.lower_sigmaX, q.BetaOX,
-                                         q.upper_sigmaOX, q.lower_sigmaOX])
+                pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + ".csv",header=False,index=False)
 
-            print("\nNumber of Van der Horst Dark GRBs from " + parsed_filename + ": ", (dark_counter), "\n")
+
+            print("\nNumber of Van der Horst Dark GRBs from", parsed_filename, ":", len(dark_GRBs_list_vanderHorst), "\n")
 
     # return list of optically dark bursts
     return dark_GRBs_list_vanderHorst
 
 # a function to determine optically-darkest GRB per unique GRB ID using the Jakobsson method
-# @param: list of dark GRB objects by Jakobsson method, filename without file extension,
-# Y or N to graph data, Y or N to del beta, image name, user defined ID
+# @param: list of dark GRB objects by Jakobsson method, filename without file extension, Y or N to graph data, Y or N to del beta, image name, user defined ID
 def determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
     # initialize counter
     counter = 0
-    # initialize dark counter
-    dark_counter = 0
     # initialize list of darkest GRBs
     darkest_GRBs_Jakobsson = []
 
@@ -426,74 +335,43 @@ def determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson, parsed_filename, yes_o
 
             if yes_or_no_graph == "Y":
                 # graph dark bursts only
-                graph(darkest_GRBs_Jakobsson, parsed_filename, "\u03B2\u2092\u2093 vs. "
-                                                               "\u03B2\u2093 (" + user_defined_ID + "Jak Darkest): ",
-                                                               yes_or_no_delB, image_name)
+                graph(darkest_GRBs_Jakobsson, parsed_filename, "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID + "Jak Darkest): ", yes_or_no_delB, image_name)
 
-                # notify user of printing of optically darkest GRBs
-                print("\nList of Optically-Darkest GRBs by Jakobsson Criteria:\n")
-                print(
-                    " ID Number   \u0394t\u2093 [hr] \u0394t\u2092 [hr] \u0394t [hr]    "
-                    "\u03B2\u2093    \u03C3\u2093_Up   ""\u03C3\u2093_Low ""    \u03B2"
-                    "\u2092\u2093   \u03C3\u2092\u2093_Up  \u03C3\u2092\u2093_Low ")
+                easygui.codebox(msg="List of Optically-Darkest GRBs by Jakobsson Criteria:",
+                                title="Optically darkest GRBs",
+                                text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in darkest_GRBs_Jakobsson],
+                                    columns=["ID Number", "\u0394t\u2093 [hr]", "\u0394t\u2092 [hr]", "\u0394t [hr]", "\u03B2\u2093", "\u03C3\u2093_Up", "\u03C3\u2093_Low", "\u03B2\u2092\u2093",
+                                    "\u03C3\u2092\u2093_Up", "\u03C3\u2092\u2093_Low"]).to_string())
 
-                # run through list of darkest GRBs
-                for l in darkest_GRBs_Jakobsson:
-                    # print out GRB object attributes for each dark GRB
-                    # object in list of darkest GRB objects
-                    print(l.ID, "\t" + l.dtX, "\t" + l.dtO, "\t" + l.del_t, "\t" +
-                          l.BetaX, "\t" + l.upper_sigmaX, "\t" + l.lower_sigmaX, "\t" +
-                          l.BetaOX, "\t" + l.upper_sigmaOX, "\t" + l.lower_sigmaOX)
-                    dark_counter += 1
+                easygui.msgbox(msg="Number of Darkest Jakobsson Dark GRBs from " + parsed_filename + ": " + str(len(darkest_GRBs_Jakobsson)), title="Jakobsson results")
 
-                easygui.msgbox(msg="Number of Darkest Jakobsson Dark GRBs from " + parsed_filename + ": " + str(dark_counter), title="Jakobsson results")
+                # write data of optically dark bursts to file
+                writer = []
+                # write column headers to file
+                writer.append(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
+                                "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
+                                "sigma_ox_Up", "sigma_ox_Low"])
+                # run through list of dark GRBs according to the Jakobbson method
+                for q in darkest_GRBs_Jakobsson:
+                    # write GRB object attributes for each dark GRB object to file
+                    writer.append([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
+                                    q.lower_sigmaX, q.BetaOX,q.upper_sigmaOX, q.lower_sigmaOX])
 
                 if yes_or_no_delB == 'Y':
                     # write data of optically dark bursts to file
-                    with open(image_name + parsed_filename + "_w_delBeta.csv", 'w',
-                              newline='') as file:
-                        # open file object
-                        writer = csv.writer(file)
-                        # write column headers to file
-                        writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                         "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                         "sigma_ox_Up", "sigma_ox_Low"])
-                        # run through list of dark GRBs according to
-                        # the Jakobbson method
-                        for q in darkest_GRBs_Jakobsson:
-                            # write GRB object attributes for each dark GRB object to file
-                            writer.writerow(
-                                [q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
-                                 q.lower_sigmaX, q.BetaOX,q.upper_sigmaOX, q.lower_sigmaOX])
+                    pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + "_w_delBeta.csv",header=False,index=False)
                 else:
                     # write data of optically dark bursts to file
-                    with open(image_name + parsed_filename + ".csv", 'w',
-                              newline='') as file:
-                        # open file object
-                        writer = csv.writer(file)
-                        # write column headers to file
-                        writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                         "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                         "sigma_ox_Up", "sigma_ox_Low"])
-                        # run through list of dark GRBs according to the Jakobbson method
-                        for q in darkest_GRBs_Jakobsson:
-                            # write GRB object attributes for each dark GRB object to file
-                            writer.writerow(
-                                [q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
-                                 q.lower_sigmaX, q.BetaOX,q.upper_sigmaOX, q.lower_sigmaOX])
+                    pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + ".csv",header=False,index=False)
 
     # return list of optically dark bursts
     return darkest_GRBs_Jakobsson
 
-# a function to determine optically-darkest GRB per unique GRB ID
-# using the Van der Horst method
-# @param: list of VdH dark GRB objects, filename without file extension,
-# Y or N to graph data, Y or N to del beta, image name, user defined ID
+# a function to determine optically-darkest GRB per unique GRB ID using the Van der Horst method
+# @param: list of VdH dark GRB objects, filename without file extension, Y or N to graph data, Y or N to del beta, image name, user defined ID
 def determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst, parsed_filename, yes_or_no_graph, yes_or_no_delB, image_name, user_defined_ID):
     # initialize counter
     counter = 0
-    # initialize dark counter
-    dark_counter = 0
     # initialize list of darkest GRBs
     darkest_GRBs_vanderHorst = []
 
@@ -549,65 +427,30 @@ def determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst, parsed_filename, y
 
             if yes_or_no_graph == "Y":
                 # graph dark bursts only
-                graph(darkest_GRBs_vanderHorst, parsed_filename, "\u03B2\u2092\u2093 vs."
-                                                                 " \u03B2\u2093 ("
-                      + user_defined_ID + "VdH Darkest): ", yes_or_no_delB, image_name)
+                graph(darkest_GRBs_vanderHorst, parsed_filename, "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID + "VdH Darkest): ", yes_or_no_delB, image_name)
 
-                # notify user of printing of optically darkest GRBs
-                print("\nList of Optically-Darkest GRBs by Van der Horst Criteria:\n")
-                print(
-                    " ID Number   \u0394t\u2093 [hr] \u0394t\u2092 [hr] \u0394t [hr]    "
-                    "\u03B2\u2093    \u03C3\u2093_Up   ""\u03C3\u2093_Low ""    \u03B2"
-                    "\u2092\u2093   \u03C3\u2092\u2093_Up  \u03C3\u2092\u2093_Low ")
-
-                # run through list of darkest GRBs
-                for l in darkest_GRBs_vanderHorst:
-                    # print out GRB object attributes for each dark GRB object in
-                    # list of darkest GRB objects
-                    print(l.ID, "\t" + l.dtX, "\t" + l.dtO, "\t" + l.del_t, "\t" +
-                          l.BetaX, "\t" + l.upper_sigmaX, "\t" + l.lower_sigmaX, "\t" +
-                          l.BetaOX, "\t" + l.upper_sigmaOX, "\t" + l.lower_sigmaOX)
-                    dark_counter += 1
-
-                print("\nNumber of Darkest Van der Horst Dark GRBs from", parsed_filename, ":", dark_counter, "\n")
-
+                easygui.codebox(msg=f"Number of Darkest Van der Horst Dark GRBs from {parsed_filename}: {len(darkest_GRBs_vanderHorst)}\nList of Optically-Darkest GRBs by Van der Horst Criteria:",
+                                title="Optically darkest GRBs",
+                                text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in darkest_GRBs_vanderHorst],
+                                    columns=["ID Number", "\u0394t\u2093 [hr]", "\u0394t\u2092 [hr]", "\u0394t [hr]", "\u03B2\u2093", "\u03C3\u2093_Up", "\u03C3\u2093_Low", "\u03B2\u2092\u2093",
+                                    "\u03C3\u2092\u2093_Up", "\u03C3\u2092\u2093_Low"]).to_string())
+                
+                # write data of optically dark bursts to file
+                writer = []
+                # write column headers to file
+                writer.append(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
+                                "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
+                                "sigma_ox_Up", "sigma_ox_Low"])
+                # run through list of dark GRBs according to the Van der Horst method
+                for q in darkest_GRBs_vanderHorst:
+                    # write GRB object attributes for each dark GRB object to file
+                    writer.append([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
+                                    q.lower_sigmaX, q.BetaOX, q.upper_sigmaOX, q.lower_sigmaOX])
+                                    
                 if yes_or_no_delB == 'Y':
-                    # write data of optically dark bursts to file
-                    with open(image_name + parsed_filename + "_w_delBeta.csv", 'w', newline='') as file:
-                        # open file object
-                        writer = []
-                        # write column headers to file
-                        writer.append(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                        "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                        "sigma_ox_Up", "sigma_ox_Low"])
-                        # run through list of dark GRBs
-                        # according to the Van der Horst method
-                        for q in darkest_GRBs_vanderHorst:
-                            # write GRB object attributes for each dark GRB object to file
-                            writer.append([q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
-                                        q.lower_sigmaX, q.BetaOX,
-                                        q.upper_sigmaOX, q.lower_sigmaOX])
-
-                        pd.DataFrame(writer).to_csv(image_name + parsed_filename + "_w_delBeta.csv",header=False,index=False)
+                    pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + "_w_delBeta.csv",header=False,index=False)
                 else:
-                    # write data of optically dark bursts to file
-                    with open(image_name + parsed_filename + ".csv", 'w',
-                              newline='') as file:
-                        # open file object
-                        writer = csv.writer(file)
-                        # write column headers to file
-                        writer.writerow(["ID Number", "dt_x [hr]", "dt_o [hr]", "dt [hr]",
-                                         "Beta_x", "sigma_x_Up", "sigma_x_Low", "Beta_ox",
-                                         "sigma_ox_Up",
-                                         "sigma_ox_Low"])
-                        # run through list of dark GRBs
-                        # according to the Van der Horst method
-                        for q in darkest_GRBs_vanderHorst:
-                            # write GRB object attributes for each dark GRB object to file
-                            writer.writerow(
-                                [q.ID, q.dtX, q.dtO, q.del_t, q.BetaX, q.upper_sigmaX,
-                                 q.lower_sigmaX, q.BetaOX,
-                                 q.upper_sigmaOX, q.lower_sigmaOX])
+                    pd.DataFrame(writer).to_csv(image_name + "dt_" + str(delta_t_beta) + ".csv",header=False,index=False)
 
         # return list of optically dark bursts
     return darkest_GRBs_vanderHorst
@@ -629,27 +472,18 @@ def isolate_ID(GRB_list, parsed_filename, user_defined_ID):
 
             # append GRB to list of GRB objects with user's ID of interest
             user_defined_ID_list.append(a)
-
-    # notify user of printing of optically dark GRBs
-    #print("\nList of GRBs with GRB ID " + user_defined_ID + ":\n")
-    # print out optically dark bursts
-    # print out GRB object attributes for each GRB object in list of
-    # GRB objects with user's ID of interest
-    easygui.codebox(title="Selected GRB data",
-                    text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in user_defined_ID_list],
-                                        columns=["ID Number","\u0394t\u2093 [hr]","\u0394t\u2092 [hr]","\u0394t [hr]","\u03B2\u2093","\u03C3\u2093_Up","\u03C3\u2093_Low","\u03B2\u2092\u2093","\u03C3\u2092\u2093_Up","\u03C3\u2092\u2093_Low"]).to_string())
-
-    interest_counter = len(user_defined_ID_list)
-
+    
     # check if no data point with user's ID of interest exists
-    if interest_counter == 0:
-        # notify user that no data point exists for ID of interest
-        print("\nThere is no data point with GRB ID " + user_defined_ID + " in file " +
-              parsed_filename + ".csv.  " + "Please try again.\n")
+    if len(user_defined_ID_list) > 0:
+        # print out GRB object attributes for each GRB object in list of GRB objects with user's ID of interest
+        easygui.codebox(msg=f"Found {len(user_defined_ID_list)} data points matching {user_defined_ID}.",
+                        title="Selected GRB data",
+                        text=pd.DataFrame([[l.ID, l.dtX, l.dtO, l.del_t, l.BetaX, l.upper_sigmaX, l.lower_sigmaX, l.BetaOX, l.upper_sigmaOX, l.lower_sigmaOX] for l in user_defined_ID_list],
+                                            columns=["ID Number","\u0394t\u2093 [hr]","\u0394t\u2092 [hr]","\u0394t [hr]","\u03B2\u2093","\u03C3\u2093_Up","\u03C3\u2093_Low","\u03B2\u2092\u2093","\u03C3\u2092\u2093_Up","\u03C3\u2092\u2093_Low"]).to_string())
     else:
-        # notify user of number of GRB objects with their ID of interest
-        print("\nNumber of GRBs with ID " + user_defined_ID + ": ", (interest_counter), "\n")
-
+        # notify user that no data point exists for ID of interest
+        easygui.msgbox("\nThere is no data point with GRB ID " + user_defined_ID + " in file " + parsed_filename + ".csv.  " + "Please try again.\n")
+    
     # return list of optically dark bursts
     return user_defined_ID_list
 
@@ -693,9 +527,10 @@ if __name__ == '__main__':
 
     # remove file extension from filename
     parsed_filename = os.path.splitext(file_name)[0]
-
+    print(parsed_filename,"\n",file_name)
     # call function for loading in file
     GRB_list = load_file(file_name)
+    delta_t_beta = int(file_name.split("_")[-2])
 
     # ask user if they wish to include delta beta due to temporal separation
     del_Beta_Y_N = easygui.ynbox("Include \u0394\u03B2 due to temporal separation?", "\u0394\u03B2 inclusion", ("Yes", "No"))
@@ -703,16 +538,11 @@ if __name__ == '__main__':
         del_Beta_Y_N = "Y"
     else:
         del_Beta_Y_N = "N"
-    print()
 
     # define global variable for delta beta_ox due to temporal separation
     global delta_beta_ox_t
     if del_Beta_Y_N == "Y":
-        # ask user for their desired delta beta due to temporal separation
-        delta_t_beta = float(easygui.integerbox("Please input the loaded file's temporal separation [%] (i.e. '5')"))
-        print()
         delta_beta_ox_t = np.log10(1 + (delta_t_beta / 100))
-        print("\n",delta_beta_ox_t,"\n")
     else:
         delta_beta_ox_t = 0
 
@@ -726,61 +556,43 @@ if __name__ == '__main__':
         if argument == '1':
             # call function for graphing Beta_OX parameters
             parsed_filename = graph(GRB_list, parsed_filename, "\u03B2\u2092\u2093 vs. \u03B2\u2093: ",del_Beta_Y_N, "Beta_OX_Graph_ALL-")
-        # check if user wishes to graph those GRB pairings that are optically-dark
-        # according to the Jakobbson method
+        # check if user wishes to graph those GRB pairings that are optically-dark according to the Jakobbson method
         elif argument == '2':
             # call function to determine if burst is optically dark using Jakobsson method
             # assign Y or N to graph to Yes
-            check_J_dark = len(determine_dark_Jakobsson(GRB_list, parsed_filename, "Y", del_Beta_Y_N, "Jakobsson_Dark-",""))
-            # check if there are no dark GRBs according to the Jakobbson method
-            # for the user defined ID
+            check_J_dark = len(determine_dark_Jakobsson(GRB_list, parsed_filename, "Y", del_Beta_Y_N, "Jak_Dark-",""))
+            # check if there are no dark GRBs according to the Jakobbson method for the user defined ID
             if check_J_dark == 0:
                 # notify user
                 print("\nThere are no dark GRBs according to the Jakobbson method for GRB " + user_defined_ID + ".")
-        # check if user wishes to graph those GRB pairings that are optically-dark
-        # according to the Van der Horst method
+        # check if user wishes to graph those GRB pairings that are optically-dark according to the Van der Horst method
         elif argument == '3':
-            # call function to determine if burst is optically dark
-            # using Van der Horst method
-            # assign Y or N to graph to Yes
-            check_vdH_dark = len(determine_dark_vanderHorst(GRB_list, parsed_filename, "Y", del_Beta_Y_N, "VanderHorst_Dark-", ""))
-            # check if there are no dark GRBs according to the
-            # Van der Horst method for the user defined ID
+            # call function to determine if burst is optically dark using Van der Horst method assign Y or N to graph to Yes
+            check_vdH_dark = len(determine_dark_vanderHorst(GRB_list, parsed_filename, "Y", del_Beta_Y_N, "vdH_Dark-", ""))
+            # check if there are no dark GRBs according to the Van der Horst method for the user defined ID
             if check_vdH_dark == 0:
                 # notify user
                 print("\nThere are no dark GRBs according to the Van der Horst method for GRB " + user_defined_ID + ".")
-        # Check if user wishes to graph only the GRB pairings that are the darkest
-        # for their unique GRB ID according
-        # to the Jakobbson method
+        # Check if user wishes to graph only the GRB pairings that are the darkest for their unique GRB ID according to the Jakobbson method
         elif argument == '4':
             # call function to determine if burst is optically dark using Jakobsson method
             # assign Y or N to graph to No
-            dark_GRBs_list_Jakobsson = determine_dark_Jakobsson(GRB_list, parsed_filename,
-                                                                "N", del_Beta_Y_N,
-                                                                "Jakobsson_Dark-", "")
-            # call function to determine darkest burst per
-            # unique GRB ID by Jakobsson method
-            check_J_dark = len(determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson,
-                            parsed_filename, "Y", del_Beta_Y_N, "Jakobsson_Darkest-", ""))
-            # check if there are no dark GRBs according to
-            # the Jakobbson method for the user defined ID
+            dark_GRBs_list_Jakobsson = determine_dark_Jakobsson(GRB_list, parsed_filename, "N", del_Beta_Y_N, "Jak_Dark-", "")
+            # call function to determine darkest burst per unique GRB ID by Jakobsson method
+            check_J_dark = len(determine_darkest_Jakobsson(dark_GRBs_list_Jakobsson, parsed_filename, "Y", del_Beta_Y_N, "Jak_Darkest-", ""))
+            # check if there are no dark GRBs according to the Jakobbson method for the user defined ID
             if check_J_dark == 0:
                 # notify user
                 print("\nThere are no dark GRBs according to the Jakobbson method for GRB " + user_defined_ID + ".")
-        # Check if user wishes to graph only the GRB pairings that are the darkest for
-        # their unique GRB ID according to the Van der Horst method
+        # Check if user wishes to graph only the GRB pairings that are the darkest for their unique GRB ID according to the Van der Horst method
         elif argument == '5':
-            # call function to determine if burst is optically dark
-            # using Van der Horst method
+            # call function to determine if burst is optically dark using Van der Horst method
             # assign Y or N to graph to No
-            dark_GRBs_list_vanderHorst = determine_dark_vanderHorst(GRB_list,
-                            parsed_filename, "N", del_Beta_Y_N, "VanderHorst_Dark-", "")
+            dark_GRBs_list_vanderHorst = determine_dark_vanderHorst(GRB_list, parsed_filename, "N", del_Beta_Y_N, "vdH_Dark-", "")
             # call function to determine darkest burst per unique GRB ID by the
             # Van der Horst method
-            check_vdH_dark = len(determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst,
-                        parsed_filename, "Y", del_Beta_Y_N, "vanderHorst_Darkest-", ""))
-            # check if there are no dark GRBs according to the
-            # Van der Horst method for the user defined ID
+            check_vdH_dark = len(determine_darkest_vanderHorst(dark_GRBs_list_vanderHorst, parsed_filename, "Y", del_Beta_Y_N, "vdH_Darkest-", ""))
+            # check if there are no dark GRBs according to the Van der Horst method for the user defined ID
             if check_vdH_dark == 0:
                 # notify user
                 print("\nThere are no dark GRBs according to the Van der Horst method for GRB "+ user_defined_ID + ".")
@@ -788,7 +600,7 @@ if __name__ == '__main__':
         elif argument == '6':
 
             # ask user for their GRB ID of interest
-            user_defined_ID = "ID-" + easygui.enterbox(msg="Please enter the GRB ID of interest.", title="GRB selection", default="(i.e. '050204')")
+            user_defined_ID = easygui.choicebox(msg="Please select the GRB ID of interest.", title="GRB selection", choices=list(set([grb.ID for grb in GRB_list])))
 
             # pass variable containing user's GRB of interest to function to create a
             # list of all data points with that unique ID and assign to list
@@ -802,82 +614,64 @@ if __name__ == '__main__':
                     # assign variable for user's choice
                     # call function to display user's options
                     sub_choice = user_choice("unique")
-                    # check if user wishes to graph all data points
-                    # with the GRB ID of interest
+                    # check if user wishes to graph all data points with the GRB ID of interest
                     if sub_choice == 'A':
                         # graph all data points with user's ID of interest
                         graph(user_defined_ID_list, parsed_filename,
-                              "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID +
-                              " All): ", del_Beta_Y_N,
-                              "ALL_" + user_defined_ID + "-")
-                    # check if user wishes to graph those data points with the GRB ID of
-                    # interest that are optically-dark according to the Jakobbson method
+                              "\u03B2\u2092\u2093 vs. \u03B2\u2093 (" + user_defined_ID + " All): ", del_Beta_Y_N, "ALL_" + user_defined_ID + "-")
+                    # check if user wishes to graph those data points with the GRB ID of interest that are optically-dark according to the Jakobbson method
                     elif sub_choice == 'B':
-                        # call function to determine if burst is optically dark using
-                        # the Jakobsson method
+                        # call function to determine if burst is optically dark using the Jakobsson method
                         # assign Y or N to graph to Yes
                         check_J_dark = len(determine_dark_Jakobsson(user_defined_ID_list,
-                                parsed_filename, "Y", del_Beta_Y_N, "Jakobsson_Dark_" +
+                                parsed_filename, "Y", del_Beta_Y_N, "Jak_Dark_" +
                                 user_defined_ID + "-",  user_defined_ID + " "))
-                        # check if there are no dark GRBs according to
-                        # the Jakobbson method for the user defined ID
+                        # check if there are no dark GRBs according to the Jakobbson method for the user defined ID
                         if check_J_dark == 0:
                             # notify user
                             print("\nThere are no dark GRBs according to the Jakobbson method for GRB " + user_defined_ID + ".")
-                    # check if user wishes to graph those data points with the GRB ID of
-                    # interest that are optically-dark according to the Van der Horst method
+                    # check if user wishes to graph those data points with the GRB ID of interest that are optically-dark according to the Van der Horst method
                     elif sub_choice == 'C':
-                        # call function to determine if burst is optically dark
-                        # using the Van der Horst method
+                        # call function to determine if burst is optically dark using the Van der Horst method
                         # assign Y or N to graph to Yes
                         check_vdH_dark = len(determine_dark_vanderHorst(
                             user_defined_ID_list, parsed_filename, "Y",del_Beta_Y_N,
-                            "VanderHorst_Dark_" + user_defined_ID + "-", user_defined_ID
+                            "vdH_Dark_" + user_defined_ID + "-", user_defined_ID
                             + " "))
-                        # check if there are no dark GRBs according to the
-                        # Van der Horst method for the user defined ID
+                        # check if there are no dark GRBs according to the Van der Horst method for the user defined ID
                         if check_vdH_dark == 0:
                             # notify user
                             print("\nThere are no dark GRBs according to the Van der Horst method for GRB " + user_defined_ID + ".")
-                    # check if user wishes to graph only the data point that
-                    # is the darkest for the GRB ID of interest
-                    # according to the Jakobbson method
+                    # check if user wishes to graph only the data point that is the darkest for the GRB ID of interest according to the Jakobbson method
                     elif sub_choice == 'D':
-                        # call function to determine if burst is
-                        # optically dark using Jakobsson method
+                        # call function to determine if burst is optically dark using Jakobsson method
                         # assign Y or N to graph to No
                         dark_GRBs_list_J_user_defined = determine_dark_Jakobsson(
                             user_defined_ID_list, parsed_filename, "N", del_Beta_Y_N,
                             "null", "")
 
-                        # call function to determine darkest burst per
-                        # unique GRB ID by Jakobsson criteria
+                        # call function to determine darkest burst per unique GRB ID by Jakobsson criteria
                         check_J_dark = len(determine_darkest_Jakobsson(
                             dark_GRBs_list_J_user_defined, parsed_filename, "Y",
-                            del_Beta_Y_N, "Jakobsson_Darkest_" + user_defined_ID + "-",
+                            del_Beta_Y_N, "Jak_Darkest_" + user_defined_ID + "-",
                             user_defined_ID + " ") )
-                        # check if there are no dark GRBs according to the
-                        # Jakobbson method for the user defined ID
+                        # check if there are no dark GRBs according to the Jakobbson method for the user defined ID
                         if check_J_dark == 0:
                             # notify user
                             print("\nThere are no dark GRBs according to the Jakobbson method for GRB " + user_defined_ID + ".")
-                    # check if user wishes to graph only the data point that is the darkest
-                    # for the GRB ID of interest according to the Jakobbson method
+                    # check if user wishes to graph only the data point that is the darkest for the GRB ID of interest according to the Jakobbson method
                     elif sub_choice == 'E':
-                        # call function to determine if burst is
-                        # optically dark using Van der Horst method
+                        # call function to determine if burst is optically dark using Van der Horst method
                         # assign Y or N to graph to No
                         dark_GRBs_list_v_user_defined = determine_dark_vanderHorst(
                             user_defined_ID_list, parsed_filename, "N", del_Beta_Y_N,
                             "null", "")
-                        # call function to determine darkest burst per
-                        # unique GRB ID by Van der Horst method
+                        # call function to determine darkest burst per unique GRB ID by Van der Horst method
                         check_vdH_dark = len(determine_darkest_vanderHorst(
                             dark_GRBs_list_v_user_defined, parsed_filename, "Y",
-                            del_Beta_Y_N, "VanderHorst_Darkest_" + user_defined_ID + "-",
+                            del_Beta_Y_N, "vdH_Darkest_" + user_defined_ID + "-",
                             user_defined_ID + " "))
-                        # check if there are no dark GRBs according to the
-                        # Van der Horst method for the user defined ID
+                        # check if there are no dark GRBs according to the Van der Horst method for the user defined ID
                         if check_vdH_dark == 0:
                             # notify user
                             print("\nThere are no dark GRBs according to the Van der Horst method for GRB " + user_defined_ID + ".")

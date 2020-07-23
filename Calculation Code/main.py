@@ -196,7 +196,7 @@ class Trial:
         self.IDs_in_Opt_not_X = []
 
     # Loads X-Ray data file into the vector of GRBs
-    def loadX_RayData(self, filename):
+    def load_XRayData(self, filename):
         #initialize variable for number of GRBs loaded
         counter = 0
         #initialize string variable for old ID used in GRB ID multiplicity determination
@@ -270,7 +270,7 @@ class Trial:
     # Loads Beta_X data file. Uses the GRB ID to locate the
     # GRB ID in the vector, then sets the GRB object to
     # also contain the correct Beta_X values
-    def loadBeta_X(self, filename):
+    def load_BetaX(self, filename):
 
         #define variable for total loaded Beta X elements
         total_loaded = 0
@@ -331,7 +331,7 @@ class Trial:
     # Loads optical data file. Uses the GRB ID to locate the
     # GRB ID in the vector, then sets the GRB object to
     # also contain the correct optical data values
-    def loadOpticalData(self, filename):
+    def load_OpticalData(self, filename):
         #define variables for GRB attributes
 
         #initialize variable for number of subjects loaded
@@ -481,7 +481,7 @@ class Trial:
 
     # Loads wavelength data file and pairs each GRB based on
     # telescope and filter information appropriate wavelength
-    def loadWavelengthData(self, filename):
+    def load_WavelengthData(self, filename):
         #define variables for GRB attributes
 
         #initialize variable for number of subjects loaded
@@ -708,7 +708,6 @@ class Trial:
             if  ID == self.XRay_entries[kumquat].ID:
                 #set boolean to True if match found
                 corresponding_ID_found = True
-
 
         #check if no match was found
         if  corresponding_ID_found == False:
@@ -948,7 +947,7 @@ class Trial:
 
     # A private function used to return the location
     # in the  vector of GRBs of a GRB with a
-    # particular GRB ID used in the loadOpticalData
+    # particular GRB ID used in the load_OpticalData
     # to locate where a particular GRB is
     def findGRB(self, ID):
         #initialize bool variable to determine if match occurs
@@ -982,22 +981,18 @@ if __name__ == '__main__':
     XRayDataFile_name = fileopenbox()
     print("Selected",XRayDataFile_name)
     
-    
     #call function for loading X-Ray data
     #pass name of file for X-Ray data
-    t1.loadX_RayData(XRayDataFile_name)
-
-    #formatting
-    print("\n")
+    t1.load_XRayData(XRayDataFile_name)
 
     #ask user for name of file they wish to load for Beta_X data
-    print("Please select the Beta_X data file.")
+    print("\nPlease select the Beta_X data file.")
     Beta_X_File_name = fileopenbox()
     print("Selected",Beta_X_File_name)
 
     #call function for loading X-Ray data
     #pass name of file for X-Ray data
-    t1.loadBeta_X(Beta_X_File_name)
+    t1.load_BetaX(Beta_X_File_name)
 
     #formatting
     print("\n")
@@ -1012,28 +1007,25 @@ if __name__ == '__main__':
     
     #call function for loading optical data
     #pass name of file for optical data
-    t1.loadOpticalData(OpticalData_name)
-
-    #formatting
-    print("\n")
+    t1.load_OpticalData(OpticalData_name)
 
     #ask user for name of file they wish to load for side effects
-    print("Please select the wavelength data file.")
+    print("\nPlease select the wavelength data file.")
     WavelengthData_name = fileopenbox()
     print("Selected",WavelengthData_name)
 
     #call function for loading wavelength data
     #pass name of file for wavelength data
-    t1.loadWavelengthData(WavelengthData_name)
+    t1.load_WavelengthData(WavelengthData_name)
 
-    print() #for formatting purposes
+    print("\nNow calculating Beta_OX...") #for formatting purposes
     
-    input("Press any key to calculate Beta_OX.")
-
     #calculate X-Ray to optical spectral indices
     t1.calculate_Beta_OX()
 
     #write paired data to .csv file
     t1.write_paired_data()
+
+    print("\nComplete. Terminating...")
 
     pass

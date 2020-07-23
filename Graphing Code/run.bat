@@ -1,0 +1,2 @@
+cd "C:\Users\Caden Gobat\Documents\GitHub\dark-GRBs"
+"C:/Users/Caden Gobat/AppData/Local/Programs/Python/Python36/python.exe" "c:/Users/Caden Gobat/Documents/GitHub/dark-GRBs/Graphing Code/Graphing_Beta_OX.py"

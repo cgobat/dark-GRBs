@@ -490,7 +490,7 @@ def isolate_ID(GRB_list, parsed_filename, user_defined_ID):
 # function to print out user's choices
 # @params: Variable designating which menu list to print
 # @returns: user's argument
-def user_choice(fork_in_the_road):
+def user_choice(fork_in_the_road,selected_ID):
 
     # check if user is choosing from main menu
     if fork_in_the_road == "main":
@@ -507,13 +507,13 @@ def user_choice(fork_in_the_road):
     # check if user is choosing from submenu
     elif fork_in_the_road == "unique":
         # print out choices for user
-        argument = easygui.choicebox(msg="Please choose from one of the subsection choices below for your GRB ID of interest.",
+        argument = easygui.choicebox(msg="Please choose from one of the subsection choices below for your selected GRB ID.",
                                     title="Graph selection",
-                                    choices=["A: Graph all data points with the GRB ID of interest.",
-                                            "B: Graph those data points with the GRB ID of interest that are optically-dark according to the Jakobbson method.",
-                                            "C: Graph those data points with the GRB ID of interest that are optically-dark according to the Van der Horst method.",
-                                            "D: Graph only the data point that is the darkest for the GRB ID of interest according to the Jakobbson method.",
-                                            "E: Graph only the data point that is the darkest for the GRB ID of interest according to the Van der Horst method.",
+                                    choices=[f"A: Graph all data points for GRB {selected_ID}.",
+                                            f"B: Graph those data points for GRB {selected_ID} that are optically-dark according to the Jakobbson method.",
+                                            f"C: Graph those data points for GRB {selected_ID} that are optically-dark according to the Van der Horst method.",
+                                            f"D: Graph only the data point that is the darkest for GRB {selected_ID} according to the Jakobbson method.",
+                                            f"E: Graph only the data point that is the darkest for GRB {selected_ID} according to the Van der Horst method.",
                                             "R: Return to the main menu."])[0]
 
     # return's user's choice
@@ -550,7 +550,7 @@ if __name__ == '__main__':
     while True:
         # assign variable for user's choice
         # call function to display user's options
-        argument = user_choice("main")
+        argument = user_choice("main",None)
 
         # check if user wishes to graph all data from the loaded file
         if argument == '1':
@@ -613,7 +613,7 @@ if __name__ == '__main__':
                 while True:
                     # assign variable for user's choice
                     # call function to display user's options
-                    sub_choice = user_choice("unique")
+                    sub_choice = user_choice("unique", user_defined_ID)
                     # check if user wishes to graph all data points with the GRB ID of interest
                     if sub_choice == 'A':
                         # graph all data points with user's ID of interest
@@ -623,9 +623,8 @@ if __name__ == '__main__':
                     elif sub_choice == 'B':
                         # call function to determine if burst is optically dark using the Jakobsson method
                         # assign Y or N to graph to Yes
-                        check_J_dark = len(determine_dark_Jakobsson(user_defined_ID_list,
-                                parsed_filename, "Y", del_Beta_Y_N, "Jak_Dark_" +
-                                user_defined_ID + "-",  user_defined_ID + " "))
+                        check_J_dark = len(determine_dark_Jakobsson(user_defined_ID_list, parsed_filename, "Y", del_Beta_Y_N, "Jak_Dark_" + user_defined_ID + "-",
+                                            user_defined_ID + " "))
                         # check if there are no dark GRBs according to the Jakobbson method for the user defined ID
                         if check_J_dark == 0:
                             # notify user
@@ -634,10 +633,8 @@ if __name__ == '__main__':
                     elif sub_choice == 'C':
                         # call function to determine if burst is optically dark using the Van der Horst method
                         # assign Y or N to graph to Yes
-                        check_vdH_dark = len(determine_dark_vanderHorst(
-                            user_defined_ID_list, parsed_filename, "Y",del_Beta_Y_N,
-                            "vdH_Dark_" + user_defined_ID + "-", user_defined_ID
-                            + " "))
+                        check_vdH_dark = len(determine_dark_vanderHorst(user_defined_ID_list, parsed_filename, "Y",del_Beta_Y_N, "vdH_Dark_" + user_defined_ID + "-",
+                                                user_defined_ID + " "))
                         # check if there are no dark GRBs according to the Van der Horst method for the user defined ID
                         if check_vdH_dark == 0:
                             # notify user
@@ -646,15 +643,11 @@ if __name__ == '__main__':
                     elif sub_choice == 'D':
                         # call function to determine if burst is optically dark using Jakobsson method
                         # assign Y or N to graph to No
-                        dark_GRBs_list_J_user_defined = determine_dark_Jakobsson(
-                            user_defined_ID_list, parsed_filename, "N", del_Beta_Y_N,
-                            "null", "")
+                        dark_GRBs_list_J_user_defined = determine_dark_Jakobsson(user_defined_ID_list, parsed_filename, "N", del_Beta_Y_N, "null", "")
 
                         # call function to determine darkest burst per unique GRB ID by Jakobsson criteria
-                        check_J_dark = len(determine_darkest_Jakobsson(
-                            dark_GRBs_list_J_user_defined, parsed_filename, "Y",
-                            del_Beta_Y_N, "Jak_Darkest_" + user_defined_ID + "-",
-                            user_defined_ID + " ") )
+                        check_J_dark = len(determine_darkest_Jakobsson(dark_GRBs_list_J_user_defined, parsed_filename, "Y", del_Beta_Y_N,
+                                            "Jak_Darkest_" + user_defined_ID + "-", user_defined_ID + " ") )
                         # check if there are no dark GRBs according to the Jakobbson method for the user defined ID
                         if check_J_dark == 0:
                             # notify user
@@ -663,14 +656,10 @@ if __name__ == '__main__':
                     elif sub_choice == 'E':
                         # call function to determine if burst is optically dark using Van der Horst method
                         # assign Y or N to graph to No
-                        dark_GRBs_list_v_user_defined = determine_dark_vanderHorst(
-                            user_defined_ID_list, parsed_filename, "N", del_Beta_Y_N,
-                            "null", "")
+                        dark_GRBs_list_v_user_defined = determine_dark_vanderHorst(user_defined_ID_list, parsed_filename, "N", del_Beta_Y_N, "null", "")
                         # call function to determine darkest burst per unique GRB ID by Van der Horst method
-                        check_vdH_dark = len(determine_darkest_vanderHorst(
-                            dark_GRBs_list_v_user_defined, parsed_filename, "Y",
-                            del_Beta_Y_N, "vdH_Darkest_" + user_defined_ID + "-",
-                            user_defined_ID + " "))
+                        check_vdH_dark = len(determine_darkest_vanderHorst(dark_GRBs_list_v_user_defined, parsed_filename, "Y", del_Beta_Y_N,
+                                                "vdH_Darkest_" + user_defined_ID + "-", user_defined_ID + " "))
                         # check if there are no dark GRBs according to the Van der Horst method for the user defined ID
                         if check_vdH_dark == 0:
                             # notify user

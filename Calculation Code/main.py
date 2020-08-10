@@ -61,7 +61,7 @@ class GRB:
         #create constructor by the following assignment statements
         self.GRB_ID = id
         self.dt_XRay = dt_X
-        self.ExpT_XRay = Fx
+        self.ExpT_XRay = ExpT_X
         self.F_x = Fx
         self.sigma_x = sig_x
 
@@ -91,69 +91,6 @@ class GRB:
     def report(self):
         print(self.GRB_ID, self.dt_XRay, self.ExpT_XRay, self.F_x, self.sigma_x, self.Beta_X, self.Beta_X_upper_sigma, self.Beta_X_lower_sigma, self.dt_Opt, self.telescope, self.instrument, self.filter, self.ExpT_Opt, self.F_o, self.sigma_o, self.frequency_XRay, self.frequency_Opt, self.Beta_OX, self.sigma_OX_upper, self.sigma_OX_lower)
 
-    # Accessor and Observers for each field of the X-Ray data.
-    def set_Beta_X(self, b):
-        #set X-Ray spectral flux density
-        self.Beta_X = b
-    def set_Beta_X_upper_sigma(self, u):
-        #set upper bound of X-Ray spectral flux density
-        self.Beta_X_upper_sigma = u
-    def set_Beta_X_lower_sigma(self, l):
-        #set lower bound of X-Ray spectral flux density
-        self.Beta_X_lower_sigma = l
-
-    # Accessor and Observers for each field of the Optical data
-    def set_dt_Opt(self, dt):
-        #set optical dt of GRB
-        self.dt_Opt= dt
-
-    def set_telescope(self, tel):
-        #set optical telescope name
-        self.telescope = tel
-
-    def set_instrument(self, i):
-        #set optical instrument name
-        self.instrument = i
-
-    def set_filter(self, f):
-        #set filter name
-        self.filter = f
-
-    def set_Exp_Opt(self, e):
-        #set optical exposure time
-        self.ExpT_Opt = e
-
-    def set_F_o(self, f):
-        #set optical flux density
-        self.F_o = f
-
-    def set_sigma_o(self, s):
-        #set optical flux density standard deviation
-        self.sigma_o = s
-
-    def set_References_Opt(self, r):
-        #set optical references
-        self.References_Opt = r
-
-    def set_frequency_XRay(self, f):
-        #set X-Ray frequency
-        self.frequency_XRay = f
-
-    def set_frequency_Opt(self, wa):
-        #set optical frequency
-        self.frequency_Opt = wa
-
-    def set_Beta_OX(self, b):
-        #set Beta_OX
-        self.Beta_OX = b
-
-    def set_sigma_OX_upper(self, s):
-        #set upper bound on Beta_OX uncertainty
-        self.sigma_OX_upper = s
-
-    def set_sigma_OX_lower(self, s):
-        #set lower bound on Beta_OX uncertainty
-        self.sigma_OX_lower = s
 
 # A class used for determining total number of possible outcomes
 # between X-Ray and optical data
@@ -163,14 +100,6 @@ class Possibility:
     def __init__(self, id, mult):
         self.ID = id
         self.multiplicity = mult
-
-    #Accessors and observers for the class
-    def set_ID(self, id ):
-        #set ID
-        self.ID = id
-    def set_multiplicity(self, m ):
-        #set multiplicity
-        multiplicity = m
 
 
 class Trial:
@@ -203,8 +132,6 @@ class Trial:
         old_ID = None
         #initialize counter used for determining number of data points for each unique ID
         entries_per_ID = 0
-
-        # <insert exception code here>
 
         xrayData = pd.read_csv(str(filename), header=None)
 
@@ -244,7 +171,6 @@ class Trial:
                 #old_ID, there is already a entry
                 entries_per_ID = 1
 
-
             old_ID = ID
             #increment counter
             counter += 1
@@ -279,8 +205,6 @@ class Trial:
         #initialize variable for rate of successful pairings
         pairing_rate = 0
 
-        #<test to see if file opens successfully>
-        
         BetaXData = pd.read_csv(filename, header=None)
         print("*** Beta_X Data ***")
         print(BetaXData)
@@ -301,9 +225,9 @@ class Trial:
                 #match GRB IDs
                 if  self.GRBs[a].GRB_ID == ID:
                     #assign attributes to appropriate GRB
-                    self.GRBs[a].set_Beta_X(Beta_X)
-                    self.GRBs[a].set_Beta_X_upper_sigma(Beta_X_upper_sigma)
-                    self.GRBs[a].set_Beta_X_lower_sigma(Beta_X_lower_sigma)
+                    self.GRBs[a].Beta_X = Beta_X
+                    self.GRBs[a].Beta_X_upper_sigma = Beta_X_upper_sigma
+                    self.GRBs[a].Beta_X_lower_sigma = Beta_X_lower_sigma
 
                     #signify match
                     success = True
@@ -369,9 +293,6 @@ class Trial:
             #transform optical dt measurement from hours into seconds
             dtO_seconds = 3600 * dtO_hours
 
-            #display loaded features
-            #print(line)
-
             #initialize variable for location in GRB vector
             location = 0
             #initialize counter for checking if any pairings were made at all
@@ -385,7 +306,6 @@ class Trial:
                 #initialize old_ID to entry read from optical file if
                 #self is the first entry from optical file
                 old_ID = ID
-
 
             #check if ID has been reached
             if  new_ID == old_ID:
@@ -427,18 +347,18 @@ class Trial:
                     copy_grb = GRB(self.GRBs[location].GRB_ID, self.GRBs[location].dt_XRay, self.GRBs[location].ExpT_XRay, self.GRBs[location].F_x, self.GRBs[location].sigma_x)
 
                     #set corresponding GRB appropriate Beta_X parameters
-                    copy_grb.set_Beta_X(self.GRBs[location].Beta_X)
-                    copy_grb.set_Beta_X_lower_sigma(self.GRBs[location].Beta_X_lower_sigma)
-                    copy_grb.set_Beta_X_upper_sigma(self.GRBs[location].Beta_X_upper_sigma)
+                    copy_grb.Beta_X = self.GRBs[location].Beta_X
+                    copy_grb.Beta_X_lower_sigma = self.GRBs[location].Beta_X_lower_sigma
+                    copy_grb.Beta_X_upper_sigma = self.GRBs[location].Beta_X_upper_sigma
 
                     #set corresponding GRB appropriate optical parameters
-                    copy_grb.set_dt_Opt(dtO_seconds)
-                    copy_grb.set_telescope(tel)
-                    copy_grb.set_instrument(inst)
-                    copy_grb.set_filter(fil)
-                    copy_grb.set_Exp_Opt(ExpO)
-                    copy_grb.set_F_o(Fo)
-                    copy_grb.set_sigma_o(sigmaO)
+                    copy_grb.dt_Opt = dtO_seconds
+                    copy_grb.telescope = tel
+                    copy_grb.instrument = inst
+                    copy_grb.filter = fil
+                    copy_grb.Exp_Opt = ExpO
+                    copy_grb.F_o = Fo
+                    copy_grb.sigma_o = sigmaO
 
                     #add newly-created GRB with optical data to
                     #vector of GRBs with optical data
@@ -593,15 +513,14 @@ class Trial:
                     sigma_OX_lower = 0
 
                 #set calculated value into GRB Beta_OX attribute
-                self.GRBs_with_Opt[a].set_Beta_OX(Beta_OX)
-                self.GRBs_with_Opt[a].set_sigma_OX_upper(sigma_OX_upper)
-                self.GRBs_with_Opt[a].set_sigma_OX_lower(sigma_OX_lower)
+                self.GRBs_with_Opt[a].Beta_OX = Beta_OX
+                self.GRBs_with_Opt[a].sigma_OX_upper = sigma_OX_upper
+                self.GRBs_with_Opt[a].sigma_OX_lower = sigma_OX_lower
 
                 print(self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].F_x,self.GRBs_with_Opt[a].sigma_x,self.GRBs_with_Opt[a].F_o,self.GRBs_with_Opt[a].sigma_o,self.GRBs_with_Opt[a].frequency_XRay,self.GRBs_with_Opt[a].frequency_Opt,self.GRBs_with_Opt[a].Beta_OX,self.GRBs_with_Opt[a].sigma_OX_upper,self.GRBs_with_Opt[a].sigma_OX_lower)
 
                 #increment success counter for successful calculation
                 success_counter += 1
-
 
         #display loaded statistics
         print("Number of Successful Beta_OX Calculations:",success_counter)
@@ -681,7 +600,7 @@ class Trial:
             #also test to see if GRB has not yet been populated with wavelength parameters
             if  self.GRBs_with_Opt[a].telescope == tel and self.GRBs_with_Opt[a].instrument == inst and self.GRBs_with_Opt[a].filter == filt and self.GRBs_with_Opt[a].frequency_Opt == -1:
                 #pair GRB with frequency data
-                self.GRBs_with_Opt[a].set_frequency_Opt(frequency)
+                self.GRBs_with_Opt[a].frequency_Opt = frequency
 
                 #increment success counter
                 thatsapair += 1

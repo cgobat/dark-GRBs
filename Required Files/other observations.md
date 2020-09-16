@@ -21,7 +21,6 @@
 | w1       | 651        | 1466      | 97     | >18.8 |
 | m2       | 626        | 646       | 19     | >18.1 |
 | w2       | 576        | 1220      | 58     | >19.2 |
-- Chandra found no x-ray source coincident with XRT position (GCN 27589)
 
 #### X-ray
 - GCN 27540: Swift XRT 6.6 ksec of data from t=6s to t=13000s after trigger. 

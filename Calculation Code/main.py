@@ -24,7 +24,7 @@ index (Beta_OX) of well-documented Gamma Ray Bursts (GRBs), program loads in
 multiple files containing disparate GRB characteristics (in order: X-ray flux data,
 Beta_X data, flux data, optical telescope filter data; fields correspond to
 Tables in Fong et al. 2015) and pairs burst measurements based on ID number and
-user-defined temporal separation between optical and X-Ray measurements.  The fully-
+user-defined temporal separation between optical and X-Ray measurements. The fully-
 populated GRBs, parameters which include a calculated value for Beta_OX, then
 written to .csv files for further analysis.
 """
@@ -86,7 +86,7 @@ class GRB:
         #used to check for full population for the Trial print and write function
         self.frequency_Opt = -1
 
-    # Prints attributes of particular GRB neatly.  Items should
+    # Prints attributes of particular GRB neatly. Items should
     # print in the order listed for private data members below
     def report(self):
         print(self.GRB_ID, self.dt_XRay, self.ExpT_XRay, self.F_x, self.sigma_x, self.Beta_X, self.Beta_X_upper_sigma, self.Beta_X_lower_sigma, self.dt_Opt, self.telescope, self.instrument, self.filter, self.ExpT_Opt, self.F_o, self.sigma_o, self.frequency_XRay, self.frequency_Opt, self.Beta_OX, self.sigma_OX_upper, self.sigma_OX_lower)
@@ -107,7 +107,7 @@ class Trial:
         self.GRBs = [] #array of GRB objects
         self.GRBs_with_Opt = [] #GRBs with optical data
 
-        #define a vector which has number of elements corresponding to the total number
+        #define a list which has number of elements corresponding to the total number
         #of different GRB IDs in the X-Ray file and elements corresponding to the
         #total number of entries per individual GRB ID
         #Ex: GRBs_with_Opt.size() = N; GRBs_With_Opt = {1,5,...,n
@@ -117,14 +117,14 @@ class Trial:
         #would have N entries
         self.XRay_entries = []
 
-        #define a vector identical to XRay_entries but for the optical file
+        #define a list identical to XRay_entries but for the optical file
         self.optical_entries = []
 
-        #define a vector of GRBs filled with IDs that exist in optical data but not in X-Ray
+        #define a list of GRBs filled with IDs that exist in optical data but not in X-Ray
         # data
         self.IDs_in_Opt_not_X = []
 
-    # Loads X-Ray data file into the vector of GRBs
+    # Loads X-Ray data file into the list of GRBs
     def load_XRayData(self, filename):
         #initialize variable for number of GRBs loaded
         counter = 0
@@ -162,7 +162,7 @@ class Trial:
                 #construct Possibility object with corresponding data
                 new_Possibility = Possibility(old_ID, entries_per_ID)
 
-                #add in element to vector containing number of entires per unique
+                #add in element to list containing number of entires per unique
                 #GRB ID read from optical file
                 self.XRay_entries.append(new_Possibility)
 
@@ -175,17 +175,17 @@ class Trial:
             #increment counter
             counter += 1
 
-            #put the GRB object in the vector of GRBs
+            #put the GRB object in the list of GRBs
             self.GRBs.append(grb)
 
             #display loaded features
             #print(ID, dtX, ExpX, Fx, sigmaX)
 
-        #add last pair to vector of multiplicities
+        #add last pair to list of multiplicities
         #construct Possibility object with corresponding data
         new_Possibility = Possibility(old_ID, entries_per_ID)
 
-        #add in element to vector containing number of entires per unique
+        #add in element to list containing number of entires per unique
         #GRB ID read from optical file
         self.XRay_entries.append(new_Possibility)
 
@@ -194,7 +194,7 @@ class Trial:
         return counter
 
     # Loads Beta_X data file. Uses the GRB ID to locate the
-    # GRB ID in the vector, then sets the GRB object to
+    # GRB ID in the list, then sets the GRB object to
     # also contain the correct Beta_X values
     def load_BetaX(self, filename):
 
@@ -220,10 +220,10 @@ class Trial:
             #increment counter for successful load
             total_loaded += 1
 
-            # run through vector of GRBs
+            # run through list of GRBs
             for a in range(len(self.GRBs)):
                 #match GRB IDs
-                if  self.GRBs[a].GRB_ID == ID:
+                if self.GRBs[a].GRB_ID == ID:
                     #assign attributes to appropriate GRB
                     self.GRBs[a].Beta_X = Beta_X
                     self.GRBs[a].Beta_X_upper_sigma = Beta_X_upper_sigma
@@ -235,12 +235,12 @@ class Trial:
                     Beta_X_pairs += 1
 
             #check if no match was found
-            if  success == False :
+            if success == False :
                 #notify user that no match was able to be found
                 print("\nUnable to match GRB ID",ID,"with Beta_X",Beta_X)
 
         #calculate percent of loaded GRBs that are paired
-        pairing_rate = (Beta_X_pairs /  len(self.GRBs))*100
+        pairing_rate = (Beta_X_pairs / len(self.GRBs))*100
 
         #notify user of loading statistics
         print("Number of loaded GRBs from Beta_X file:",total_loaded)
@@ -253,7 +253,7 @@ class Trial:
         return total_loaded
 
     # Loads optical data file. Uses the GRB ID to locate the
-    # GRB ID in the vector, then sets the GRB object to
+    # GRB ID in the list, then sets the GRB object to
     # also contain the correct optical data values
     def load_OpticalData(self, filename):
         #define variables for GRB attributes
@@ -293,7 +293,7 @@ class Trial:
             #transform optical dt measurement from hours into seconds
             dtO_seconds = 3600 * dtO_hours
 
-            #initialize variable for location in GRB vector
+            #initialize variable for location in GRB list
             location = 0
             #initialize counter for checking if any pairings were made at all
             check = 0
@@ -302,13 +302,13 @@ class Trial:
             new_ID = ID
 
             #check if self is the first entry read from optical file
-            if  total_loaded == 0:
+            if total_loaded == 0:
                 #initialize old_ID to entry read from optical file if
                 #self is the first entry from optical file
                 old_ID = ID
 
             #check if ID has been reached
-            if  new_ID == old_ID:
+            if new_ID == old_ID:
                 #increment counter for number of entries per unique ID because
                 #a multiplicity of the same idea has been found OR it is the first trial
                 entries_per_ID += 1
@@ -317,7 +317,7 @@ class Trial:
                 #construct Possibility object with corresponding data
                 new_Possibility = Possibility(old_ID, entries_per_ID)
 
-                #add in element to vector containing number of entires per unique
+                #add in element to list containing number of entires per unique
                 #GRB ID read from optical file
                 self.optical_entries.append(new_Possibility)
 
@@ -341,9 +341,9 @@ class Trial:
                 #print("\nLocation is:",location)
 
                 #check if pairing is made
-                if  location != -1:
+                if location != -1:
                     #construct a GRB object that will be added
-                    #into vector of GRBs with optical data
+                    #into list of GRBs with optical data
                     copy_grb = GRB(self.GRBs[location].GRB_ID, self.GRBs[location].dt_XRay, self.GRBs[location].ExpT_XRay, self.GRBs[location].F_x, self.GRBs[location].sigma_x)
 
                     #set corresponding GRB appropriate Beta_X parameters
@@ -361,7 +361,7 @@ class Trial:
                     copy_grb.sigma_o = sigmaO
 
                     #add newly-created GRB with optical data to
-                    #vector of GRBs with optical data
+                    #list of GRBs with optical data
                     self.GRBs_with_Opt.append(copy_grb)
 
                     #increment location
@@ -371,25 +371,25 @@ class Trial:
 
 
             #check if no pairing was made
-            if  check == 1:
+            if check == 1:
                 #notify user that no match was able to be found
                 print("Unable to match GRB",ID,"with optical dt",dtO_hours,"[hr] =",dtO_seconds,"[s].")
                 
                 #increment counter for no match made
                 no_match_found_counter += 1
 
-        #add last pair to vector of multiplicities
+        #add last pair to list of multiplicities
         #construct Possibility object with corresponding data
         new_Possibility = Possibility(old_ID, entries_per_ID)
 
-        #add in element to vector containing number of entires per unique
+        #add in element to list containing number of entires per unique
         #GRB ID read from optical file
         self.optical_entries.append(new_Possibility)
 
         self.total_possible_pairings = self.find_total_possible_pairings()
 
         #calculate percent of loaded GRBs that are paired
-        pairing_rate = (optical_pairs /  self.total_possible_pairings )*100
+        pairing_rate = (optical_pairs / self.total_possible_pairings )*100
 
         #notify user of loading statistics
         print("Number of loaded GRBs from optical data file:",int(total_loaded))
@@ -432,15 +432,14 @@ class Trial:
             loaded += 1
 
             #notify user that a match was able to be found
-            #cout << "Able to match telescope " << telName << " with instrument " <<
-            #instrumentName <<  " and with filter " << filterName << "." << endl
+            #print("Able to match telescope", telName, "with instrument", instrumentName,  "and with filter", filterName)
 
 
         print()
         #display those GRBs that couldn't get paired
         for a in range(len(self.GRBs_with_Opt)):
             #check to see if GRB has been paired with Beta_X, optical, not wavelength data
-            if   self.GRBs_with_Opt[a].frequency_Opt == -1:
+            if self.GRBs_with_Opt[a].frequency_Opt == -1:
                 print("\nGRB",self.GRBs_with_Opt[a].GRB_ID,"with optical dt",self.GRBs_with_Opt[a].dt_Opt,", telescope",self.GRBs_with_Opt[a].telescope,", instrument",self.GRBs_with_Opt[a].instrument,", with filter",self.GRBs_with_Opt[a].filter,"unpaired.")
                 check_counter += 1
 
@@ -475,12 +474,12 @@ class Trial:
         print("*** Beta_OX Data ***")
         print("GRB ID, F_x [uJy], sigma_X [uJy], F_o [uJy], sigma_o [uJy], Freq_X, Freq_O, Beta_OX, Upper sigma_OX, Lower sigma_OX")
 
-        # run through vector of GRBs
+        # run through list of GRBs
         for a in range(len(self.GRBs_with_Opt)):
             #check to see if GRB has been fully paired
             if self.GRBs_with_Opt[a].frequency_Opt != -1:
 
-                # Extract values from GRB objects in vector of GRBs
+                # Extract values from GRB objects in list of GRBs
                 F_x = self.GRBs_with_Opt[a].F_x
                 F_o = self.GRBs_with_Opt[a].F_o
                 frequency_O = self.GRBs_with_Opt[a].frequency_Opt
@@ -526,10 +525,10 @@ class Trial:
         print("Number of Successful Beta_OX Calculations:",success_counter)
         print("Overall Success Rate:",100 * (success_counter / self.total_possible_pairings ),"%")
 
-    # prints out the GRB vector by calling the report method
+    # prints out the GRB list by calling the report method
     # of each GRB. Used for debugging.
     def report(self):
-        #run through vector of GRBs
+        #run through list of GRBs
         for grb in self.GRBs:
             grb.report()
 
@@ -551,10 +550,10 @@ class Trial:
         #headers for file
         filecontent = ["GRB ID,X-Ray dt [hr],X-Ray Exposure Time [s],F_x [uJy],Sigma_x [uJy],Beta_X,Beta_X Upper Sigma,Lower Sigma,Optical dt [hr],Telescope,Instrument,Filter,Optical Exposure Time [s],F_o [uJy],Sigma_o [uJy],Wavelength_X [nm],Frequency_X [Hz],Wavelength_o [nm],Frequency_o [Hz],Beta_OX, Bound of Sigma_OX,Lower Bound of Sigma_OX,\n"]
         
-        #run through vector of populated GRBs
+        #run through list of populated GRBs
         for a in range(len(self.GRBs_with_Opt)):
             #double check to see if GRB is fully populated
-            if  self.GRBs_with_Opt[a].frequency_Opt != -1:
+            if self.GRBs_with_Opt[a].frequency_Opt != -1:
                 filecontent.append(",".join(map(str, [self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].dt_XRay/3600,
                                             self.GRBs_with_Opt[a].ExpT_XRay,self.GRBs_with_Opt[a].F_x,self.GRBs_with_Opt[a].sigma_x,self.GRBs_with_Opt[a].Beta_X,
                                             self.GRBs_with_Opt[a].Beta_X_upper_sigma,self.GRBs_with_Opt[a].Beta_X_lower_sigma,self.GRBs_with_Opt[a].dt_Opt/3600,
@@ -572,10 +571,10 @@ class Trial:
         #print out headers for file
         filecontent = ["GRB ID,X-Ray dt [hr],Optical dt [hr],|dt_x - dt_o| [hr],Beta_X,Beta_X Upper Sigma, Lower Sigma,Beta_OX, Bound of Sigma_OX,Lower Bound of Sigma_OX"]
 
-        #run through vector of populated GRBs
+        #run through list of populated GRBs
         for a in range(len(self.GRBs_with_Opt)):
             #double check to see if GRB is fully populated
-            if  self.GRBs_with_Opt[a].frequency_Opt != -1:
+            if self.GRBs_with_Opt[a].frequency_Opt != -1:
                 filecontent.append(",".join(map(str, [self.GRBs_with_Opt[a].GRB_ID,self.GRBs_with_Opt[a].dt_XRay/3600,self.GRBs_with_Opt[a].dt_Opt/3600,
                                             np.abs(self.GRBs_with_Opt[a].dt_Opt - self.GRBs_with_Opt[a].dt_XRay)/3600,self.GRBs_with_Opt[a].Beta_X,
                                             self.GRBs_with_Opt[a].Beta_X_upper_sigma,self.GRBs_with_Opt[a].Beta_X_lower_sigma,self.GRBs_with_Opt[a].Beta_OX,
@@ -594,7 +593,7 @@ class Trial:
         #initialize boolean for successful pairing
         success = False
 
-        #run through vector of GRB
+        #run through list of GRB
         for a in range(len(self.GRBs_with_Opt)):
             #test to see if GRB ID matches passed ID
             #also test to see if GRB has not yet been populated with wavelength parameters
@@ -624,14 +623,14 @@ class Trial:
         for kumquat in range(len(self.XRay_entries)):
             #check if passed optical IDs are identical to those in GRBs that have
             #already been paired with Beta_X data
-            if  ID == self.XRay_entries[kumquat].ID:
+            if ID == self.XRay_entries[kumquat].ID:
                 #set boolean to True if match found
                 corresponding_ID_found = True
 
         #check if no match was found
-        if  corresponding_ID_found == False:
+        if corresponding_ID_found == False:
             #add ID that is in optical data set but not X-Ray to
-            #vector containing all such IDs
+            #list containing all such IDs
             self.IDs_in_Opt_not_X.append(ID)
             #increment counter for lack of match
             disjoint_counter += 1
@@ -641,14 +640,14 @@ class Trial:
     
     # A private function which is used to determine the total number of
     # possible pairings between optical and X-Ray data by, essence,
-    # conducting matrix multiplication between vectors XRay_entries and
+    # conducting matrix multiplication between lists XRay_entries and
     # optical_entries
     def find_total_possible_pairings(self):
         #initialize counters for disjointed IDs
         in_Opt_not_XRay = 0
         in_XRay_not_Opt = 0
 
-        #initialize variables for old and vector sizes
+        #initialize variables for old and list sizes
         old_XRay_entries_size = len(self.XRay_entries)
         new_XRay_entries_size = 0
         old_optical_entries_size = len(self.optical_entries)
@@ -657,14 +656,14 @@ class Trial:
         #initialize variable for total number of possibilities
         total_possibilities = 0
 
-        #traverse through vector XRay_entries
+        #traverse through list XRay_entries
         q = 0
         while q < len(self.XRay_entries):
             #initialize boolean signifying that ID is in XRay_entries
             #and also in optical_entries
             keeper = False
 
-            #traverse through optical_entries vector
+            #traverse through optical_entries list
             n = 0
             while n < len(self.optical_entries):
                 #check if the ID in XRay_entries and optical_entries are identical
@@ -677,7 +676,7 @@ class Trial:
                 #XRay_entries but not in optical_entries
                 in_XRay_not_Opt += 1
 
-                #initialize iterator to beginning of XRay_entries vector
+                #initialize iterator to beginning of XRay_entries list
                 it = 0
                 #traverse through XRay_entries with iterator
                 while it < len(self.XRay_entries):
@@ -705,14 +704,14 @@ class Trial:
         #appropriately change variable for size of XRay_entries
         new_XRay_entries_size = len(self.XRay_entries)
 
-        #traverse through vector optical_entries
+        #traverse through list optical_entries
         l = 0
         while l < len(self.optical_entries):
             #initialize boolean signifying that ID is in XRay_entries
             #and also in optical_entries
             keepme = False
 
-            #traverse through optical_entries vector
+            #traverse through optical_entries list
             u = 0
             while u < len(self.XRay_entries):
                 #check if the ID in XRay_entries and optical_entries are identical
@@ -727,7 +726,7 @@ class Trial:
                 #XRay_entries but not in optical_entries
                 in_Opt_not_XRay += 1
 
-                #initialize iterator to beginning of XRay_entries vector
+                #initialize iterator to beginning of XRay_entries list
                 it_2 = 0
                 #traverse through XRay_entries with iterator
                 while it_2 < len(self.optical_entries):
@@ -782,19 +781,19 @@ class Trial:
         return total_possibilities
 
     # A private function which is used to remove entities that haven't
-    # been paired with Beta_X data from vector XRay_entries
+    # been paired with Beta_X data from list XRay_entries
     def clean_XRay_entries(self):
         #initialize counter for number we expect to keep
         should_not_keep = 0
 
         print("Original Number of Unique X-Ray GRBs:",len(self.XRay_entries))
 
-        #traverse through vector XRay_entries
+        #traverse through list XRay_entries
         q = 0
         while q < len(self.XRay_entries):
             keeper = False
 
-            #traverse through vector GRBs that contain only some with BetaX data
+            #traverse through list GRBs that contain only some with BetaX data
             n = 0
             while n < len(self.GRBs):
                 #check if the ID in XRay_entries and GRBs are identical and that
@@ -808,7 +807,7 @@ class Trial:
                 #increment counter for number we should not keep
                 should_not_keep += 1
 
-                #initialize iterator to beginning of XRay_entries vector
+                #initialize iterator to beginning of XRay_entries list
                 it = 0
                 #traverse through XRay_entries with iterator
                 while it < len(self.XRay_entries):
@@ -845,7 +844,7 @@ class Trial:
         #initialize bool variable to determine if match occurs
         paired = False
 
-        #run through vector of GRB
+        #run through list of GRB
         for a in range(location,len(self.GRBs)):
             #test to see if GRB ID matches passed ID
             #test to see if GRB has been populated with Beta_X data
@@ -864,15 +863,14 @@ class Trial:
             #return -1 if no match occurred
             return -1
 
-    # A private function used to return the location
-    # in the  vector of GRBs of a GRB with a
-    # particular GRB ID used in the load_OpticalData
-    # to locate where a particular GRB is
+    # A function used to return the location in the list of GRBs
+    # of a GRB with a particular GRB ID used in the
+    # load_OpticalData to locate where a particular GRB is
     def findGRB(self, ID):
         #initialize bool variable to determine if match occurs
         match = False
 
-        #run through vector of GRBs
+        #run through list of GRBs
         for a in range(len(GRBs)):
             #test to see if Subject ID matches passed ID
             if  GRBs[a].GRB_ID == ID:

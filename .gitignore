@@ -2,3 +2,4 @@
 Articles/
 __pycache__/
 .vscode/
+geckodriver.log

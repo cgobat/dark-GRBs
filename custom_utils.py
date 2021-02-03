@@ -104,7 +104,7 @@ class AsymmetricUncertainty:
         result = self.value + other.value
         pos = np.sqrt(self.plus**2 + other.plus**2)
         neg = np.sqrt(self.minus**2 + other.minus**2)
-        print("added",self,"+",other,"=",AsymmetricUncertainty(result,pos,neg))
+        #print("added",self,"+",other,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
     def __radd__(self,other):
@@ -115,7 +115,7 @@ class AsymmetricUncertainty:
         result = self.value + other.value
         pos = np.sqrt(self.plus**2 + other.plus**2)
         neg = np.sqrt(self.minus**2 + other.minus**2)
-        print("added",other,"+",self,"=",AsymmetricUncertainty(result,pos,neg))
+        #print("added",other,"+",self,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
     def __sub__(self,other):
@@ -126,7 +126,7 @@ class AsymmetricUncertainty:
         result = self.value - other.value
         pos = np.sqrt(self.plus**2 + other.minus**2)
         neg = np.sqrt(self.minus**2 + other.plus**2)
-        print("subtracted",other,"from",self,"=",AsymmetricUncertainty(result,pos,neg))
+        #print("subtracted",other,"from",self,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
     def __rsub__(self,other):
@@ -137,7 +137,7 @@ class AsymmetricUncertainty:
         result = other.value - self.value
         pos = np.sqrt(self.minus**2 + other.plus**2)
         neg = np.sqrt(self.plus**2 + other.minus**2)
-        print("subtracted",self,"from",other,"=",AsymmetricUncertainty(result,pos,neg))
+        #print("subtracted",self,"from",other,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
     def __mul__(self,other):
@@ -149,7 +149,7 @@ class AsymmetricUncertainty:
         result = self.value * other.value
         pos = np.sqrt((self.plus/self.value)**2 + (other.plus/other.value)**2) * np.abs(result)
         neg = np.sqrt((self.minus/self.value)**2 + (other.minus/other.value)**2) * np.abs(result)
-        print("multiplied",self,"by",other,"=",AsymmetricUncertainty(result,pos,neg))
+        #print("multiplied",self,"by",other,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
     def __rmul__(self,other):
@@ -161,7 +161,7 @@ class AsymmetricUncertainty:
         result = self.value * other.value
         pos = np.sqrt((self.plus/self.value)**2 + (other.plus/other.value)**2) * np.abs(result)
         neg = np.sqrt((self.minus/self.value)**2 + (other.minus/other.value)**2) * np.abs(result)
-        print("multiplied",other,"by",self,"=",AsymmetricUncertainty(result,pos,neg))        
+        #print("multiplied",other,"by",self,"=",AsymmetricUncertainty(result,pos,neg))        
         return AsymmetricUncertainty(result,pos,neg)
     
     def __truediv__(self,other): # self divided by something
@@ -172,7 +172,7 @@ class AsymmetricUncertainty:
         result = self.value / other.value
         pos = np.sqrt((self.plus/self.value)**2 + (other.minus/other.value)**2) * np.abs(result)
         neg = np.sqrt((self.minus/self.value)**2 + (other.plus/other.value)**2) * np.abs(result)
-        print("divided",self,"by",other,"=",AsymmetricUncertainty(result,pos,neg))        
+        #print("divided",self,"by",other,"=",AsymmetricUncertainty(result,pos,neg))        
         return AsymmetricUncertainty(result,pos,neg)
     
     def __rtruediv__(self,other): # something divided by self
@@ -183,7 +183,7 @@ class AsymmetricUncertainty:
         result = other.value / self.value
         pos = np.sqrt((other.plus/other.value)**2 + (self.minus/self.value)**2) * np.abs(result)
         neg = np.sqrt((other.minus/other.value)**2 + (self.plus/self.value)**2) * np.abs(result)
-        print("divided",other,"by",self,"=",AsymmetricUncertainty(result,pos,neg))        
+        #print("divided",other,"by",self,"=",AsymmetricUncertainty(result,pos,neg))        
         return AsymmetricUncertainty(result,pos,neg)
     
     def __pow__(self,other): # self to the something else power
@@ -194,7 +194,7 @@ class AsymmetricUncertainty:
         result = self.value**other.value
         pos = np.abs(result)*np.sqrt((self.plus*other.value/self.value)**2 + (other.plus*np.log(self.value))**2)
         neg = np.abs(result)*np.sqrt((self.minus*other.value/self.value)**2 + (other.minus*np.log(self.value))**2)
-        print("raised",self,"to",other,"=",AsymmetricUncertainty(result,pos,neg))        
+        #print("raised",self,"to",other,"=",AsymmetricUncertainty(result,pos,neg))        
         return AsymmetricUncertainty(result,pos,neg)
     
     def __rpow__(self,other): # something to the self power
@@ -205,14 +205,14 @@ class AsymmetricUncertainty:
         result = other.value**self.value
         pos = np.abs(result)*np.sqrt((other.plus*self.value/other.value)**2 + (self.plus*np.log(other.value))**2)
         neg = np.abs(result)*np.sqrt((other.minus*self.value/other.value)**2 + (self.minus*np.log(other.value))**2)
-        print("raised",other,"to",self,"=",AsymmetricUncertainty(result,pos,neg))                
+        #print("raised",other,"to",self,"=",AsymmetricUncertainty(result,pos,neg))                
         return AsymmetricUncertainty(result,pos,neg)
     
     def log10(self):
         result = np.log10(self.value)
         pos = self.plus/(self.value*np.log(10))
         neg = self.minus/(self.value*np.log(10))
-        print("logged",self,"=",AsymmetricUncertainty(result,pos,neg))
+        #print("logged",self,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
     def __gt__(self,other):

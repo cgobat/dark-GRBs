@@ -1,25 +1,7 @@
 """
 Title: "Automating the Calculation of Beta_OX"
  
-Copyright (C) 2020 David Fitzpatrick
- 
-From: "Analyzing Optically-Dark Short Gamma Ray Bursts"
-(1) David Fitzpatrick, (2) Professor Alexander van der Horst, Ph.D.
-
-1. Georgetown University, of Physics, 37 and O Streets NW, D.C. 20057
-2. The George Washington University, of Physics, 725 21 Street NW, D.C. 20052
- 
-I hereby grant to Georgetown University and its agents the non-exclusive, worldwide
-right to reproduce, distribute, and transmit my thesis in such tangible and
-electronic formats as may be in existence now or developed in the future. I retain all
-ownership rights to the copyright of the thesis including the right to use it in whole
-or in part in future works. I agree to allow the Georgetown University Department of
-Physics to serve as the institutional repository of my thesis and to make it available
-to the Georgetown University community through its website. I certify that the version
-that I have submitted is the same version that was approved by my senior research
-advisor.
-
-Description: In an effort to automate the calculation of the optical to X-Ray spectral
+In an effort to automate the calculation of the optical to X-Ray spectral
 index (Beta_OX) of well-documented Gamma Ray Bursts (GRBs), program loads in
 multiple files containing disparate GRB characteristics (in order: X-ray flux data,
 Beta_X data, flux data, optical telescope filter data; fields correspond to

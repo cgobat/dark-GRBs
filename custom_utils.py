@@ -54,7 +54,7 @@ class AsymmetricUncertainty:
         self.minus = float(neg_err)
         self.maximum = float(nominal)+float(pos_err)
         self.minimum = float(nominal)-float(neg_err)
-        self.sign = self.value/np.abs(self.value)
+        self.sign = self.value/np.abs(self.value) if self.value != 0 else 1
         
     def __str__(self):
         if np.isclose(self.plus, self.minus):

@@ -90,6 +90,9 @@ class AsymmetricUncertainty:
     def __int__(self):
         return int(self.value)
     
+    def __len__(self):
+        return 1
+    
     def __float__(self):
         return float(self.value)
     
@@ -234,7 +237,7 @@ class AsymmetricUncertainty:
             pass
         else:
             other = AsymmetricUncertainty(other,0,0)
-        return self.value + self.plus < other.value - other.minus
+        return self.maximum < other.minimum
     
     def __rshift__(self,other): # overloaded >>; definitively greater than
         if isinstance(other,type(self)):
@@ -257,4 +260,28 @@ class AsymmetricUncertainty:
             other = AsymmetricUncertainty(other,0,0)
         return self.value >= other.value
     
+class UncertaintyArray:
     
+    def __init__(self,array=[]):
+        self.as_list = list(array)
+        self.as_numpy = np.array(array)
+        self.flattened = self.as_numpy.flatten()
+        self.shape = np.shape(self.as_numpy)
+        self.ndim = self.as_numpy.ndim
+        
+        for i in range(len(self.flattened)):
+            if isinstance(self.flattened[i], AsymmetricUncertainty):
+                pass
+            else:
+                self.flattened[i] = AsymmetricUncertainty(self.flattened[i],0,0)
+                
+        self.values = [elem.value for elem in self.flattened]
+                
+        def __len__(self):
+            return len(self.as_list)
+        
+        def __getitem__(self, key):
+            return self.as_numpy[key]
+        
+        def __str__(self):
+            return "foo"#str([elem for elem in self.as_list])

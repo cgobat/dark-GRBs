@@ -1,20 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-class custom_iter: # custom iterator class that allows for retrieval of current element w/out advancing
-    def __init__(self, iterable):
-        self.iterator = iter(iterable)
-        self.current = None
-    def __next__(self):
-        try:
-            self.current = next(self.iterator)
-        except StopIteration:
-            self.current = None
-        finally:
-            return self.current
-
-
 class AsymmetricUncertainty:
     """
     Class for handling propagation of asymmetric uncertainties assuming a pseudo-Gaussian probability distribution

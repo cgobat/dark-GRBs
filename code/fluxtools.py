@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from scipy import interpolate
 
 def effective_wavelength(filter_response,show_plot=False): # pass a dataframe with columns Wavelength (in Ang), Transmission (in %)
     vega_spec = pd.read_table("http://svo2.cab.inta-csic.es/svo/theory/fps3/morefiles/vega.dat",

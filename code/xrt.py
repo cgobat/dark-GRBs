@@ -1,6 +1,7 @@
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
+from .uncertainty import AsymmetricUncertainty
 
 def XRT_lightcurve(burst_id,lookuptable):
     trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"]
@@ -17,7 +18,7 @@ def XRT_lightcurve(burst_id,lookuptable):
     fluxdata = pd.read_table(lightcurveURL, header=1).apply(pd.to_numeric, errors="coerce").dropna().reset_index().apply(pd.to_numeric)
     fluxdata.columns = ["Time","Tpos","Tneg","Flux","Fluxpos","Fluxneg"]
     fluxdata["GRB"] = [burst_id]*len(fluxdata)
-    print("Retrieved",burst_id)
+    #print("Retrieved",burst_id)
     return fluxdata
 
 
@@ -30,4 +31,4 @@ def get_BetaX(burst_id,lookuptable):
     photon_index = PC_table.loc[PC_table[0]=="Photon index",1].values
     (Gamma, Gammapos, Gammaneg) = (float(num) for num in "".join([char for char in str(photon_index[0]) if char not in "[]()+-,"]).split())
     
-    return Gamma, Gammapos, Gammaneg
+    return AsymmetricUncertainty(Gamma, Gammapos, Gammaneg)

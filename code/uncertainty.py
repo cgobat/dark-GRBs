@@ -175,7 +175,7 @@ class AsymmetricUncertainty:
         #print("divided",other,"by",self,"=",AsymmetricUncertainty(result,pos,neg))        
         return AsymmetricUncertainty(result,pos,neg)
     
-    def __pow__(self,other): # self to the something else power
+    def __pow__(self,other): # self to the something power
         if isinstance(other,type(self)):
             pass
         else:
@@ -245,8 +245,8 @@ class AsymmetricUncertainty:
         else:
             other = AsymmetricUncertainty(other,0,0)
         return self.value >= other.value
-    
-class UncertaintyArray:
+
+class UncertaintyArray():
     
     def __init__(self,array=[]):
         self.as_list = list(array)

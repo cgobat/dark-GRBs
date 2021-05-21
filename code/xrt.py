@@ -4,6 +4,27 @@ from selenium.webdriver.support.wait import WebDriverWait
 from .uncertainty import AsymmetricUncertainty
 
 def XRT_lightcurve(burst_id,lookuptable):
+    """
+    Function for retrieving X-ray observations (flux values) for a given gamma-ray burst.
+    
+    Author: Caden Gobat, George Washington University
+
+    Parameters
+    ----------
+    burst_id : string
+        GRB ID/name in the form YYMMDDx
+    lookuptable : pandas DataFrame
+        the reference table to get the TriggerNumber
+
+    Returns
+    -------
+    fluxdata : pandas DataFrame
+        table containing the time series fluxes in the XRT 0.3-10 keV band. Columns are Time, Tpos, Tneg, Flux, Fluxpos, and Fluxneg.
+
+    Raises
+    ------
+    
+    """
     trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"]
     lightcurveURL = f"https://www.swift.ac.uk/xrt_curves/{int(trigger):0>8}/"
     
@@ -22,7 +43,28 @@ def XRT_lightcurve(burst_id,lookuptable):
     return fluxdata
 
 
-def get_BetaX(burst_id,lookuptable):
+def get_photonIndex(burst_id,lookuptable):
+    """
+    Function for retrieving the X-ray spectral index for a given gamma-ray burst.
+    
+    Author: Caden Gobat, George Washington University
+
+    Parameters
+    ----------
+    burst_id : string
+        GRB ID/name in the form YYMMDDx
+    lookuptable : pandas DataFrame
+        the reference table to get the TriggerNumber
+
+    Returns
+    -------
+    gamma : AsymmetricUncertainty
+        value of the spectral index in the form (value (pos_err, neg_err))
+
+    Raises
+    ------
+    
+    """
     trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"]
     spectrumURL = f"https://www.swift.ac.uk/xrt_spectra/{int(trigger):0>8}/"
     
@@ -30,5 +72,5 @@ def get_BetaX(burst_id,lookuptable):
     PC_table = spectra_tables[len(spectra_tables)-2]
     photon_index = PC_table.loc[PC_table[0]=="Photon index",1].values
     (Gamma, Gammapos, Gammaneg) = (float(num) for num in "".join([char for char in str(photon_index[0]) if char not in "[]()+-,"]).split())
-    
-    return AsymmetricUncertainty(Gamma, Gammapos, Gammaneg)
+    gamma = AsymmetricUncertainty(Gamma, Gammapos, Gammaneg)
+    return gamma

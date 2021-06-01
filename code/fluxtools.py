@@ -18,7 +18,7 @@ def effective_wavelength(filter_response,show_plot=False): # pass a dataframe wi
     if show_plot:
         plt.plot(vega_spec.Wavelength,vega_spec.Flux,"b")
         plt.yscale("log")
-        plt.ylabel("Vega flux [erg/cm^2/s/Ang]")
+        plt.ylabel("Vega flux [erg/cm$^2$/s/Ang]")
         plt.xlabel(r"$\lambda$ [Ang]")
         plt.twinx()
         plt.plot(filter_response.Wavelength,filter_response.Transmission,color="dimgrey",linestyle=":")

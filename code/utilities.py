@@ -17,4 +17,8 @@ def split_filters(string):
     name_idxs = custom_iter([string.index(i) for i in UVOT_filters if i in string])
     split_list = [string[name_idxs.current:next(name_idxs)] for i in range(len(UVOT_filters))]
     split_list = [item for item in split_list if len(item)>0]
-    return np.unique(split_list).tolist()   
+    return np.unique(split_list).tolist()
+
+def new_since_Fong(dataframe, colname="GRB"):
+    indexer = [int(grb[:6]) > 150301 for grb in dataframe[colname]]
+    return dataframe[indexer].copy()

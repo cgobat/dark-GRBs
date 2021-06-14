@@ -7,6 +7,7 @@ def effective_wavelength(filter_response,show_plot=False): # pass a dataframe wi
     vega_spec = pd.read_table("http://svo2.cab.inta-csic.es/svo/theory/fps3/morefiles/vega.dat",
                               delimiter=" ",header=None,names=["Wavelength","Flux"])
     vega_function = interpolate.interp1d(vega_spec["Wavelength"],vega_spec["Flux"])
+    filter_response.sort_values(by="Wavelength",inplace=True)
     response_function = interpolate.interp1d(filter_response["Wavelength"],filter_response["Transmission"])
     
     dl = 0.1 # Angstrom

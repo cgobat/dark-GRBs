@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as bs
 
 class custom_iter: # custom iterator class that allows for retrieval of current element w/out advancing
     def __init__(self, iterable):
+        self.iterable = iterable
         self.iterator = iter(iterable)
         self.current = None
     def __next__(self):
@@ -12,6 +13,8 @@ class custom_iter: # custom iterator class that allows for retrieval of current 
             self.current = None
         finally:
             return self.current
+    def __len__(self):
+        return len(self.iterable)
 
 def split_filters(string):
     UVOT_filters = ["B","U","UVW1","UVM2","UVW2","White"]

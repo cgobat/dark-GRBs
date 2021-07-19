@@ -1,4 +1,5 @@
-import numpy as np
+import numpy as np, requests
+from bs4 import BeautifulSoup as bs
 
 class custom_iter: # custom iterator class that allows for retrieval of current element w/out advancing
     def __init__(self, iterable):
@@ -22,3 +23,32 @@ def split_filters(string):
 def new_since_Fong(dataframe, colname="GRB"):
     indexer = [int(grb[:6]) > 150301 for grb in dataframe[colname]]
     return dataframe[indexer].copy()
+
+def simbad_bibcodes(GRB,verbose=False):
+    URL = f"http://simbad.u-strasbg.fr/simbad/sim-id?Ident=GRB%20{GRB}&submit=In+table&output.format=ASCII"
+    content = requests.get(URL).text
+    entries = content.split("\n\n")
+    bibcodes = entries[["Bibcodes" in entry or "References" in entry for entry in entries].index(True)].strip()
+    if verbose:
+        print(content)
+    return bibcodes.split()[4:]
+
+def literature_references(GRB,titles=True,links=True,GCNs=False):
+    title_list = []
+    link_list = []
+    for bibcode in simbad_bibcodes(GRB):
+        if "GCN" in bibcode and GCNs==False:
+            continue
+        ADS_URL = f"https://ui.adsabs.harvard.edu/abs/{bibcode}/"
+        link_list.append(ADS_URL)
+        soup = bs(requests.get(ADS_URL).text, features="lxml")
+        title = soup.find("title")
+        title_list.append(title.text[:-11]) # exclude " - NASA/ADS" from the title
+    if titles and links:
+        return dict(zip(title_list,link_list))
+    elif titles:
+        return title_list
+    elif links:
+        return link_list
+    else:
+        return None

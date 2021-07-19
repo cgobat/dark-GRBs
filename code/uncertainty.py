@@ -29,17 +29,31 @@ class AsymmetricUncertainty:
     Raises
     ------
     ValueError
-        if you don't pass numeric values for the arguments
+        if you don't pass compatible values for the arguments
     TypeError
-        if you don't pass numeric values for the arguments
+        if you don't pass values of the correct format for the arguments
     """
     
-    def __init__(self, nominal, pos_err, neg_err):
-        self.value = float(nominal)
-        self.plus = float(pos_err)
-        self.minus = float(neg_err)
-        self.maximum = float(nominal)+float(pos_err)
-        self.minimum = float(nominal)-float(neg_err)
+    def __init__(self, nominal, pos_err=0, neg_err=0):
+        if isinstance(nominal,str):
+            stripped = nominal.replace(" ","")
+            print(stripped)
+            if "±" in stripped:
+                self.value = float(stripped.split("±")[0])
+                self.plus = self.minus = float(nominal.split("±")[1])
+            elif "+" in stripped and "-" in stripped:
+                self.value = float(stripped.split("(")[0])
+                err_str = stripped.split("(")[1].replace(")","")
+                self.plus = float(err_str.split(",")[0][1:])
+                self.minus = float(err_str.split(",")[1][1:])
+            else:
+                raise TypeError("Failed to parse string, likely due to improper formatting.")
+        else:
+            self.value = float(nominal)
+            self.plus = float(pos_err)
+            self.minus = float(neg_err)
+        self.maximum = self.value+self.plus
+        self.minimum = self.value-self.minus
         self.sign = self.value/np.abs(self.value) if self.value != 0 else 1
         
     def __str__(self):

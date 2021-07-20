@@ -27,13 +27,12 @@ def new_since_Fong(dataframe, colname="GRB"):
     indexer = [int(grb[:6]) > 150301 for grb in dataframe[colname]]
     return dataframe[indexer].copy()
 
-def simbad_bibcodes(GRB,verbose=False):
+def simbad_bibcodes(GRB):
     URL = f"http://simbad.u-strasbg.fr/simbad/sim-id?Ident=GRB%20{GRB}&submit=In+table&output.format=ASCII"
     content = requests.get(URL).text
     entries = content.split("\n\n")
     bibcodes = entries[["Bibcodes" in entry or "References" in entry for entry in entries].index(True)].strip()
-    if verbose:
-        print(content)
+    
     return bibcodes.split()[4:]
 
 def literature_references(GRB,titles=True,links=True,GCNs=False):
@@ -47,6 +46,7 @@ def literature_references(GRB,titles=True,links=True,GCNs=False):
         soup = bs(requests.get(ADS_URL).text, features="lxml")
         title = soup.find("title")
         title_list.append(title.text[:-11]) # exclude " - NASA/ADS" from the title
+        
     if titles and links:
         return dict(zip(title_list,link_list))
     elif titles:

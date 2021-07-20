@@ -1,0 +1,394 @@
+{
+    "200522A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "GRB 180418A: A Possibly Short Gamma-Ray Burst with a Wide-angle Outflow in a Faint Host Galaxy": "https://ui.adsabs.harvard.edu/abs/2021ApJ...912...95R/",
+        "A tale of two mergers: constraints on kilonova detection in two short GRBs at z ∼ 0.5": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.502.1279O/"
+    },
+    "200325A": {
+        "Gamma-Ray Urgent Archiver for Novel Opportunities (GUANO): Swift/BAT Event Data Dumps on Demand to Enable Sensitive Subthreshold GRB Searches": "https://ui.adsabs.harvard.edu/abs/2020ApJ...900...35T/"
+    },
+    "200219A": {
+        "Evidence for Gravitational-wave-dominated Emission in the Central Engine of Short GRB 200219A": "https://ui.adsabs.harvard.edu/abs/2020ApJ...898L...6L/"
+    },
+    "190719C": {
+        "Identifying Black Hole Central Engines in Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908L...2S/",
+        "Evaluation of Automated Fermi GBM Localizations of Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2020ApJ...895...40G/"
+    },
+    "190627A": {
+        "Evidence of Extended Emission in GRB 181123B and Other High-redshift Short GRBs": "https://ui.adsabs.harvard.edu/abs/2021ApJ...911L..28D/"
+    },
+    "190427A": {
+        "Evaluation of Automated Fermi GBM Localizations of Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2020ApJ...895...40G/"
+    },
+    "190326A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/"
+    },
+    "181126A": {
+        "Stringent Search for Precursor Emission in Short GRBs from Fermi/GBM Data and Physical Implications": "https://ui.adsabs.harvard.edu/abs/2020ApJ...902L..42W/"
+    },
+    "181123B": {
+        "Evidence of Extended Emission in GRB 181123B and Other High-redshift Short GRBs": "https://ui.adsabs.harvard.edu/abs/2021ApJ...911L..28D/",
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Discovery of the Optical Afterglow and Host Galaxy of Short GRB 181123B at z = 1.754: Implications for Delay Time Distributions": "https://ui.adsabs.harvard.edu/abs/2020ApJ...898L..32P/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/"
+    },
+    "180805A": {
+        "Detection of gamma-ray transients with wild binary segmentation": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.4428A/"
+    },
+    "180727A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/"
+    },
+    "180718A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/"
+    },
+    "180715A": {
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/"
+    },
+    "180418A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "GRB 180418A: A Possibly Short Gamma-Ray Burst with a Wide-angle Outflow in a Faint Host Galaxy": "https://ui.adsabs.harvard.edu/abs/2021ApJ...912...95R/",
+        "GRB Fermi-LAT Afterglows: Explaining Flares, Breaks, and Energetic Photons": "https://ui.adsabs.harvard.edu/abs/2020ApJ...905..112F/",
+        "Reverse Shock Emission Revealed in Early Photometry in the Candidate Short GRB 180418A": "https://ui.adsabs.harvard.edu/abs/2019ApJ...881...12B/",
+        "Short GRB 160821B: A Reverse Shock, a Refreshed Shock, and a Well-sampled Kilonova": "https://ui.adsabs.harvard.edu/abs/2019ApJ...883...48L/"
+    },
+    "180402A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Precursors in Short Gamma-Ray Bursts as a Possible Probe of Progenitors": "https://ui.adsabs.harvard.edu/abs/2019ApJ...884...25Z/"
+    },
+    "180204A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "A New AGILE MCAL Configuration to Detect Gamma-Ray Bursts and Sub-threshold Events in the Multimessenger Era": "https://ui.adsabs.harvard.edu/abs/2019ApJ...871...27U/"
+    },
+    "171103A": {
+        "A machine learning approach for GRB detection in AstroSat CZTI data": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.504.3084A/",
+        "A New AGILE MCAL Configuration to Detect Gamma-Ray Bursts and Sub-threshold Events in the Multimessenger Era": "https://ui.adsabs.harvard.edu/abs/2019ApJ...871...27U/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/"
+    },
+    "170822A": {
+        "X-ray plateaus in gamma-ray bursts' light curves from jets viewed slightly off-axis": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.2847B/"
+    },
+    "170728B": {
+        "Less noticeable shallow decay phase in early X-ray afterglows of GeV/TeV-detected gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.494.5259Y/",
+        "A Decade of Gamma-Ray Bursts Observed by Fermi-LAT: The Second GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2019ApJ...878...52A/"
+    },
+    "170524A": {
+        "Radio forensics could unmask nearby off-axis gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.4150B/"
+    },
+    "170428A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Afterglow Light Curves of Nonrelativistic Ejecta Mass in a Stratified Circumstellar Medium": "https://ui.adsabs.harvard.edu/abs/2021ApJ...907...78F/",
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "A Search for Neutron Star-Black Hole Binary Mergers in the Short Gamma-Ray Burst Population": "https://ui.adsabs.harvard.edu/abs/2020ApJ...895...58G/",
+        "The E<SUB>p,I</SUB>-E<SUB>iso</SUB> correlation: type I gamma-ray bursts and the new classification method": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.1919M/",
+        "A comparison between short GRB afterglows and kilonova AT2017gfo: shedding light on kilonovae properties": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.3379R/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "Search for Gravitational-wave Signals Associated with Gamma-Ray Bursts during the Second Observing Run of Advanced LIGO and Advanced Virgo": "https://ui.adsabs.harvard.edu/abs/2019ApJ...886...75A/",
+        "A luminosity distribution for kilonovae based on short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.486..672A/",
+        "Systematic study for gas-to-dust ratio of short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019PASJ...71...54Y/",
+        "Modelling the luminosity function of long gamma-ray bursts using Swift and Fermi": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.473.3385P/"
+    },
+    "170325A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "The POLAR gamma-ray burst polarization catalog": "https://ui.adsabs.harvard.edu/abs/2020A&A...644A.124K/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/"
+    },
+    "170127B": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Properties of jet and surrounding material of GW/GRB 170817A": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.490.2822Z/",
+        "The Formation Rate of Short Gamma-Ray Bursts and Gravitational Waves": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852....1Z/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/"
+    },
+    "170112A": {
+        "Search for Radio Remnants of Nearby Off-axis Gamma-Ray Bursts in a Sample of Swift/BAT Events": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908...63G/",
+        "Shock-powered radio precursors of neutron star mergers from accelerating relativistic binary winds": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.501.3184S/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/",
+        "Radio forensics could unmask nearby off-axis gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.4150B/",
+        "Constraining coherent low-frequency radio flares from compact binary mergers": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.489.3316R/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "A Simultaneous Search for Prompt Radio Emission Associated with the Short GRB 170112A Using the All-sky Imaging Capability of the OVRO-LWA": "https://ui.adsabs.harvard.edu/abs/2018ApJ...864...22A/"
+    },
+    "161104A": {
+        "The Distant, Galaxy Cluster Environment of the Short GRB 161104A at z ∼ 0.8 and a Comparison to the Short GRB Host Population": "https://ui.adsabs.harvard.edu/abs/2020ApJ...904...52N/",
+        "Jet Geometry and Rate Estimate of Coincident Gamma-Ray Burst and Gravitational-wave Observations": "https://ui.adsabs.harvard.edu/abs/2019ApJ...880...55M/",
+        "Deep ATCA and VLA Radio Observations of Short-GRB Host Galaxies. Constraints on Star Formation Rates, Afterglow Flux, and Kilonova Radio Flares": "https://ui.adsabs.harvard.edu/abs/2019ApJ...887..206K/",
+        "Investigating a population of infrared-bright gamma-ray burst host galaxies": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.478....2C/",
+        "Semi-analytic galaxies - I. Synthesis of environmental and star-forming regulation mechanisms": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.479....2C/",
+        "Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A": "https://ui.adsabs.harvard.edu/abs/2017ApJ...848L..13A/"
+    },
+    "161004A": {
+        "Central-engine-powered Bright X-Ray Flares in Short Gamma-Ray Bursts: A Hint of a Black Hole-Neutron Star Merger?": "https://ui.adsabs.harvard.edu/abs/2018ApJ...858...34M/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Statistical Study of the Swift X-Ray Flash and X-Ray Rich Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2018ApJ...866...97B/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "161001A": {
+        "The X-shooter GRB afterglow legacy sample (XS-GRB)": "https://ui.adsabs.harvard.edu/abs/2019A&A...623A..92S/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "The Shallow Decay Segment of GRB X-Ray Afterglow Revisited": "https://ui.adsabs.harvard.edu/abs/2019ApJ...883...97Z/",
+        "Investigating a population of infrared-bright gamma-ray burst host galaxies": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.478....2C/",
+        "Semi-analytic galaxies - I. Synthesis of environmental and star-forming regulation mechanisms": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.479....2C/"
+    },
+    "160927A": {
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "A New AGILE MCAL Configuration to Detect Gamma-Ray Bursts and Sub-threshold Events in the Multimessenger Era": "https://ui.adsabs.harvard.edu/abs/2019ApJ...871...27U/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "160821B": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Afterglow Light Curves of Nonrelativistic Ejecta Mass in a Stratified Circumstellar Medium": "https://ui.adsabs.harvard.edu/abs/2021ApJ...907...78F/",
+        "MAGIC Observations of the Nearby Short Gamma-Ray Burst GRB 160821B": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908...90A/",
+        "Identifying Black Hole Central Engines in Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908L...2S/",
+        "External Inverse-Compton Emission Associated with Extended and Plateau Emission of Short Gamma-Ray Bursts: Application to GRB 160821B": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908L..36Z/",
+        "A Possible Kilonova Powered by Magnetic Wind from a Newborn Black Hole": "https://ui.adsabs.harvard.edu/abs/2021ApJ...911...97M/",
+        "Detectability of \"Merger-nova\" Emission from a Long-lived Magnetar in Short Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2021ApJ...912...14Y/",
+        "GRB 180418A: A Possibly Short Gamma-Ray Burst with a Wide-angle Outflow in a Faint Host Galaxy": "https://ui.adsabs.harvard.edu/abs/2021ApJ...912...95R/",
+        "Searching for the radio remnants of short-duration gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.500.1708R/",
+        "A tale of two mergers: constraints on kilonova detection in two short GRBs at z ∼ 0.5": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.502.1279O/",
+        "Observational constraints on the optical and near-infrared emission from the neutron star-black hole binary merger candidate S190814bv": "https://ui.adsabs.harvard.edu/abs/2020A&A...643A.113A/",
+        "Constraining the Nuclear Equation of State via Gravitational-wave Radiation of Short Gamma-Ray Burst Remnants": "https://ui.adsabs.harvard.edu/abs/2020ApJ...890...99L/",
+        "The Luminosity Distribution of Short Gamma-Ray Bursts under a Structured Jet Scenario": "https://ui.adsabs.harvard.edu/abs/2020ApJ...894...11G/",
+        "A Search for Neutron Star-Black Hole Binary Mergers in the Short Gamma-Ray Burst Population": "https://ui.adsabs.harvard.edu/abs/2020ApJ...895...58G/",
+        "Description of Atypical Bursts Seen Slightly Off-axis": "https://ui.adsabs.harvard.edu/abs/2020ApJ...896...25F/",
+        "The Second Plateau in X-Ray Afterglow Providing Additional Evidence for Rapidly Spinning Magnetars as the GRB Central Engine": "https://ui.adsabs.harvard.edu/abs/2020ApJ...896...42Z/",
+        "An Unambiguous Separation of Gamma-Ray Bursts into Two Classes from Prompt Emission Alone": "https://ui.adsabs.harvard.edu/abs/2020ApJ...896L..20J/",
+        "Evidence for Gravitational-wave-dominated Emission in the Central Engine of Short GRB 200219A": "https://ui.adsabs.harvard.edu/abs/2020ApJ...898L...6L/",
+        "GRB 170817A as a Refreshed Shock Afterglow Viewed Off-axis": "https://ui.adsabs.harvard.edu/abs/2020ApJ...899..105L/",
+        "A Late-time Radio Survey of Short Gamma-ray Bursts at z &lt; 0.5: New Constraints on the Remnants of Neutron-star Mergers": "https://ui.adsabs.harvard.edu/abs/2020ApJ...902...82S/",
+        "The E<SUB>p,I</SUB>-E<SUB>iso</SUB> correlation: type I gamma-ray bursts and the new classification method": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.1919M/",
+        "Limits on the electromagnetic counterpart to S190814bv": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5916W/",
+        "Linking extended and plateau emissions of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493..783M/",
+        "A comparison between short GRB afterglows and kilonova AT2017gfo: shedding light on kilonovae properties": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.3379R/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "A kilonova associated with GRB 070809": "https://ui.adsabs.harvard.edu/abs/2020NatAs...4...77J/",
+        "Late Afterglow Emission Statistics: A Clear Link between GW170817 and Bright Short Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2019ApJ...876L..28D/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "Jet Geometry and Rate Estimate of Coincident Gamma-Ray Burst and Gravitational-wave Observations": "https://ui.adsabs.harvard.edu/abs/2019ApJ...880...55M/",
+        "Short GRB 160821B: A Reverse Shock, a Refreshed Shock, and a Well-sampled Kilonova": "https://ui.adsabs.harvard.edu/abs/2019ApJ...883...48L/",
+        "The Optical Afterglow of GW170817: An Off-axis Structured Jet and Deep Constraints on a Globular Cluster Origin": "https://ui.adsabs.harvard.edu/abs/2019ApJ...883L...1F/",
+        "A Deep Targeted Search for Fast Radio Bursts from the Sites of Low-redshift Short Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2019ApJ...887..252M/",
+        "A multiwavelength analysis of a collection of short-duration GRBs observed between 2012 and 2015": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.5294P/",
+        "A luminosity distribution for kilonovae based on short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.486..672A/",
+        "An unusual transient following the short GRB 071227": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.489...13E/",
+        "Reverse shocks in the relativistic outflows of gravitational wave-detected neutron star binary mergers": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.489.1820L/",
+        "The afterglow and kilonova of the short GRB 160821B": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.489.2104T/",
+        "Teraelectronvolt emission from the γ-ray burst GRB 190114C": "https://ui.adsabs.harvard.edu/abs/2019Natur.575..455M/",
+        "Systematic study for gas-to-dust ratio of short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019PASJ...71...54Y/",
+        "Detecting the imprint of a kilonova or supernova in short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2018A&A...620A.131G/",
+        "The Formation Rate of Short Gamma-Ray Bursts and Gravitational Waves": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852....1Z/",
+        "The Origin of r-process Elements in the Milky Way": "https://ui.adsabs.harvard.edu/abs/2018ApJ...855...99C/",
+        "Short GRBs: Opening Angles, Local Neutron Star Merger Rate, and Off-axis Events for GRB/GW Association": "https://ui.adsabs.harvard.edu/abs/2018ApJ...857..128J/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Fermi GBM Observations of GRB 150101B: A Second Nearby Event with a Short Hard Spike and a Soft Tail": "https://ui.adsabs.harvard.edu/abs/2018ApJ...863L..34B/",
+        "Statistical Study of the Swift X-Ray Flash and X-Ray Rich Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2018ApJ...866...97B/",
+        "Search for the signatures of a new-born black hole from the collapse of a supra-massive millisecond magnetar in short GRB light curves": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.475..266Z/",
+        "Outflows from black hole hyperaccretion systems: short and long-short gamma-ray bursts and `quasi-supernovae'": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.477.2173S/",
+        "Prompt gamma-ray emission of GRB 170817A associated with GW 170817: a consistent picture": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.478.3233Z/",
+        "Impact of ejecta morphology and composition on the electromagnetic signatures of neutron star mergers": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.478.3298W/",
+        "Magnetar Central Engine and Possible Gravitational Wave Emission of Nearby Short GRB 160821B": "https://ui.adsabs.harvard.edu/abs/2017ApJ...835..181L/",
+        "Infrared Emission from Kilonovae: The Case of the Nearby Short Hard Burst GRB 160821B": "https://ui.adsabs.harvard.edu/abs/2017ApJ...843L..34K/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/",
+        "Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A": "https://ui.adsabs.harvard.edu/abs/2017ApJ...848L..13A/",
+        "The Electromagnetic Counterpart of the Binary Neutron Star Merger LIGO/Virgo GW170817. VIII. A Comparison to Cosmological Short-duration Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2017ApJ...848L..23F/",
+        "Illuminating gravitational waves: A concordant picture of photons from a neutron star merger": "https://ui.adsabs.harvard.edu/abs/2017Sci...358.1559K/"
+    },
+    "160726A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Classification of Photospheric Emission in Short GRBs": "https://ui.adsabs.harvard.edu/abs/2020ApJ...897..145D/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/",
+        "Precursors in Short Gamma-Ray Bursts as a Possible Probe of Progenitors": "https://ui.adsabs.harvard.edu/abs/2019ApJ...884...25Z/",
+        "Radio forensics could unmask nearby off-axis gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.4150B/",
+        "A Bayesian Fermi-GBM short GRB spectral catalogue": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.490..927B/",
+        "The Formation Rate of Short Gamma-Ray Bursts and Gravitational Waves": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852....1Z/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/"
+    },
+    "160714A": {
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/"
+    },
+    "160709A": {
+        "Spectral Diversities of Gamma-Ray Bursts in High-energy Bands: Hints from Turbulent Cascade": "https://ui.adsabs.harvard.edu/abs/2020ApJ...898...14M/",
+        "Multiple Components in the Broadband γ-Ray Emission of the Short GRB 160709A": "https://ui.adsabs.harvard.edu/abs/2019ApJ...876...76T/",
+        "A Decade of Gamma-Ray Bursts Observed by Fermi-LAT: The Second GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2019ApJ...878...52A/"
+    },
+    "160624A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Identifying Black Hole Central Engines in Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908L...2S/",
+        "A tale of two mergers: constraints on kilonova detection in two short GRBs at z ∼ 0.5": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.502.1279O/",
+        "The Luminosity Distribution of Short Gamma-Ray Bursts under a Structured Jet Scenario": "https://ui.adsabs.harvard.edu/abs/2020ApJ...894...11G/",
+        "A Search for Neutron Star-Black Hole Binary Mergers in the Short Gamma-Ray Burst Population": "https://ui.adsabs.harvard.edu/abs/2020ApJ...895...58G/",
+        "The E<SUB>p,I</SUB>-E<SUB>iso</SUB> correlation: type I gamma-ray bursts and the new classification method": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.1919M/",
+        "A comparison between short GRB afterglows and kilonova AT2017gfo: shedding light on kilonovae properties": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.3379R/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "Jet Geometry and Rate Estimate of Coincident Gamma-Ray Burst and Gravitational-wave Observations": "https://ui.adsabs.harvard.edu/abs/2019ApJ...880...55M/",
+        "Systematic study for gas-to-dust ratio of short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019PASJ...71...54Y/",
+        "Revisiting the event rate of short GRBs and estimating their detectable number within the Advanced LIGO horizon": "https://ui.adsabs.harvard.edu/abs/2019RAA....19..118L/",
+        "The Formation Rate of Short Gamma-Ray Bursts and Gravitational Waves": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852....1Z/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Prompt gamma-ray emission of GRB 170817A associated with GW 170817: a consistent picture": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.478.3233Z/",
+        "Spectrum-energy Correlations in GRBs: Update, Reliability, and the Long/Short Dichotomy": "https://ui.adsabs.harvard.edu/abs/2018PASP..130e4202Z/",
+        "Search for Very-high-energy Emission from Gamma-Ray Bursts Using the First 18 Months of Data from the HAWC Gamma-Ray Observatory": "https://ui.adsabs.harvard.edu/abs/2017ApJ...843...88A/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/",
+        "Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A": "https://ui.adsabs.harvard.edu/abs/2017ApJ...848L..13A/"
+    },
+    "160612A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/"
+    },
+    "160601A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "160525B": {
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Statistical Study of the Swift X-Ray Flash and X-Ray Rich Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2018ApJ...866...97B/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "160411A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "The Formation Rate of Short Gamma-Ray Bursts and Gravitational Waves": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852....1Z/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "160410A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Testing Blandford-Znajek Mechanism in Black Hole Hyperaccretion Flows for Long-duration Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908..242D/",
+        "Evidence of Extended Emission in GRB 181123B and Other High-redshift Short GRBs": "https://ui.adsabs.harvard.edu/abs/2021ApJ...911L..28D/",
+        "Discovery of the Optical Afterglow and Host Galaxy of Short GRB 181123B at z = 1.754: Implications for Delay Time Distributions": "https://ui.adsabs.harvard.edu/abs/2020ApJ...898L..32P/",
+        "The E<SUB>p,I</SUB>-E<SUB>iso</SUB> correlation: type I gamma-ray bursts and the new classification method": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.1919M/",
+        "A comparison between short GRB afterglows and kilonova AT2017gfo: shedding light on kilonovae properties": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.3379R/",
+        "The X-shooter GRB afterglow legacy sample (XS-GRB)": "https://ui.adsabs.harvard.edu/abs/2019A&A...623A..92S/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "Systematic study for gas-to-dust ratio of short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019PASJ...71...54Y/",
+        "How Special Is GRB 170817A?": "https://ui.adsabs.harvard.edu/abs/2018ApJ...853L..10Y/",
+        "Merger delay time distribution of extended emission short GRBs": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.481.4332A/",
+        "Spectrum-energy Correlations in GRBs: Update, Reliability, and the Long/Short Dichotomy": "https://ui.adsabs.harvard.edu/abs/2018PASP..130e4202Z/",
+        "Limits on quantum gravity effects from Swift short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2017A&A...607A.121B/",
+        "Search for Very-high-energy Emission from Gamma-Ray Bursts Using the First 18 Months of Data from the HAWC Gamma-Ray Observatory": "https://ui.adsabs.harvard.edu/abs/2017ApJ...843...88A/",
+        "The Konus-Wind Catalog of Gamma-Ray Bursts with Known Redshifts. I. Bursts Detected in the Triggered Mode": "https://ui.adsabs.harvard.edu/abs/2017ApJ...850..161T/",
+        "Fallback accretion on to a newborn magnetar: short GRBs with extended emission": "https://ui.adsabs.harvard.edu/abs/2017MNRAS.470.4925G/"
+    },
+    "160408A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Classification of Photospheric Emission in Short GRBs": "https://ui.adsabs.harvard.edu/abs/2020ApJ...897..145D/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Precursors in Short Gamma-Ray Bursts as a Possible Probe of Progenitors": "https://ui.adsabs.harvard.edu/abs/2019ApJ...884...25Z/",
+        "A Bayesian Fermi-GBM short GRB spectral catalogue": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.490..927B/",
+        "The Formation Rate of Short Gamma-Ray Bursts and Gravitational Waves": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852....1Z/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Highly ionized metals as probes of the circumburst gas in the natal regions of gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.479.3456H/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "160303A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "The X-shooter GRB afterglow legacy sample (XS-GRB)": "https://ui.adsabs.harvard.edu/abs/2019A&A...623A..92S/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "Statistical Study of Gamma-Ray Bursts with a Plateau Phase in the X-Ray Afterglow": "https://ui.adsabs.harvard.edu/abs/2019ApJS..245....1T/"
+    },
+    "151229A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "X-ray absorbing column densities of a complete sample of short gamma ray bursts": "https://ui.adsabs.harvard.edu/abs/2019A&A...625A...6A/",
+        "The Shallow Decay Segment of GRB X-Ray Afterglow Revisited": "https://ui.adsabs.harvard.edu/abs/2019ApJ...883...97Z/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "151228A": {
+        "Search for Radio Remnants of Nearby Off-axis Gamma-Ray Bursts in a Sample of Swift/BAT Events": "https://ui.adsabs.harvard.edu/abs/2021ApJ...908...63G/",
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/",
+        "Radio forensics could unmask nearby off-axis gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.4150B/",
+        "A multiwavelength analysis of a collection of short-duration GRBs observed between 2012 and 2015": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.485.5294P/",
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Search for Gravitational Waves Associated with Gamma-Ray Bursts during the First Advanced LIGO Observing Run and Implications for the Origin of GRB 150906B": "https://ui.adsabs.harvard.edu/abs/2017ApJ...841...89A/"
+    },
+    "151205B": {
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Statistical Study of the Swift X-Ray Flash and X-Ray Rich Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2018ApJ...866...97B/"
+    },
+    "151127A": {
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "Search for Gravitational Waves Associated with Gamma-Ray Bursts during the First Advanced LIGO Observing Run and Implications for the Origin of GRB 150906B": "https://ui.adsabs.harvard.edu/abs/2017ApJ...841...89A/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/"
+    },
+    "150831A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Short gamma-ray bursts within 200 Mpc": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5011D/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/",
+        "The Third Swift Burst Alert Telescope Gamma-Ray Burst Catalog": "https://ui.adsabs.harvard.edu/abs/2016ApJ...829....7L/"
+    },
+    "150728A": {
+        "Analysis of Sub-threshold Short Gamma-Ray Bursts in Fermi GBM Data": "https://ui.adsabs.harvard.edu/abs/2018ApJ...862..152K/",
+        "Statistical Study of the Swift X-Ray Flash and X-Ray Rich Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2018ApJ...866...97B/",
+        "The Third Swift Burst Alert Telescope Gamma-Ray Burst Catalog": "https://ui.adsabs.harvard.edu/abs/2016ApJ...829....7L/"
+    },
+    "150710A": {
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "Statistical Study of the Swift X-Ray Flash and X-Ray Rich Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2018ApJ...866...97B/",
+        "Search for Very-high-energy Emission from Gamma-Ray Bursts Using the First 18 Months of Data from the HAWC Gamma-Ray Observatory": "https://ui.adsabs.harvard.edu/abs/2017ApJ...843...88A/",
+        "The Third Swift Burst Alert Telescope Gamma-Ray Burst Catalog": "https://ui.adsabs.harvard.edu/abs/2016ApJ...829....7L/"
+    },
+    "150424A": {
+        "The Broadband Counterpart of the Short GRB 200522A at z = 0.5536: A Luminous Kilonova or a Collimated Outflow with a Reverse Shock?": "https://ui.adsabs.harvard.edu/abs/2021ApJ...906..127F/",
+        "Afterglow Light Curves of Nonrelativistic Ejecta Mass in a Stratified Circumstellar Medium": "https://ui.adsabs.harvard.edu/abs/2021ApJ...907...78F/",
+        "Searching for the radio remnants of short-duration gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.500.1708R/",
+        "Shock-powered radio precursors of neutron star mergers from accelerating relativistic binary winds": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.501.3184S/",
+        "A Search for Neutron Star-Black Hole Binary Mergers in the Short Gamma-Ray Burst Population": "https://ui.adsabs.harvard.edu/abs/2020ApJ...895...58G/",
+        "A Late-time Radio Survey of Short Gamma-ray Bursts at z &lt; 0.5: New Constraints on the Remnants of Neutron-star Mergers": "https://ui.adsabs.harvard.edu/abs/2020ApJ...902...82S/",
+        "The E<SUB>p,I</SUB>-E<SUB>iso</SUB> correlation: type I gamma-ray bursts and the new classification method": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.1919M/",
+        "A comparison between short GRB afterglows and kilonova AT2017gfo: shedding light on kilonovae properties": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.3379R/",
+        "A kilonova associated with GRB 070809": "https://ui.adsabs.harvard.edu/abs/2020NatAs...4...77J/",
+        "Late Afterglow Emission Statistics: A Clear Link between GW170817 and Bright Short Gamma-Ray Bursts": "https://ui.adsabs.harvard.edu/abs/2019ApJ...876L..28D/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "The Shallow Decay Segment of GRB X-Ray Afterglow Revisited": "https://ui.adsabs.harvard.edu/abs/2019ApJ...883...97Z/",
+        "Deep ATCA and VLA Radio Observations of Short-GRB Host Galaxies. Constraints on Star Formation Rates, Afterglow Flux, and Kilonova Radio Flares": "https://ui.adsabs.harvard.edu/abs/2019ApJ...887..206K/",
+        "Statistical Study of Gamma-Ray Bursts with a Plateau Phase in the X-Ray Afterglow": "https://ui.adsabs.harvard.edu/abs/2019ApJS..245....1T/",
+        "A luminosity distribution for kilonovae based on short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.486..672A/",
+        "Constraining coherent low-frequency radio flares from compact binary mergers": "https://ui.adsabs.harvard.edu/abs/2019MNRAS.489.3316R/",
+        "Systematic study for gas-to-dust ratio of short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019PASJ...71...54Y/",
+        "The Benefit of Simultaneous Seven-filter Imaging: 10 Years of GROND Observations": "https://ui.adsabs.harvard.edu/abs/2019PASP..131a5002G/",
+        "Detecting the imprint of a kilonova or supernova in short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2018A&A...620A.131G/",
+        "Short GRBs: Opening Angles, Local Neutron Star Merger Rate, and Off-axis Events for GRB/GW Association": "https://ui.adsabs.harvard.edu/abs/2018ApJ...857..128J/",
+        "A Simultaneous Search for Prompt Radio Emission Associated with the Short GRB 170112A Using the All-sky Imaging Capability of the OVRO-LWA": "https://ui.adsabs.harvard.edu/abs/2018ApJ...864...22A/",
+        "The Arcminute Microkelvin Imager catalogue of gamma-ray burst afterglows at 15.7 GHz": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.473.1512A/",
+        "Revisiting gamma-ray burst afterglows with time-dependent parameters": "https://ui.adsabs.harvard.edu/abs/2018RAA....18...18Y/",
+        "Long optical plateau in the afterglow of the short GRB 150424A with extended emission. Evidence for energy injection by a magnetar?": "https://ui.adsabs.harvard.edu/abs/2017A&A...607A..84K/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/",
+        "The Konus-Wind Catalog of Gamma-Ray Bursts with Known Redshifts. I. Bursts Detected in the Triggered Mode": "https://ui.adsabs.harvard.edu/abs/2017ApJ...850..161T/",
+        "Galaxy gas as obscurer - I. GRBs x-ray galaxies and find an N<SUB>H</SUB><SUP>3</SUP>∝ M_{star} relation": "https://ui.adsabs.harvard.edu/abs/2017MNRAS.464.4545B/",
+        "Fallback accretion on to a newborn magnetar: short GRBs with extended emission": "https://ui.adsabs.harvard.edu/abs/2017MNRAS.470.4925G/",
+        "The Third Swift Burst Alert Telescope Gamma-Ray Burst Catalog": "https://ui.adsabs.harvard.edu/abs/2016ApJ...829....7L/",
+        "Machine-z: rapid machine-learned redshift indicator for Swift gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2016MNRAS.458.3821U/",
+        "Testing the homogeneity of the Universe using gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2015A&A...582A.111L/",
+        "A Deep Search for Prompt Radio Emission from the Short GRB 150424A with the Murchison Widefield Array": "https://ui.adsabs.harvard.edu/abs/2015ApJ...814L..25K/"
+    },
+    "150423A": {
+        "Evidence of Extended Emission in GRB 181123B and Other High-redshift Short GRBs": "https://ui.adsabs.harvard.edu/abs/2021ApJ...911L..28D/",
+        "Temporal Properties of Precursors, Main Peaks, and Extended Emissions of Short GRBs in the Third Swift/BAT GRB Catalog": "https://ui.adsabs.harvard.edu/abs/2021ApJS..252...16L/",
+        "The E<SUB>p,I</SUB>-E<SUB>iso</SUB> correlation: type I gamma-ray bursts and the new classification method": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.1919M/",
+        "Limits on the electromagnetic counterpart to S190814bv": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.5916W/",
+        "A comparison between short GRB afterglows and kilonova AT2017gfo: shedding light on kilonovae properties": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.493.3379R/",
+        "Constraints on the circumburst environments of short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2020MNRAS.495.4782O/",
+        "The X-shooter GRB afterglow legacy sample (XS-GRB)": "https://ui.adsabs.harvard.edu/abs/2019A&A...623A..92S/",
+        "Exponentially Decaying Extended Emissions Following Short Gamma-Ray Bursts with a Possible Luminosity-E-folding Time Correlation": "https://ui.adsabs.harvard.edu/abs/2019ApJ...877..147K/",
+        "Jet Geometry and Rate Estimate of Coincident Gamma-Ray Burst and Gravitational-wave Observations": "https://ui.adsabs.harvard.edu/abs/2019ApJ...880...55M/",
+        "Statistical Study of Gamma-Ray Bursts with a Plateau Phase in the X-Ray Afterglow": "https://ui.adsabs.harvard.edu/abs/2019ApJS..245....1T/",
+        "Systematic study for gas-to-dust ratio of short gamma-ray burst afterglows": "https://ui.adsabs.harvard.edu/abs/2019PASJ...71...54Y/",
+        "Revisiting the event rate of short GRBs and estimating their detectable number within the Advanced LIGO horizon": "https://ui.adsabs.harvard.edu/abs/2019RAA....19..118L/",
+        "Determining the Lorentz Factor and Viewing Angle of GRB 170817A": "https://ui.adsabs.harvard.edu/abs/2018ApJ...852L...1Z/",
+        "Merger delay time distribution of extended emission short GRBs": "https://ui.adsabs.harvard.edu/abs/2018MNRAS.481.4332A/",
+        "Spectrum-energy Correlations in GRBs: Update, Reliability, and the Long/Short Dichotomy": "https://ui.adsabs.harvard.edu/abs/2018PASP..130e4202Z/",
+        "Limits on quantum gravity effects from Swift short gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2017A&A...607A.121B/",
+        "Search for Very-high-energy Emission from Gamma-Ray Bursts Using the First 18 Months of Data from the HAWC Gamma-Ray Observatory": "https://ui.adsabs.harvard.edu/abs/2017ApJ...843...88A/",
+        "Bimodal Long-lasting Components in Short Gamma-Ray Bursts: Promising Electromagnetic Counterparts to Neutron Star Binary Mergers": "https://ui.adsabs.harvard.edu/abs/2017ApJ...846..142K/",
+        "Gravitational Waves and Gamma-Rays from a Binary Neutron Star Merger: GW170817 and GRB 170817A": "https://ui.adsabs.harvard.edu/abs/2017ApJ...848L..13A/",
+        "Galaxy gas as obscurer - I. GRBs x-ray galaxies and find an N<SUB>H</SUB><SUP>3</SUP>∝ M_{star} relation": "https://ui.adsabs.harvard.edu/abs/2017MNRAS.464.4545B/",
+        "The Third Swift Burst Alert Telescope Gamma-Ray Burst Catalog": "https://ui.adsabs.harvard.edu/abs/2016ApJ...829....7L/",
+        "Machine-z: rapid machine-learned redshift indicator for Swift gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2016MNRAS.458.3821U/",
+        "Testing the homogeneity of the Universe using gamma-ray bursts": "https://ui.adsabs.harvard.edu/abs/2015A&A...582A.111L/"
+    }
+}

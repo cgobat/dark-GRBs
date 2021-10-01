@@ -1,6 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def pos_errors(uncertainty_array):
+    return [v.plus for v in uncertainty_array]
+
+def neg_errors(uncertainty_array):
+    return [v.minus for v in uncertainty_array]
+
 class AsymmetricUncertainty:
     """
     Class for handling propagation of asymmetric uncertainties assuming a pseudo-Gaussian probability distribution
@@ -55,6 +61,7 @@ class AsymmetricUncertainty:
         self.maximum = self.value+self.plus
         self.minimum = self.value-self.minus
         self.sign = self.value/np.abs(self.value) if self.value != 0 else 1
+        self.is_symmetric = np.isclose(self.plus, self.minus)
         
     def __str__(self):
         if np.isclose(self.plus, self.minus):
@@ -68,30 +75,52 @@ class AsymmetricUncertainty:
         else:
             return "$%f_{-%f}^{+%f}$" %(self.value,self.minus,self.plus)
         
-    def pdf(self,num_sigma=5,discretization=100,**kwargs):
-        neg_x = np.linspace(self.value-(num_sigma*self.minus),self.value,discretization)
-        pos_x = np.linspace(self.value,self.value+(num_sigma*self.minus),discretization)
-        p_neg = np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(neg_x-self.value)**2 / (2*self.minus**2))
-        p_pos = np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(pos_x-self.value)**2 / (2*self.plus**2))
-        plt.plot(list(neg_x)+list(pos_x),list(p_neg)+list(p_pos),**kwargs)
-        plt.show()
+    def pdf(self,x):
+        return np.piecewise(x, [x<self.value, x>=self.value],
+                            [lambda x : np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(x-self.value)**2 / (2*self.minus**2)),
+                             lambda x : np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(x-self.value)**2 / (2*self.plus**2))])
         
-    def cdf(self,num_sigma=5,discretization=100,**kwargs):
+    def pdfplot(self,num_sigma=5,discretization=100,**kwargs):
         neg_x = np.linspace(self.value-(num_sigma*self.minus),self.value,discretization)
         pos_x = np.linspace(self.value,self.value+(num_sigma*self.minus),discretization)
         p_neg = np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(neg_x-self.value)**2 / (2*self.minus**2))
         p_pos = np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(pos_x-self.value)**2 / (2*self.plus**2))
         x = np.array(list(neg_x)+list(pos_x))
-        pdf = np.array(list(p_neg)+list(p_pos))
+        pdf = self.pdf(x)
+        plt.plot(x,pdf,**kwargs)
+        plt.show()
+        
+    def cdfplot(self,num_sigma=5,discretization=100,**kwargs):
+        neg_x = np.linspace(self.value-(num_sigma*self.minus),self.value,discretization)
+        pos_x = np.linspace(self.value,self.value+(num_sigma*self.minus),discretization)
+        p_neg = np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(neg_x-self.value)**2 / (2*self.minus**2))
+        p_pos = np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(pos_x-self.value)**2 / (2*self.plus**2))
+        x = np.array(list(neg_x)+list(pos_x))
+        pdf = self.pdf(x)
         cdf = np.cumsum(pdf)/np.sum(pdf)
         plt.plot(x,cdf,**kwargs)
         plt.show()
+        
+    def add_error(self, delta, method="quadrature", inplace=False):
+        if method=="quadrature":
+            new_pos = np.sqrt(self.plus**2 + delta**2)
+            new_neg = np.sqrt(self.minus**2 + delta**2)
+        elif method=="straight":
+            new_pos += delta
+            new_neg -= delta
+        elif method=="split":
+            new_pos += delta/2
+            new_neg -= delta/2
+        else:
+            raise ValueError
+        if inplace:
+            self.plus = new_pos
+            self.minus = new_neg
+        else:
+            return AsymmetricUncertainty(self.value,new_pos,new_neg)
     
     def __int__(self):
         return int(self.value)
-    
-    def __len__(self):
-        return 1
     
     def __float__(self):
         return float(self.value)
@@ -259,29 +288,54 @@ class AsymmetricUncertainty:
         else:
             other = AsymmetricUncertainty(other,0,0)
         return self.value >= other.value
-
-class UncertaintyArray():
     
-    def __init__(self,array=[]):
-        self.as_list = list(array)
-        self.as_numpy = np.array(array)
+    def conjugate(self):
+        return self.value
+    
+    def __isfinite__(self):
+        return np.isfinite(self.value) and np.isfinite(self.plus) and np.isfinite(self.minus)
+    
+    def isna(self):
+        return pd.isna(self.value)
+
+class UncertaintyArray(list):
+    
+    def refresh(self):
+        for i in range(len(self)):
+            if isinstance(self[i], AsymmetricUncertainty):
+                pass
+            else:
+                self[i] = AsymmetricUncertainty(self[i],0,0)
+                
+        self.as_numpy = np.array(self.as_list)
         self.flattened = self.as_numpy.flatten()
         self.shape = np.shape(self.as_numpy)
         self.ndim = self.as_numpy.ndim
-        
-        for i in range(len(self.flattened)):
-            if isinstance(self.flattened[i], AsymmetricUncertainty):
-                pass
-            else:
-                self.flattened[i] = AsymmetricUncertainty(self.flattened[i],0,0)
-                
-        self.values = [elem.value for elem in self.flattened]
-                
-        def __len__(self):
-            return len(self.as_list)
-        
-        def __getitem__(self, key):
-            return self.as_numpy[key]
-        
-        def __str__(self):
-            return "foo"#str([elem for elem in self.as_list])
+
+        self.minus = [v.minus for v in self.as_list]
+        self.plus = [v.plus for v in self.as_list]
+        self.values = [v.value for v in self.as_list]
+    
+    def __init__(self,array=[]):
+
+        self.as_list = list(array)
+        self.refresh()
+                        
+    def __len__(self):
+        return len(self.as_list)
+
+    def __getitem__(self, key):
+        return self.as_list[key]
+
+    def __str__(self):
+        return str(self.as_list)
+
+    def __repr__(self):
+        return str(self)
+
+    def __contains__(self, item):
+        return item in self.as_list
+
+    def append(self,entry):
+        self.as_list.append(entry)
+        self.refresh()

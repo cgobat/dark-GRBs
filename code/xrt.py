@@ -1,9 +1,10 @@
 import pandas as pd
+from astropy.coordinates import SkyCoord
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from .uncertainty import AsymmetricUncertainty
 
-def XRT_lightcurve(burst_id,lookuptable):
+def XRT_lightcurve(burst_id,lookuptable=pd.read_html("https://swift.gsfc.nasa.gov/archive/grb_table/fullview/")[0]):
     """
     Function for retrieving X-ray observations (flux values) for a given gamma-ray burst.
     
@@ -43,7 +44,41 @@ def XRT_lightcurve(burst_id,lookuptable):
     return fluxdata
 
 
-def get_photonIndex(burst_id,lookuptable):
+def get_columnDensity(burst_id,lookuptable=pd.read_html("https://swift.gsfc.nasa.gov/archive/grb_table/fullview/")[0]):
+    """
+    Function for retrieving the neutral hydrogen column density in the direction of a given gamma-ray burst.
+    
+    Author: Caden Gobat, George Washington University
+
+    Parameters
+    ----------
+    burst_id : string
+        GRB ID/name in the form YYMMDDx
+    lookuptable : pandas DataFrame
+        the reference table to get the TriggerNumber
+
+    Returns
+    -------
+    N_H : AsymmetricUncertainty
+        value of the neutral hydrogen column density in the form (value (pos_err, neg_err)) [units of cm^-2]
+
+    Raises
+    ------
+    
+    """
+    trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"]
+    spectrumURL = f"https://www.swift.ac.uk/xrt_spectra/{int(trigger):0>8}/"
+    
+    spectra_tables = pd.read_html(spectrumURL)
+    PC_table = spectra_tables[1]
+    vals,power = str(PC_table.iloc[1,1]).split('×')
+    power = power.split()[0][2:]
+    nominal, plus, minus = vals.split()[0], vals[vals.index("+")+1:vals.index(",")], vals[vals.index("-")+1:vals.index(")")]
+    N_H = AsymmetricUncertainty(float(nominal), float(plus), float(minus)) * 10**int(power)
+    return N_H
+
+
+def get_photonIndex(burst_id,lookuptable=pd.read_html("https://swift.gsfc.nasa.gov/archive/grb_table/fullview/")[0]):
     """
     Function for retrieving the X-ray spectral index for a given gamma-ray burst.
     

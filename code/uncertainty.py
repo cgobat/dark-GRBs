@@ -43,7 +43,6 @@ class AsymmetricUncertainty:
     def __init__(self, nominal, pos_err=0, neg_err=0):
         if isinstance(nominal,str):
             stripped = nominal.replace(" ","")
-            print(stripped)
             if "±" in stripped:
                 self.value = float(stripped.split("±")[0])
                 self.plus = self.minus = float(nominal.split("±")[1])
@@ -54,10 +53,12 @@ class AsymmetricUncertainty:
                 self.minus = float(err_str.split(",")[1][1:])
             else:
                 raise TypeError("Failed to parse string, likely due to improper formatting.")
+        elif nominal != nominal: # NaN
+            raise ValueError
         else:
             self.value = float(nominal)
-            self.plus = float(pos_err)
-            self.minus = float(neg_err)
+            self.plus = np.abs(float(pos_err))
+            self.minus = np.abs(float(neg_err))
         self.maximum = self.value+self.plus
         self.minimum = self.value-self.minus
         self.sign = self.value/np.abs(self.value) if self.value != 0 else 1
@@ -79,6 +80,9 @@ class AsymmetricUncertainty:
         return np.piecewise(x, [x<self.value, x>=self.value],
                             [lambda x : np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(x-self.value)**2 / (2*self.minus**2)),
                              lambda x : np.sqrt(2)/np.sqrt(np.pi)/(self.plus+self.minus) * np.exp(-1*(x-self.value)**2 / (2*self.plus**2))])
+    
+    def cdf(self,x):
+        return np.cumsum(self.pdf(x))/np.sum(self.pdf(x))
         
     def pdfplot(self,num_sigma=5,discretization=100,**kwargs):
         neg_x = np.linspace(self.value-(num_sigma*self.minus),self.value,discretization)
@@ -118,6 +122,9 @@ class AsymmetricUncertainty:
             self.minus = new_neg
         else:
             return AsymmetricUncertainty(self.value,new_pos,new_neg)
+    
+    def items(self):
+        return (self.value,self.plus,self.minus)
     
     def __int__(self):
         return int(self.value)
@@ -246,6 +253,13 @@ class AsymmetricUncertainty:
         neg = self.minus/(self.value*np.log(10))
         #print("logged",self,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
+    
+    def __eq__(self,other):
+        if isinstance(other,type(self)):
+            pass
+        else:
+            other = AsymmetricUncertainty(other,0,0)
+        return self.value == other.value and self.plus == other.plus and self.minus == other.minus
     
     def __gt__(self,other):
         if isinstance(other,type(self)):

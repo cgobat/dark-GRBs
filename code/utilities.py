@@ -55,3 +55,13 @@ def literature_references(GRB,titles=True,links=True,GCNs=False):
         return link_list
     else:
         return None
+    
+def addYear(GRB_df):
+    yrs = []
+    for i in GRB_df.index:
+        yy = int(GRB_df.loc[i,"GRB"][:2])
+        if yy>21:
+            yrs.append(1900+yy)
+        else:
+            yrs.append(2000+yy)
+    GRB_df["Year"] = yrs

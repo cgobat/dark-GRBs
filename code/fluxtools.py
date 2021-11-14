@@ -83,7 +83,8 @@ def simulate_spectrum(idx):
     x_spec = x_spec * (ox_spec[-1]/x_spec[0])
     plt.plot(inter_freqs,ox_spec,label=r"$\beta_{ox}=%f$"%(-results.loc[idx,"B_ox"]))
     plt.plot(xray_freqs,x_spec,label=r"$\beta_x=%f$"%(-results.loc[idx,"B_x"]))
-    plt.vlines([10**np.mean((np.log10(0.3),np.log10(10))) / 4.135667696e-18],0,10**np.log10((x_spec.max()+x_spec.min())/2),"k",linestyle="--")
+    plt.vlines([10**np.mean((np.log10(0.3),np.log10(10))) / 4.135667696e-18],0,
+                10**np.log10((x_spec.max()+x_spec.min())/2),"k",linestyle="--")
     plt.xscale("log")
     plt.yscale("log")
     plt.legend()

@@ -3,3 +3,4 @@ Articles/
 __pycache__/
 .vscode/
 geckodriver.log
+code/UKSSDC_Bulk_Download.ipynb

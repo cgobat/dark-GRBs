@@ -53,8 +53,6 @@ class AsymmetricUncertainty:
                 self.minus = float(err_str.split(",")[1][1:])
             else:
                 raise TypeError("Failed to parse string, likely due to improper formatting.")
-        elif nominal != nominal: # NaN
-            raise ValueError
         else:
             self.value = float(nominal)
             self.plus = np.abs(float(pos_err))
@@ -253,6 +251,9 @@ class AsymmetricUncertainty:
         neg = self.minus/(self.value*np.log(10))
         #print("logged",self,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
+    
+    def sqrt(self):
+        return self**0.5
     
     def __eq__(self,other):
         if isinstance(other,type(self)):

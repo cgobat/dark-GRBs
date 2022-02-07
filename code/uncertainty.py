@@ -308,10 +308,13 @@ class AsymmetricUncertainty:
         return self.value
     
     def __isfinite__(self):
-        return np.isfinite(self.value) and np.isfinite(self.plus) and np.isfinite(self.minus)
+        return all(np.isfinite(self.items()))
     
     def isna(self):
         return pd.isna(self.value)
+    
+    def notna(self):
+        return pd.notna(self.value)
 
 class UncertaintyArray(list):
     

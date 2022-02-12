@@ -252,6 +252,12 @@ class AsymmetricUncertainty:
         #print("logged",self,"=",AsymmetricUncertainty(result,pos,neg))
         return AsymmetricUncertainty(result,pos,neg)
     
+    def log(self):
+        result = np.log(self.value)
+        pos = self.plus/self.value
+        neg = self.minus/self.value
+        return AsymmetricUncertainty(result,pos,neg)
+    
     def sqrt(self):
         return self**0.5
     

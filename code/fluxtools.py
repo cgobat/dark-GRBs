@@ -1,31 +1,37 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from scipy import interpolate
+from scipy import interpolate, integrate
 
-def effective_wavelength(filter_response,show_plot=False,dl=0.1): # pass a dataframe with columns Wavelength (in Ang), Transmission (in %)
+def effective_wavelength(filter_response,show_plot=False): # pass a dataframe with columns Wavelength (in Ang), Transmission (in %)
+    filter_response.sort_values(by="Wavelength",inplace=True)
+
     vega_spec = pd.read_table("http://svo2.cab.inta-csic.es/svo/theory/fps3/morefiles/vega.dat",
                               delimiter=" ",header=None,names=["Wavelength","Flux"])
-    vega_function = interpolate.interp1d(vega_spec["Wavelength"],vega_spec["Flux"])
-    filter_response.sort_values(by="Wavelength",inplace=True)
-    response_function = interpolate.interp1d(filter_response["Wavelength"],filter_response["Transmission"])
+    vega_func = interpolate.interp1d(vega_spec["Wavelength"],vega_spec["Flux"],
+                                     bounds_error=False,fill_value=0)
+    λ = filter_response["Wavelength"]
+    T = filter_response["Transmission"]
+    Vg = vega_func(λ)
+
+    numerator = integrate.trapz(y=λ*T*Vg, x=λ) # ∫ λ T(λ) Vg(λ) dλ
+    denominator = integrate.trapz(y=T*Vg, x=λ) # ∫ T(λ) Vg(λ) dλ
     
-    domain = np.arange(filter_response["Wavelength"].min(),filter_response["Wavelength"].max(),dl)
-    numerator = np.sum([domain*vega_function(domain)*response_function(domain)*dl])
-    denominator = np.sum([vega_function(domain)*response_function(domain)*dl])
     lambda_eff = numerator/denominator
+    
     if show_plot:
-        plt.plot(vega_spec.Wavelength,vega_spec.Flux,"b")
-        plt.yscale("log")
-        plt.ylabel("Vega flux [erg/cm$^2$/s/Ang]")
-        plt.xlabel(r"$\lambda$ [Ang]")
-        plt.twinx()
-        plt.plot(filter_response.Wavelength,filter_response.Transmission,color="dimgrey",linestyle=":")
-        #plt.xscale("log")
-        plt.ylabel("Filter transmission [%]")
-        plt.vlines([lambda_eff],0,100,color="g",linestyle="--")
-        plt.xlim(domain.min(), domain.max())
-        plt.ylim(0,100)
+        fig,ax = plt.subplots()
+        ax.plot(vega_spec.Wavelength,vega_spec.Flux,"b",label="Vega spectrum")
+        ax.set_yscale("log")
+        ax.set_xlim(filter_response["Wavelength"].min(), filter_response["Wavelength"].max())
+        ax.set_ylabel("Flux [erg/cm$^2$/s/Ang]")
+        ax.set_xlabel(r"$\lambda$ [Ang]")
+        ax2 = ax.twinx()
+        ax2.plot(λ,T,color="dimgrey",linestyle=":",label="Filter response")
+        ax2.set_ylabel("Transmission [%]")
+        ax2.axvline(lambda_eff,color="g",linestyle="--",label=r"$\lambda_\mathrm{eff}$")
+        ax2.set_ylim(0,100)
+        fig.legend(loc="upper right")
         plt.show()
 
     return lambda_eff

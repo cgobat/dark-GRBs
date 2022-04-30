@@ -4,4 +4,3 @@ numpy
 pandas
 scipy
 astropy
-selenium

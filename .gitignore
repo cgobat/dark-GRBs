@@ -1,5 +1,6 @@
 .ipynb_checkpoints/
 Articles/
+papers/
 __pycache__/
 .vscode/
 geckodriver.log

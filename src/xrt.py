@@ -6,7 +6,7 @@ from astropy.coordinates import SkyCoord
 from astropy.table import Table
 # from selenium import webdriver
 # from selenium.webdriver.support.wait import WebDriverWait
-from .uncertainty import AsymmetricUncertainty
+from asymmetric_uncertainty import a_u
 
 grb_list = pd.read_table("https://www.swift.ac.uk/xrt_curves/grb.list",
                          sep=" |\t",header=None,engine="python",
@@ -81,7 +81,7 @@ def get_columnDensity(burst_id,lookuptable=grb_list):
 
     Returns
     -------
-    N_H : AsymmetricUncertainty
+    N_H : a_u
         value of the neutral hydrogen column density in the form (value (pos_err, neg_err)) [units of cm^-2]
 
     Raises
@@ -123,7 +123,7 @@ def get_columnDensity(burst_id,lookuptable=grb_list):
     power = NH_str[mult+4:mult+6]
     vals = NH_str[:mult-1]+NH_str[mult+6:]
     nominal, plus, minus = vals.split()[0], vals[vals.index("+")+1:vals.index(",")], vals[vals.index("-")+1:vals.index(")")]
-    N_H = AsymmetricUncertainty(float(nominal)*10**int(power), float(plus)*10**int(power), float(minus)*10**int(power))
+    N_H = a_u(float(nominal)*10**int(power), float(plus)*10**int(power), float(minus)*10**int(power))
     
     return N_H, used_mode
 
@@ -143,7 +143,7 @@ def get_photonIndex(burst_id,lookuptable=grb_list):
 
     Returns
     -------
-    gamma : AsymmetricUncertainty
+    gamma : a_u
         value of the spectral index in the form (value (pos_err, neg_err))
 
     Raises
@@ -182,7 +182,7 @@ def get_photonIndex(burst_id,lookuptable=grb_list):
             photon_index = entry.find("td").text
             
     (Gamma, Gammapos, Gammaneg) = (float(num) for num in "".join([char for char in photon_index if char not in "[]()+-,"]).split())
-    gamma = AsymmetricUncertainty(Gamma, Gammapos, Gammaneg)
+    gamma = a_u(Gamma, Gammapos, Gammaneg)
     return gamma, used_mode
 
 def get_temporalIndex(burst_id,query_time,lookuptable=grb_list):
@@ -202,7 +202,7 @@ def get_temporalIndex(burst_id,query_time,lookuptable=grb_list):
 
     Returns
     -------
-    alpha : AsymmetricUncertainty
+    alpha : a_u
         value of the temporal index at the specified time in the form (value (pos_err, neg_err)) [units of cm^-2]
 
     Raises
@@ -222,13 +222,13 @@ def get_temporalIndex(burst_id,query_time,lookuptable=grb_list):
             vals,power = time.split('×')
             power = power.split()[0][2:]
             nominal, plus, minus = vals.split()[0], vals[vals.index("+")+1:vals.index(",")], vals[vals.index("-")+1:vals.index(")")]
-            time = AsymmetricUncertainty(float(nominal), float(plus), float(minus)) * 10**int(power)
+            time = a_u(float(nominal), float(plus), float(minus)) * 10**int(power)
         else:
-            time = AsymmetricUncertainty(time)
+            time = a_u(time)
         breaktimes[i] = time
     breaktimes += [np.inf]
     
-    alphas = [AsymmetricUncertainty(slopes_table.iloc[i,1]) for i in slopes_table.index if "α" in slopes_table.iloc[i,0]]
+    alphas = [a_u(slopes_table.iloc[i,1]) for i in slopes_table.index if "α" in slopes_table.iloc[i,0]]
     
     assert len(breaktimes)+len(alphas) == len(slopes_table.index)+1, "Mismatch error in parsing table rows"
     

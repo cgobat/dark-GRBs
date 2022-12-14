@@ -4,8 +4,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 from astropy.coordinates import SkyCoord
 from astropy.table import Table
-# from selenium import webdriver
-# from selenium.webdriver.support.wait import WebDriverWait
 from asymmetric_uncertainty import a_u
 
 grb_list = pd.read_table("https://www.swift.ac.uk/xrt_curves/grb.list",
@@ -28,7 +26,8 @@ def XRT_lightcurve(burst_id,lookuptable=grb_list):
     Returns
     -------
     fluxdata : pandas DataFrame
-        table containing the time series fluxes in the XRT 0.3-10 keV band. Columns are Time, Tpos, Tneg, Flux, Fluxpos, and Fluxneg.
+        table containing the time series fluxes in the XRT 0.3-10 keV band.
+        Columns are Time, Tpos, Tneg, Flux, Fluxpos, and Fluxneg.
 
     Raises
     ------
@@ -37,15 +36,7 @@ def XRT_lightcurve(burst_id,lookuptable=grb_list):
     
     """
     trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "Trigger Number"]
-#     lightcurveURL = f"https://www.swift.ac.uk/xrt_curves/{int(trigger):0>8}/"
     
-#     fireFoxOptions = webdriver.FirefoxOptions()
-#     fireFoxOptions.headless = True
-#     with webdriver.Firefox(options=fireFoxOptions) as browser:
-#         browser.get(lightcurveURL)
-#         browser.find_element_by_id('flux_makeDownload').click() # find the link to the data file and virtually click it
-#         WebDriverWait(browser, 30).until(lambda page: ".qdp" in page.current_url) # wait for the click to go through/data file to load
-#         lightcurveURL = browser.current_url # update the URL with the new page location (the actual data file)
     lightcurveURL = f"https://www.swift.ac.uk/xrt_curves/{int(trigger):0>8}/flux_incbad.qdp"
     fluxdata = pd.DataFrame(columns=['Time', 'Time_perr', 'Time_nerr', 'Flux', 'Flux_perr', 'Flux_nerr'])
     i = 0
@@ -64,7 +55,6 @@ def XRT_lightcurve(burst_id,lookuptable=grb_list):
     fluxdata["GRB"] = [burst_id]*len(fluxdata)
     #print("Retrieved",burst_id)
     return fluxdata
-
 
 def get_columnDensity(burst_id,lookuptable=grb_list):
     """
@@ -126,7 +116,6 @@ def get_columnDensity(burst_id,lookuptable=grb_list):
     N_H = a_u(float(nominal)*10**int(power), float(plus)*10**int(power), float(minus)*10**int(power))
     
     return N_H, used_mode
-
 
 def get_photonIndex(burst_id,lookuptable=grb_list):
     """

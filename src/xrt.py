@@ -10,7 +10,7 @@ from asymmetric_uncertainty import a_u
 
 grb_list = pd.read_table("https://www.swift.ac.uk/xrt_curves/grb.list",
                          sep=" |\t",header=None,engine="python",
-                         names=["_","GRB","TriggerNumber"]).drop("_",axis=1)
+                         names=["_","GRB","Trigger Number"]).drop("_",axis=1)
 
 def XRT_lightcurve(burst_id,lookuptable=grb_list):
     """
@@ -23,7 +23,7 @@ def XRT_lightcurve(burst_id,lookuptable=grb_list):
     burst_id : string
         GRB ID/name in the form YYMMDDx
     lookuptable : pandas DataFrame
-        the reference table to get the TriggerNumber
+        the reference table to get the Trigger Number
 
     Returns
     -------
@@ -36,7 +36,7 @@ def XRT_lightcurve(burst_id,lookuptable=grb_list):
         if the table could not be retrieved
     
     """
-    trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"]
+    trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "Trigger Number"]
 #     lightcurveURL = f"https://www.swift.ac.uk/xrt_curves/{int(trigger):0>8}/"
     
 #     fireFoxOptions = webdriver.FirefoxOptions()
@@ -52,7 +52,7 @@ def XRT_lightcurve(burst_id,lookuptable=grb_list):
     while True:
         try:
             current = Table.read(lightcurveURL,format="ascii.qdp",table_id=i,names=["Time","Flux"]).to_pandas()
-            fluxdata = fluxdata.append(current,ignore_index=True)
+            fluxdata = pd.concat([fluxdata,current], ignore_index=True)
             i += 1
         except:
             if i>0:
@@ -77,7 +77,7 @@ def get_columnDensity(burst_id,lookuptable=grb_list):
     burst_id : string
         GRB ID/name in the form YYMMDDx
     lookuptable : pandas DataFrame
-        the reference table to get the TriggerNumber
+        the reference table to get the Trigger Number
 
     Returns
     -------
@@ -89,9 +89,9 @@ def get_columnDensity(burst_id,lookuptable=grb_list):
     
     """
     try:
-        trigger = int(lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"])
+        trigger = int(lookuptable.loc[lookuptable["GRB"] == burst_id, "Trigger Number"])
     except ValueError:
-        trigger = int(grb_list.loc[grb_list["GRB"] == burst_id, "TriggerNumber"])
+        trigger = int(grb_list.loc[grb_list["GRB"] == burst_id, "Trigger Number"])
     spectrumURL = f"https://www.swift.ac.uk/xrt_spectra/{trigger:0>8}/"
     
     page = requests.get(spectrumURL)
@@ -139,7 +139,7 @@ def get_photonIndex(burst_id,lookuptable=grb_list):
     burst_id : string
         GRB ID/name in the form YYMMDDx
     lookuptable : pandas DataFrame
-        the reference table to get the TriggerNumber
+        the reference table to get the Trigger Number
 
     Returns
     -------
@@ -151,9 +151,9 @@ def get_photonIndex(burst_id,lookuptable=grb_list):
     
     """
     try:
-        trigger = int(lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"])
+        trigger = int(lookuptable.loc[lookuptable["GRB"] == burst_id, "Trigger Number"])
     except ValueError:
-        trigger = int(grb_list.loc[grb_list["GRB"] == burst_id, "TriggerNumber"])
+        trigger = int(grb_list.loc[grb_list["GRB"] == burst_id, "Trigger Number"])
     spectrumURL = f"https://www.swift.ac.uk/xrt_spectra/{trigger:0>8}/"
     
     page = requests.get(spectrumURL)
@@ -198,7 +198,7 @@ def get_temporalIndex(burst_id,query_time,lookuptable=grb_list):
     query_time : numeric
         time (in seconds) at which to retrieve the temporal index
     lookuptable : pandas DataFrame
-        the reference table to get the TriggerNumber
+        the reference table to get the Trigger Number
 
     Returns
     -------
@@ -209,7 +209,7 @@ def get_temporalIndex(burst_id,query_time,lookuptable=grb_list):
     ------
     
     """
-    trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "TriggerNumber"]
+    trigger = lookuptable.loc[lookuptable["GRB"] == burst_id, "Trigger Number"]
     livecatURL = f"https://www.swift.ac.uk/xrt_live_cat/{int(trigger):0>8}/"
     
     livecat_tables = pd.read_html(livecatURL)

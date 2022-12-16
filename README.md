@@ -1,8 +1,10 @@
-# Analyzing optical darkness in short-duration *Swift* $\gamma$-ray bursts
+# Optical darkness in short-duration $\gamma$-ray bursts
 
-**Author:** Caden Gobat ([contact](mailto:cgobat@gwu.edu))
-
-**Advisor:** Alexander van der Horst ([@ajvanderhorst](https://github.com/ajvanderhorst))
+<b>Caden Gobat <a href="https://orcid.org/0000-0003-1268-8845"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1,2</sup> Alexander van der Horst <a href="https://orcid.org/0000-0001-9149-6707"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1</sup> and David Fitzpatrick<sup>3,4</sup></b></br>
+<sup>1</sup> Department of Physics, George Washington University, 725 21st St NW, Washington, DC 20052, U.S.A.</br> 
+<sup>2</sup> Department of Space Operations, Southwest Research Institute, 1050 Walnut Street, Suite 300, Boulder, CO 80302, U.S.A.</br>
+<sup>3</sup> Department of Aerospace Engineering Sciences, University of Colorado Boulder, 3775 Discovery Dr, Boulder, CO 80303, U.S.A.</br>
+<sup>4</sup> Department of Physics, Georgetown University, 37th \& O St NW, Washington, DC 20007, U.S.A.
 
 ---
 
@@ -24,7 +26,7 @@ The [`./src/xrt.py`](./src/xrt.py) module mostly contains functions for querying
 
 ### Legacy code
 
-This work represents a continuation of research done by David Fitzpatrick (Georgetown University) for his [bachelor's thesis (2020)](./pub/Fitzpatrick%20thesis%202020.pdf). The following tools were originally developed for that work and are no longer used in this codebase, but are included for posterity.
+This work has heritage in the research done by David Fitzpatrick for his [bachelor's thesis (2020)](./pub/Fitzpatrick%20thesis%202020.pdf). The following tools were originally developed for that work and are no longer used in this codebase, but are included for posterity.
 
 - [`calc_beta_ox.py`](./src/legacy/Calculation%20Code/calc_beta_ox.py) and [`calc_beta_ox.cpp`](./src/legacy/Calculation%20Code/calc_beta_ox.cpp) (compiled with Cygwin on Windows at [`Automating the Calculation of Beta_OX.exe`](./src/legacy/Calculation%20Code/Automating%20the%20Calculation%20of%20Beta_OX.exe), or recompile it yourself) both load files from [`./data/legacy/`](./data/legacy)
 

@@ -1,6 +1,6 @@
 # Optical darkness in short-duration $\gamma$-ray bursts
 
-<b>Caden Gobat <a href="https://orcid.org/0000-0003-1268-8845"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1,2</sup> Alexander van der Horst <a href="https://orcid.org/0000-0001-9149-6707"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1</sup> and David Fitzpatrick<sup>3,4</sup></b></br>
+<b><a href="https://github.com/cgobat">Caden Gobat</a> <a href="https://orcid.org/0000-0003-1268-8845"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1,2</sup> <a href="https://github.com/ajvanderhorst">Alexander van der Horst</a> <a href="https://orcid.org/0000-0001-9149-6707"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1</sup> and <a href="https://github.com/djfitz3999">David Fitzpatrick</a><sup>3,4</sup></b></br>
 <sup>1</sup> Department of Physics, George Washington University, 725 21st St NW, Washington, DC 20052, U.S.A.</br> 
 <sup>2</sup> Department of Space Operations, Southwest Research Institute, 1050 Walnut Street, Suite 300, Boulder, CO 80302, U.S.A.</br>
 <sup>3</sup> Department of Aerospace Engineering Sciences, University of Colorado Boulder, 3775 Discovery Dr, Boulder, CO 80303, U.S.A.</br>
@@ -12,7 +12,7 @@
 
 ## Overview
 
-Most of the front-facing code is housed in Jupyter notebooks in this top-level directory, notably [`analysis.ipynb`](./analysis.ipynb) and [`pipeline.ipynb`](./pipeline.ipynb) (`analysis` calls `pipeline` to do most of its heavy lifting). Supporting code and utility functions and live in the [./src](./src/) directory.
+Most of the front-facing code is housed in Jupyter notebooks in this top-level directory, notably [`analysis.ipynb`](./analysis.ipynb) and [`pipeline.ipynb`](./pipeline.ipynb) (`analysis` calls `pipeline` to do most of its heavy lifting). Supporting code, scripts, and utility functions reside in the [./src](./src/) directory.
 
 Steps to get up and running:
 1. Clone this repository using Git, or just download it as a .zip and extract it.
@@ -26,7 +26,7 @@ The [`./src/xrt.py`](./src/xrt.py) module mostly contains functions for querying
 
 ### Legacy code
 
-This work has heritage in the research done by David Fitzpatrick for his [bachelor's thesis (2020)](./pub/Fitzpatrick%20thesis%202020.pdf). The following tools were originally developed for that work and are no longer used in this codebase, but are included for posterity.
+This work has heritage in the research done by [David Fitzpatrick](https://github.com/djfitz3999) for his [bachelor's thesis (2020)](./pub/Fitzpatrick%20thesis%202020.pdf). The following tools were originally developed for that work and are no longer used in this codebase, but are included for posterity.
 
 - [`calc_beta_ox.py`](./src/legacy/Calculation%20Code/calc_beta_ox.py) and [`calc_beta_ox.cpp`](./src/legacy/Calculation%20Code/calc_beta_ox.cpp) (compiled with Cygwin on Windows at [`Automating the Calculation of Beta_OX.exe`](./src/legacy/Calculation%20Code/Automating%20the%20Calculation%20of%20Beta_OX.exe), or recompile it yourself) both load files from [`./data/legacy/`](./data/legacy)
 
@@ -34,4 +34,4 @@ This work has heritage in the research done by David Fitzpatrick for his [bachel
 
 - Both tools have been updated to include GUI-based filesystem interaction and configuration.
 
-Track progress on this project's [board](https://github.com/cgobat/dark-GRBs/projects/1). (no longer up-to-date)
+Track progress on this project's [board](https://github.com/cgobat/dark-GRBs/projects/1). (no longer current)

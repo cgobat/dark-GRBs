@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import interpolate, integrate
 
-def effective_wavelength(filter_response,show_plot=False): # pass a dataframe with columns Wavelength (in Ang), Transmission (in %)
+def effective_wavelength(filter_response, show_plot=False): # pass a dataframe with columns Wavelength (in Ang), Transmission (in %)
     filter_response.sort_values(by="Wavelength",inplace=True)
 
     vega_spec = pd.read_table("http://svo2.cab.inta-csic.es/svo/theory/fps3/morefiles/vega.dat",
@@ -36,14 +36,21 @@ def effective_wavelength(filter_response,show_plot=False): # pass a dataframe wi
 
     return lambda_eff
 
-def lightcurve(grb,band="optical",xlimits=False,ylimits=False,**kwargs):
+def lightcurve(grb, band="optical", xlimits=False, ylimits=False, **kwargs):
+    """Intended for use in an environment where DataFrames called `xrt_data` and `all_optical`
+    already exist and contain afterglow optical/X-ray flux data over time, respectively. This
+    function uses that information to plot the light curve of the burst in a band of the user's
+    choice."""
+
+    global xrt_data
+    global all_optical
     if band == "xray":
         subset = xrt_data.loc[xrt_data["GRB"]==grb]
         neg_err = [0.4*flux.value if np.isinf(flux.minus) else flux.minus for flux in subset["SpecFlux"]]
         pos_err = [0.4*flux.value if np.isinf(flux.plus) else flux.plus for flux in subset["SpecFlux"]]
         plt.errorbar(subset.Time,[flux.value for flux in subset.SpecFlux],
-                     xerr=np.array(subset.Tneg,subset.Tpos).T,yerr=np.array((neg_err,pos_err)),
-                     linestyle="",capthick=0,**kwargs)
+                     xerr=np.array(subset.Tneg,subset.Tpos).T, yerr=np.array((neg_err,pos_err)),
+                     linestyle="", capthick=0, **kwargs)
         plt.xscale("log")
         plt.yscale("log")
         plt.title(f"Swift XRT Lightcurve for GRB {grb}")
@@ -68,9 +75,10 @@ def lightcurve(grb,band="optical",xlimits=False,ylimits=False,**kwargs):
         fig,ax = plt.subplots()
         neg_err = [0.4*flux.value if np.isinf(flux.minus) else flux.minus for flux in subset["Flux (Jy)"]]
         pos_err = [0.4*flux.value if np.isinf(flux.plus) else flux.plus for flux in subset["Flux (Jy)"]]
-        ax.errorbar(subset["Time (s)"],[flux.value for flux in subset["Flux (Jy)"]],marker=".",linestyle="",capthick=0,
-                    yerr=np.array((neg_err,[point.plus for point in subset["Flux (Jy)"]])),
-                    uplims=[np.isinf(point.minus) for point in subset["Flux (Jy)"]],lolims=[np.isinf(point.plus) for point in subset["Flux (Jy)"]],**kwargs)
+        ax.errorbar(subset["Time (s)"],[flux.value for flux in subset["Flux (Jy)"]], marker=".", linestyle="", capthick=0,
+                    yerr=np.array((neg_err, [point.plus for point in subset["Flux (Jy)"]])),
+                    uplims=[np.isinf(point.minus) for point in subset["Flux (Jy)"]],
+                    lolims=[np.isinf(point.plus) for point in subset["Flux (Jy)"]], **kwargs)
         ax.grid(linestyle="--")
         ax.set(xscale="log",yscale="log",xlabel="Time (s)",ylabel=f"Flux ({band}) [Jy]")
         if xlimits:
@@ -80,13 +88,18 @@ def lightcurve(grb,band="optical",xlimits=False,ylimits=False,**kwargs):
     plt.show()
 
 def simulate_spectrum(idx):
+    """Intended for use in an environment where a DataFrame called `results` already
+    exists and contains matched optical/X-ray data points. This function uses that
+    information to plot the broadband "spectrum" at a selected point."""
+
+    global results
     inter_freqs = np.linspace(results.loc[idx,"nu_o"],0.3/4.135667696e-18,100)
     xray_freqs = np.linspace(0.3,10,100)/4.135667696e-18
     
     ox_spec = inter_freqs**(-results.loc[idx,"B_ox"].value)
-    ox_spec = ox_spec * (results.loc[idx,"F_o"]/ox_spec[0])
+    ox_spec *= (results.loc[idx,"F_o"]/ox_spec[0])
     x_spec = xray_freqs**(-results.loc[idx,"B_x"])
-    x_spec = x_spec * (ox_spec[-1]/x_spec[0])
+    x_spec *= (ox_spec[-1]/x_spec[0])
     plt.plot(inter_freqs,ox_spec,label=r"$\beta_{ox}=%f$"%(-results.loc[idx,"B_ox"]))
     plt.plot(xray_freqs,x_spec,label=r"$\beta_x=%f$"%(-results.loc[idx,"B_x"]))
     plt.vlines([10**np.mean((np.log10(0.3),np.log10(10))) / 4.135667696e-18],0,

@@ -57,6 +57,9 @@ def literature_references(GRB,titles=True,links=True,GCNs=False):
         return None
     
 def addYear(GRB_df):
+    """In-place function that adds a 'year' column to a DataFrame
+    as long as it has a 'GRB' column."""
+    
     yrs = []
     for i in GRB_df.index:
         yy = int(GRB_df.loc[i,"GRB"][:2])

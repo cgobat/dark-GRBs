@@ -1,5 +1,7 @@
 # Optical darkness in short-duration $\gamma$-ray bursts
 
+[![arXiv:2304.09122](https://img.shields.io/badge/arXiv-2304.09122-b31b1b)](https://arxiv.org/abs/2304.09122)
+
 <b><a href="https://github.com/cgobat">Caden Gobat</a> <a href="https://orcid.org/0000-0003-1268-8845"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1,2</sup> <a href="https://github.com/ajvanderhorst">Alexander van der Horst</a> <a href="https://orcid.org/0000-0001-9149-6707"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1</sup> and <a href="https://github.com/djfitz3999">David Fitzpatrick</a><sup>3,4</sup></b></br>
 <sup>1</sup> Department of Physics, George Washington University, 725 21st St NW, Washington, DC 20052, U.S.A.</br> 
 <sup>2</sup> Department of Space Operations, Southwest Research Institute, 1050 Walnut Street, Suite 300, Boulder, CO 80302, U.S.A.</br>
@@ -8,7 +10,7 @@
 
 ---
 
-Submitted to [*Montly Notices of the Royal Astronomical Society*](https://academic.oup.com/mnras) on Jan 18, 2023
+Accepted for publication in [*Montly Notices of the Royal Astronomical Society*](https://academic.oup.com/mnras) on April 14, 2023.
 
 **Abstract:** Gamma-ray bursts (GRBs) categorically produce broadband afterglow emission, but in some cases, emission in the optical band is less luminous than expected. This phenomenon, aptly dubbed "optical darkness", has been studied extensively in long GRBs (associated with hypernovae created by dying massive stars), with explanations ranging from host environment extinction to high redshift to possibly unique emission physics. However, investigations into optical darkness in short GRBs&mdash;known to occur when compact objects in a binary system spiral together in a merger event&mdash;have thus far been limited. This work implements a procedure for determining the darkness of GRBs based on spectral indices calculated using *Swift*-XRT data and ground-based optical follow-up observations; brings the catalog of known short GRBs that exhibit optical darkness up-to-date; and outlines some of the theory behind possible explanations for optically dark short GRBs. In the process of this analysis, we develop a versatile codebase that enables generalization and reproducibility of much of the data processing pipeline. These analysis tools and resulting complete sample of dark short GRBs will enable a systematic statistical study of the dark gamma-ray burst population, which&mdash;together with an exploration of the specific circumstances of each new GRB we identify as dark&mdash;provide an in-depth look at the phenomenon and its origins.
 

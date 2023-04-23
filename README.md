@@ -1,6 +1,6 @@
 # Optical darkness in short-duration $\gamma$-ray bursts
 
-[![arXiv:2304.09122](https://img.shields.io/badge/arXiv-2304.09122-b31b1b)](https://arxiv.org/abs/2304.09122)
+[![doi:10.1093/mnras/stad1189](https://img.shields.io/badge/DOI-10.1093%2Fmnras%2Fstad1189-informational)](https://doi.org/10.1093/mnras/stad1189)&ensp;[![arXiv:2304.09122](https://img.shields.io/badge/arXiv-2304.09122-b31b1b)](https://arxiv.org/abs/2304.09122)
 
 <b><a href="https://github.com/cgobat">Caden Gobat</a> <a href="https://orcid.org/0000-0003-1268-8845"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1,2</sup> <a href="https://github.com/ajvanderhorst">Alexander van der Horst</a> <a href="https://orcid.org/0000-0001-9149-6707"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1</sup> and <a href="https://github.com/djfitz3999">David Fitzpatrick</a><sup>3,4</sup></b></br>
 <sup>1</sup> Department of Physics, George Washington University, 725 21st St NW, Washington, DC 20052, U.S.A.</br> 

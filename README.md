@@ -1,8 +1,8 @@
-# Optical darkness in short-duration $\gamma$-ray bursts
+# Optical darkness in short-duration &#x1D6FE;-ray bursts
 
 [![doi:10.1093/mnras/stad1189](https://img.shields.io/badge/DOI-10.1093%2Fmnras%2Fstad1189-informational)](https://doi.org/10.1093/mnras/stad1189)&ensp;[![arXiv:2304.09122](https://img.shields.io/badge/arXiv-2304.09122-b31b1b)](https://arxiv.org/abs/2304.09122)
 
-<b><a href="https://github.com/cgobat">Caden Gobat</a> <a href="https://orcid.org/0000-0003-1268-8845"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1,2</sup> <a href="https://github.com/ajvanderhorst">Alexander van der Horst</a> <a href="https://orcid.org/0000-0001-9149-6707"><img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/></a>,<sup>1</sup> and <a href="https://github.com/djfitz3999">David Fitzpatrick</a><sup>3,4</sup></b></br>
+<b>[Caden Gobat](https://github.com/cgobat) [<img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/>](https://orcid.org/0000-0003-1268-8845),<sup>1,2</sup> [Alexander van der Horst](https://github.com/ajvanderhorst) [<img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" height=14px/>](https://orcid.org/0000-0001-9149-6707),<sup>1</sup> and [David Fitzpatrick](https://github.com/djfitz3999)<sup>3,4</sup></b></br>
 <sup>1</sup> Department of Physics, George Washington University, 725 21st St NW, Washington, DC 20052, U.S.A.</br> 
 <sup>2</sup> Department of Space Operations, Southwest Research Institute, 1050 Walnut Street, Suite 300, Boulder, CO 80302, U.S.A.</br>
 <sup>3</sup> Department of Aerospace Engineering Sciences, University of Colorado Boulder, 3775 Discovery Dr, Boulder, CO 80303, U.S.A.</br>
@@ -10,7 +10,7 @@
 
 ---
 
-Accepted for publication in [*Montly Notices of the Royal Astronomical Society*](https://academic.oup.com/mnras) on April 14, 2023.
+Published in [*Montly Notices of the Royal Astronomical Society*](https://academic.oup.com/mnras/article/523/1/775/7136159) on April 21, 2023.
 
 **Abstract:** Gamma-ray bursts categorically produce broadband afterglow emission, but in some cases, emission in the optical band is dimmer than expected based on the contemporaneously observed X-ray flux. This phenomenon, aptly dubbed "optical darkness", has been studied extensively in long GRBs (associated with the explosive deaths of massive stars), with possible explanations ranging from host environment extinction to high redshift to possibly unique emission mechanisms. However, investigations into optical darkness in short GRBs (associated with the mergers of compact object binaries) have thus far been limited. This work implements a procedure for determining the darkness of GRBs based on spectral indices calculated using temporally-matched *Swift*-XRT data and optical follow-up observations; presents a complete and up-to-date catalog of known short GRBs that exhibit optical darkness; and outlines some of the possible explanations for optically dark short GRBs. In the process of this analysis, we developed versatile and scalable data processing code that facilitates reproducibility and reuse of our pipeline. These analysis tools and resulting complete sample of dark short GRBs enable a systematic statistical study of the phenomenon and its origins, and reveal that optical darkness is indeed quite rare in short GRBs, and highly dependent on observing response time and observational effects.
 
